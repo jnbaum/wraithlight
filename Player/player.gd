@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var GRAVITY = 1000
+@export var GRAVITY = 2000
 
-@export var speed = 300.0
-@export var jump_velocity = -300.0
-@export var jump_horizontal = 100
+@export var speed = 520.0
+@export var jump_velocity = -800.0
+@export var jump_horizontal = 400
 
 enum State {Idle,Run,Jump,Falling}
 var current_state : State
