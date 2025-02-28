@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@export var GRAVITY = 1000
+@export var gravity = 1000
 
 @export var speed = 300.0
 @export var jump_velocity = -300.0
@@ -24,15 +24,15 @@ func _physics_process(delta: float):
 	
 	move_and_slide()
 	player_animations()
-	print("State: ", State.keys()[current_state])
+	#print("State: ", State.keys()[current_state])
 	
 
 
 func player_falling(delta: float):
 	if !is_on_floor():
-		velocity.y += GRAVITY * delta
+		velocity.y += gravity * delta
 		current_state = State.Falling
-		print("State: ", State.keys()[current_state])
+		#print("State: ", State.keys()[current_state])
 
 
 func player_idle(delta: float):
@@ -53,7 +53,7 @@ func player_run(delta: float):
 	
 	if direction != 0 and is_on_floor():
 		current_state = State.Run	
-		print("State: ", State.keys()[current_state])
+		#print("State: ", State.keys()[current_state])
 		#animated_sprite_2d.flip_h = false if direction > 0 else true
 		animated_sprite_2d.flip_h = direction < 0
 
