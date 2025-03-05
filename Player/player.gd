@@ -2,19 +2,11 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-<<<<<<< Updated upstream
-@export var GRAVITY = 2000
+@export var gravity = 4400
 
-@export var speed = 520.0
-@export var jump_velocity = -800.0
-@export var jump_horizontal = 400
-=======
-@export var gravity = 3500
-
-@export var speed = 600.0
-@export var jump_velocity = -1400.0
+@export var speed = 800.0
+@export var jump_velocity = -1500
 @export var jump_horizontal = 100
->>>>>>> Stashed changes
 
 enum State {Idle,Run,Jump,Falling}
 var current_state : State
@@ -32,15 +24,15 @@ func _physics_process(delta: float):
 	
 	move_and_slide()
 	player_animations()
-	print("State: ", State.keys()[current_state])
+	#print("State: ", State.keys()[current_state])
 	
 
 
 func player_falling(delta: float):
 	if !is_on_floor():
-		velocity.y += GRAVITY * delta
+		velocity.y += gravity * delta
 		current_state = State.Falling
-		print("State: ", State.keys()[current_state])
+		#print("State: ", State.keys()[current_state])
 
 
 func player_idle(delta: float):
@@ -61,7 +53,7 @@ func player_run(delta: float):
 	
 	if direction != 0 and is_on_floor():
 		current_state = State.Run	
-		print("State: ", State.keys()[current_state])
+		#print("State: ", State.keys()[current_state])
 		#animated_sprite_2d.flip_h = false if direction > 0 else true
 		animated_sprite_2d.flip_h = direction < 0
 

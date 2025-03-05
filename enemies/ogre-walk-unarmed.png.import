@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddp5setbl6spf"
-path="res://.godot/imported/Sky.png-ff4a92ba7fd0403ccae62c56b917c7b0.ctex"
+uid="uid://bwhmmw8fho20t"
+path="res://.godot/imported/ogre-walk-unarmed.png-479a1ed8c7b65d6eb92c786c788739a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tileset/Sky.png"
-dest_files=["res://.godot/imported/Sky.png-ff4a92ba7fd0403ccae62c56b917c7b0.ctex"]
+source_file="res://enemies/ogre-walk-unarmed.png"
+dest_files=["res://.godot/imported/ogre-walk-unarmed.png-479a1ed8c7b65d6eb92c786c788739a1.ctex"]
 
 [params]
 
