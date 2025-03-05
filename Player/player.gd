@@ -2,11 +2,19 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+<<<<<<< Updated upstream
 @export var GRAVITY = 2000
 
 @export var speed = 520.0
 @export var jump_velocity = -800.0
 @export var jump_horizontal = 400
+=======
+@export var gravity = 3500
+
+@export var speed = 600.0
+@export var jump_velocity = -1400.0
+@export var jump_horizontal = 100
+>>>>>>> Stashed changes
 
 enum State {Idle,Run,Jump,Falling}
 var current_state : State
