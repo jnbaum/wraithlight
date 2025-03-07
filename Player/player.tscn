@@ -165,5 +165,5 @@ position = Vector2(2, -22)
 shape = SubResource("CapsuleShape2D_eky6m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -125)
+offset = Vector2(0, -230)
 zoom = Vector2(0.9, 0.9)
