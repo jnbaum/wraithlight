@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=17 format=3 uid="uid://by83gus4nvqcs"]
+=======
+[gd_scene load_steps=16 format=3 uid="uid://by83gus4nvqcs"]
+>>>>>>> Jeffrey
 
 [ext_resource type="Texture2D" uid="uid://p4n8dbjo6rbp" path="res://enemies/ogre-idle-unarmed.png" id="1_6rcqq"]
 [ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_f22lj"]
@@ -91,6 +95,7 @@ animations = [{
 radius = 24.0
 height = 62.0
 
+<<<<<<< HEAD
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8v37x"]
 radius = 26.6667
 height = 66.6667
@@ -99,6 +104,10 @@ height = 66.6667
 scale = Vector2(0.75, 0.75)
 collision_layer = 4
 collision_mask = 3
+=======
+[node name="EnemyBase" type="CharacterBody2D"]
+scale = Vector2(0.75, 0.75)
+>>>>>>> Jeffrey
 script = ExtResource("1_f22lj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -114,6 +123,7 @@ shape = SubResource("CapsuleShape2D_x58fd")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+<<<<<<< HEAD
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2(-1.33333, 0)
 collision_layer = 4
@@ -126,3 +136,6 @@ debug_color = Color(0.972136, 0.167705, 3.85046e-07, 0.42)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+=======
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+>>>>>>> Jeffrey

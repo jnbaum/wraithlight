@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+<<<<<<< HEAD
 @export var gravity = 1000
+=======
+@export var gravity = 4400
+>>>>>>> Jeffrey
 
-@export var speed = 300.0
-@export var jump_velocity = -300.0
+@export var speed = 800.0
+@export var jump_velocity = -1500
 @export var jump_horizontal = 100
 
 enum State {Idle,Run,Jump,Falling}
@@ -76,16 +80,20 @@ func player_animations():
 	elif current_state == State.Jump:
 		animated_sprite_2d.play("Jump")
 
-
-		
-		
-		
 func input_movement():
 		var direction: float = Input.get_axis("move_left","move_right")
 		return direction
 
+<<<<<<< HEAD
 
 func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
 		print("enemy entered", body.damage_amount)
 		HealthManager.decrease_health(body.damage_amount)
+=======
+func update_position():
+	return position
+
+func load_position(posx):
+	position.x = posx
+>>>>>>> Jeffrey
