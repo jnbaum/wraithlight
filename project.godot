@@ -15,6 +15,10 @@ run/main_scene="res://Levels/test_level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+HealthManager="*res://scripts/health_manager.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -22,6 +26,10 @@ window/size/viewport_height=360
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="viewport"
+
+[global_group]
+
+Enemy=""
 
 [input]
 
@@ -59,6 +67,7 @@ jump={
 
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
 
 [rendering]
 

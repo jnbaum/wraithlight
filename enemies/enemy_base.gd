@@ -10,7 +10,10 @@ var current_state : State
 @export var speed = 3000.0
 @export var jump_velocity = -400.0
 #@export var patrol_points : Node
-@export var patrol_wait_time : int = 10
+@export var patrol_wait_time : int = 3
+
+@export var health_amount : int = 5
+@export var damage_amount : int = 1
 
 var direction : Vector2 = Vector2.LEFT
 var number_of_points : int 
@@ -87,3 +90,7 @@ func enemy_animations():
 func _on_timer_timeout() -> void:
 	can_walk = true
 	#can_walk = !can_walk
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	print("Enemy Hurtbox Entered")
