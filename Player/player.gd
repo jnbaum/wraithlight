@@ -76,10 +76,12 @@ func player_animations():
 	elif current_state == State.Jump:
 		animated_sprite_2d.play("Jump")
 
-
-		
-		
-		
 func input_movement():
 		var direction: float = Input.get_axis("move_left","move_right")
 		return direction
+
+func update_position():
+	return position
+
+func load_position(posx):
+	position.x = posx
