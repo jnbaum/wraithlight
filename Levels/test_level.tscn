@@ -5,27 +5,16 @@
 
 [node name="TestLevel" instance=ExtResource("1_jlj0j")]
 
-[node name="EnemyBase" parent="." index="2" instance=ExtResource("2_t5aiu")]
-position = Vector2(352, -125)
+[node name="EnemyBase3" parent="." index="2" instance=ExtResource("2_t5aiu")]
+position = Vector2(1587.67, -378.667)
 
-[node name="PatrolPoints" type="Node2D" parent="EnemyBase" index="2"]
+[node name="PatrolPoints" type="Node2D" parent="EnemyBase3" index="3"]
 
-[node name="Point1" type="Marker2D" parent="EnemyBase/PatrolPoints" index="0"]
-position = Vector2(-400.667, 90)
-
-[node name="Point2" type="Marker2D" parent="EnemyBase/PatrolPoints" index="1"]
-position = Vector2(-138.667, 91)
-
-[node name="EnemyBase2" parent="." index="3" instance=ExtResource("2_t5aiu")]
-position = Vector2(1155, -103)
-
-[node name="PatrolPoints" type="Node2D" parent="EnemyBase2" index="3"]
-
-[node name="Point1" type="Marker2D" parent="EnemyBase2/PatrolPoints" index="0"]
+[node name="Point1" type="Marker2D" parent="EnemyBase3/PatrolPoints" index="0"]
 position = Vector2(-352, 81.3333)
 
-[node name="Point2" type="Marker2D" parent="EnemyBase2/PatrolPoints" index="1"]
+[node name="Point2" type="Marker2D" parent="EnemyBase3/PatrolPoints" index="1"]
 position = Vector2(153.333, 72)
 
-[node name="Player" parent="." index="5"]
+[node name="Player" parent="." index="4"]
 position = Vector2(515, -121)

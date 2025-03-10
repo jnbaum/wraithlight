@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bkxqy2hpmf4ru"]
+[gd_scene load_steps=19 format=4 uid="uid://bkxqy2hpmf4ru"]
 
 [ext_resource type="Texture2D" uid="uid://bt2kbmqqiy36x" path="res://Tileset/gametileset1.png" id="1_jjpy6"]
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_t5qsp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dknd0rhguhycl" path="res://Tileset/Shadow and Dust Tiles.png" id="5_5cut3"]
 [ext_resource type="Texture2D" uid="uid://isseldlceuw" path="res://Tileset/sky.png" id="5_ngybt"]
 [ext_resource type="PackedScene" uid="uid://drgo347vw1rsy" path="res://save station.tscn" id="6_hxcm7"]
+[ext_resource type="PackedScene" uid="uid://by83gus4nvqcs" path="res://enemies/enemy_base.tscn" id="9_iyhsp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llr47"]
 texture = ExtResource("4_qchee")
@@ -1536,5 +1537,18 @@ motion_mirroring = Vector2(2780, 0)
 position = Vector2(878, 384)
 scale = Vector2(5.56125, 5.56125)
 texture = ExtResource("5_ngybt")
+
+[node name="Ogre1" parent="." instance=ExtResource("9_iyhsp")]
+position = Vector2(956, -121)
+speed = 4000.0
+patrol_wait_time = 1
+
+[node name="PatrolPoints" type="Node2D" parent="Ogre1"]
+
+[node name="Point1" type="Marker2D" parent="Ogre1/PatrolPoints"]
+position = Vector2(-131.556, 124)
+
+[node name="Point2" type="Marker2D" parent="Ogre1/PatrolPoints"]
+position = Vector2(162.222, 116.444)
 
 [connection signal="body_entered" from="Save Fire" to="." method="_on_save_fire_body_entered"]
