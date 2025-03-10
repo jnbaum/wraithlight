@@ -85,3 +85,8 @@ func update_position():
 
 func load_position(posx):
 	position.x = posx
+
+func _on_hurt_box_body_entered(body: Node2D):
+	if body.is_in_group("Enemy"):
+		print("enemy entered", body.damage_amount)
+		HealthManager.decrease_health(body.damage_amount)
