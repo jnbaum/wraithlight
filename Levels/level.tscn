@@ -1512,8 +1512,8 @@ tile_map_data = PackedByteArray("AAAZAPb/AAAJAAAAAAAeAPb/AAAJAAAAAAARAPL/AAAIAAA
 tile_set = SubResource("TileSet_c16yy")
 
 [node name="Save Fire" parent="." instance=ExtResource("6_hxcm7")]
-position = Vector2(3208.33, -314)
-scale = Vector2(4, 4)
+position = Vector2(3197.33, -301.333)
+scale = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("2_3hamp")]
 
