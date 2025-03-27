@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://0wvr0e771pmi"]
+[gd_scene load_steps=14 format=3 uid="uid://0wvr0e771pmi"]
 
 [ext_resource type="Script" path="res://control.gd" id="1_x0dxh"]
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="2_pua3m"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="3_ud8e1"]
 [ext_resource type="Texture2D" uid="uid://b6fv86oy6ygpd" path="res://Assets/gametileset2.png" id="4_0yy5x"]
 [ext_resource type="Texture2D" uid="uid://l30x3iuxehrq" path="res://Assets/gametileset1.png" id="5_p83g5"]
-[ext_resource type="Texture2D" uid="uid://6blo6pujnktn" path="res://Assets/Window.png" id="6_myhr5"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="7_05tpf"]
 
 [sub_resource type="Environment" id="Environment_y6nkf"]
@@ -28,7 +27,21 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.001, 2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-26, 282), Vector2(-26, 282), Vector2(660, 282)]
+"values": [Vector2(-26, 282), Vector2(-26, 282), Vector2(689, 282)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"player_run"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ugnlh"]
@@ -84,6 +97,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x0dxh")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(324, 174)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y6nkf")
 
@@ -98,10 +114,19 @@ position = Vector2(319, 205.875)
 scale = Vector2(0.841872, 1.00656)
 texture = ExtResource("2_pua3m")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = -9.0
+offset_right = 40.0
+offset_bottom = 31.0
+scale = Vector2(27.8782, 9.73618)
+color = Color(0.294118, 0.294118, 0.294118, 0.772549)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5jhkl")
 }
+autoplay = "RESET"
 
 [node name="Player" parent="." instance=ExtResource("3_ud8e1")]
 position = Vector2(-26, 282)
@@ -139,33 +164,6 @@ texture = ExtResource("5_p83g5")
 position = Vector2(41, 234)
 scale = Vector2(2.6875, 2.76042)
 texture = ExtResource("5_p83g5")
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-modulate = Color(1.5, 1.5, 1.5, 1)
-layout_mode = 0
-offset_left = -40.0
-offset_top = 7.0
-offset_right = 35.0
-offset_bottom = 79.0
-
-[node name="Window" type="Sprite2D" parent="."]
-position = Vector2(-1.99997, 43)
-scale = Vector2(3.75, 3.58333)
-texture = ExtResource("6_myhr5")
-
-[node name="Logo" type="Label" parent="."]
-modulate = Color(0.9, 0.9, 0.9, 1)
-layout_mode = 0
-offset_left = 92.0
-offset_top = 31.0
-offset_right = 538.0
-offset_bottom = 152.0
-theme_override_colors/font_color = Color(0.960784, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("7_05tpf")
-theme_override_font_sizes/font_size = 91
-text = "WraithLight"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(13, 245)
@@ -205,3 +203,17 @@ offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 40
 text = "Quit"
+
+[node name="Logo" type="Label" parent="."]
+modulate = Color(0.9, 0.9, 0.9, 1)
+layout_mode = 0
+offset_left = 92.0
+offset_top = 31.0
+offset_right = 538.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.960784, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 91
+text = "WraithLight"
