@@ -88,7 +88,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stomh"]
 size = Vector2(2.06543, 2.66649)
 
-[node name="Control" type="Control"]
+[node name="OpenScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,10 +176,10 @@ shape = SubResource("RectangleShape2D_stomh")
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 265.0
-offset_top = 123.0
-offset_right = 361.0
-offset_bottom = 185.0
+offset_left = 264.0
+offset_top = 111.0
+offset_right = 360.0
+offset_bottom = 173.0
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 40
 text = "Play"
