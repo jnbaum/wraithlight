@@ -11,65 +11,103 @@ script = ExtResource("1_qhr8d")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Background2" type="Sprite2D" parent="."]
-position = Vector2(1, 21)
+position = Vector2(-4.5, -1.50002)
+scale = Vector2(1.88079, 2.55131)
 texture = ExtResource("1_4250a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -441.0
-offset_top = -217.0
-offset_right = 379.0
-offset_bottom = 204.0
-color = Color(0.294118, 0.294118, 0.294118, 0.772549)
+offset_left = -967.0
+offset_top = -556.0
+offset_right = 973.0
+offset_bottom = 549.0
+color = Color(0, 0.15259, 0.163344, 0.623529)
 
 [node name="Logo" type="Label" parent="."]
-offset_left = -237.0
-offset_top = -148.0
-offset_right = 209.0
-offset_bottom = -27.0
+offset_left = -494.0
+offset_top = -408.0
+offset_right = 487.0
+offset_bottom = -142.0
 theme_override_fonts/font = ExtResource("2_xknt6")
-theme_override_font_sizes/font_size = 91
+theme_override_font_sizes/font_size = 200
 text = "WraithLight"
 
 [node name="Music" type="Label" parent="."]
-offset_left = -221.0
-offset_top = -41.0
-offset_right = -126.0
-offset_bottom = 13.0
+offset_left = -394.0
+offset_top = -110.0
+offset_right = -181.0
+offset_bottom = 10.0
 theme_override_fonts/font = ExtResource("2_xknt6")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 90
 text = "Music"
 
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = -78.0
-offset_top = -33.0
-offset_right = 154.0
-offset_bottom = -17.0
+[node name="MusicSlider" type="HSlider" parent="Music"]
+offset_left = 272.0
+offset_top = 5.0
+offset_right = 463.0
+offset_bottom = 26.0
+scale = Vector2(1.92, 2.2)
 
-[node name="CheckBox" type="CheckBox" parent="."]
-offset_left = 172.0
-offset_top = -38.0
-offset_right = 196.0
-offset_bottom = -14.0
+[node name="CheckBox" type="CheckBox" parent="Music"]
+offset_left = 668.0
+offset_right = 692.0
+offset_bottom = 24.0
+scale = Vector2(2.28, 2.2)
 
-[node name="Mute" type="Sprite2D" parent="."]
-position = Vector2(211, -26)
-scale = Vector2(0.115909, 0.122093)
+[node name="Mute" type="Sprite2D" parent="Music"]
+position = Vector2(748, 26)
+scale = Vector2(0.195907, 0.202093)
 texture = ExtResource("3_bebjg")
 
 [node name="Button" type="Button" parent="."]
-offset_left = -46.0
-offset_top = 76.0
-offset_right = 47.0
-offset_bottom = 138.0
+offset_left = -81.0
+offset_top = 300.0
+offset_right = 97.0
+offset_bottom = 415.0
 theme_override_fonts/font = ExtResource("2_xknt6")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 80
 text = "Back"
+flat = true
 
 [node name="Quit" type="Button" parent="."]
-offset_left = -50.0
-offset_top = 138.0
-offset_right = 50.0
-offset_bottom = 206.0
+offset_left = -65.0
+offset_top = 440.0
+offset_right = 65.0
+offset_bottom = 555.0
 theme_override_fonts/font = ExtResource("2_xknt6")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 80
 text = "Quit"
+flat = true
+
+[node name="Sound" type="Label" parent="."]
+offset_left = -394.0
+offset_top = 45.0
+offset_right = -158.0
+offset_bottom = 165.0
+theme_override_fonts/font = ExtResource("2_xknt6")
+theme_override_font_sizes/font_size = 90
+text = "Sound"
+
+[node name="SoundSlider2" type="HSlider" parent="Sound"]
+offset_left = 272.0
+offset_top = -3.05176e-05
+offset_right = 463.0
+offset_bottom = 21.0
+scale = Vector2(1.92, 2.2)
+
+[node name="CheckBox2" type="CheckBox" parent="Sound"]
+offset_left = 665.0
+offset_top = -8.0
+offset_right = 689.0
+offset_bottom = 16.0
+scale = Vector2(2.28, 2.2)
+
+[node name="Mute2" type="Sprite2D" parent="Sound"]
+position = Vector2(747, 18)
+scale = Vector2(0.195907, 0.202093)
+texture = ExtResource("3_bebjg")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
