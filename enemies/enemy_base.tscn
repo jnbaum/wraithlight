@@ -112,7 +112,6 @@ position = Vector2(0, -32)
 shape = SubResource("CapsuleShape2D_x58fd")
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 autostart = true
 
 [node name="HurtBox" type="Area2D" parent="."]
