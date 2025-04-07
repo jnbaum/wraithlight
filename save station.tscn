@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://drgo347vw1rsy"]
+
+[ext_resource type="Script" path="res://save_station.gd" id="1_6xdet"]
+[ext_resource type="Texture2D" uid="uid://bihwy3spqus44" path="res://textures/SaveFire.png" id="1_p3atx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihots"]
+
+[node name="Save Fire" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6xdet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ihots")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p3atx")

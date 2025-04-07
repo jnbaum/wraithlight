@@ -1,0 +1,259 @@
+[gd_scene load_steps=20 format=3 uid="uid://0wvr0e771pmi"]
+
+[ext_resource type="Script" path="res://Levels/control.gd" id="1_x0dxh"]
+[ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="2_pua3m"]
+[ext_resource type="Texture2D" uid="uid://b6fv86oy6ygpd" path="res://Assets/gametileset2.png" id="4_0yy5x"]
+[ext_resource type="Texture2D" uid="uid://l30x3iuxehrq" path="res://Assets/gametileset1.png" id="5_p83g5"]
+[ext_resource type="Texture2D" uid="uid://cxchd20uxdei4" path="res://Player/hero-run.png" id="6_jlddb"]
+[ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="7_05tpf"]
+
+[sub_resource type="Environment" id="Environment_y6nkf"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_hdr_threshold = 0.9
+glow_hdr_luminance_cap = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_stomh"]
+size = Vector2(2.72944, 2.66649)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v24pu"]
+atlas = ExtResource("6_jlddb")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uuiy"]
+atlas = ExtResource("6_jlddb")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5y1v"]
+atlas = ExtResource("6_jlddb")
+region = Rect2(320, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwetv"]
+atlas = ExtResource("6_jlddb")
+region = Rect2(480, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w44w7"]
+atlas = ExtResource("6_jlddb")
+region = Rect2(640, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7d2s"]
+atlas = ExtResource("6_jlddb")
+region = Rect2(800, 0, 160, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aluet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v24pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uuiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5y1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwetv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w44w7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7d2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_ouefj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_h3p32"]
+resource_name = "new_animation"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1300, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ujc27"]
+_data = {
+"RESET": SubResource("Animation_ouefj"),
+"new_animation": SubResource("Animation_h3p32")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4843"]
+radius = 123.0
+height = 354.0
+
+[node name="OpenScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_x0dxh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-16, 120)
+scale = Vector2(1, 1.62)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y6nkf")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2(319, 205.875)
+scale = Vector2(0.841872, 1.00656)
+color = Color(0.556953, 0.556953, 0.556953, 1)
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(11, 196.5)
+scale = Vector2(1.19912, 1.75443)
+texture = ExtResource("2_pua3m")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -601.0
+offset_top = -177.0
+offset_right = -557.0
+offset_bottom = -102.0
+scale = Vector2(27.8782, 9.73618)
+color = Color(0, 0.152941, 0.164706, 0.623529)
+
+[node name="Floor" type="Node" parent="."]
+
+[node name="Gametileset2" type="Sprite2D" parent="Floor"]
+position = Vector2(-794, 790)
+scale = Vector2(9.28125, 9.55488)
+texture = ExtResource("4_0yy5x")
+
+[node name="Gametileset3" type="Sprite2D" parent="Floor"]
+position = Vector2(-255, 795)
+scale = Vector2(8.125, 8.89062)
+texture = ExtResource("4_0yy5x")
+
+[node name="Gametileset4" type="Sprite2D" parent="Floor"]
+position = Vector2(800, 807.742)
+scale = Vector2(9.10937, 8.79306)
+texture = ExtResource("4_0yy5x")
+
+[node name="Gametileset5" type="Sprite2D" parent="Floor"]
+position = Vector2(262, 792)
+scale = Vector2(8.125, 9.17073)
+texture = ExtResource("4_0yy5x")
+
+[node name="Gametileset1" type="Sprite2D" parent="."]
+top_level = true
+position = Vector2(855, 500)
+scale = Vector2(10.6875, 9.83624)
+texture = ExtResource("5_p83g5")
+
+[node name="Gametileset2" type="Sprite2D" parent="."]
+position = Vector2(-456.5, 169)
+scale = Vector2(6.1875, 6.24479)
+texture = ExtResource("5_p83g5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(13, 245)
+scale = Vector2(302.591, -41.6871)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.00826185, -3.88609)
+scale = Vector2(1.82371, -1.13846)
+shape = SubResource("RectangleShape2D_stomh")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -68.5
+offset_top = 61.5
+offset_right = 71.5
+offset_bottom = 150.5
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+flat = true
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -93.5
+offset_top = 167.5
+offset_right = 94.5
+offset_bottom = 256.5
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+flat = true
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -53.0
+offset_top = 271.0
+offset_right = 47.0
+offset_bottom = 360.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+flat = true
+
+[node name="Logo" type="Label" parent="."]
+modulate = Color(0.9, 0.9, 0.9, 1)
+layout_mode = 0
+offset_left = -293.5
+offset_top = -92.5
+offset_right = 295.5
+offset_bottom = 67.5
+theme_override_colors/font_color = Color(0.960784, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 120
+text = "WraithLight"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(-1237, 349)
+scale = Vector2(5.14375, 7.48889)
+sprite_frames = SubResource("SpriteFrames_aluet")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D/AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_ujc27")
+}
+autoplay = "new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1280, 515)
+shape = SubResource("CapsuleShape2D_q4843")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

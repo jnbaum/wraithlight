@@ -10,6 +10,7 @@ position = Vector2(1587.67, -378.667)
 
 [node name="PatrolPoints" type="Node2D" parent="EnemyBase3" index="3"]
 
+
 [node name="Point1" type="Marker2D" parent="EnemyBase3/PatrolPoints" index="0"]
 position = Vector2(-352, 81.3333)
 
@@ -36,3 +37,4 @@ texture = null
 
 [node name="Ogre1" parent="." index="8"]
 patrol_wait_time = 3
+

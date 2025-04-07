@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var coyote_timer = $CoyoteTimer
 
 @export var gravity = 4400
+
 @export var speed = 800.0
 @export var jump_velocity = -1500
 @export var jump_horizontal = 100
