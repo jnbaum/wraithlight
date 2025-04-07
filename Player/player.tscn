@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=25 format=3 uid="uid://bewrr126db1ko"]
 
 [ext_resource type="Texture2D" uid="uid://bjhne7awbswew" path="res://Player/hero-idle.png" id="1_428gp"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
@@ -148,21 +148,42 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eky6m"]
 radius = 12.0
-height = 46.0
+height = 42.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5iwji"]
+radius = 12.0
+height = 40.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_a1pft")
-jump_velocity = -400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"Falling"
+animation = &"Run"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -22)
+position = Vector2(2, -23)
 shape = SubResource("CapsuleShape2D_eky6m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -230)
+zoom = Vector2(0.9, 0.9)
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(-1, 0)
+collision_layer = 2
+collision_mask = 4
+
+[node name="HurtboxCollisionShape" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(3, -23)
+shape = SubResource("CapsuleShape2D_5iwji")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

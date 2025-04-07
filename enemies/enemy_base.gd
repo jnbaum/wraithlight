@@ -10,7 +10,11 @@ var current_state : State
 @export var speed = 3000.0
 @export var jump_velocity = -400.0
 #@export var patrol_points : Node
-@export var patrol_wait_time : int = 10
+
+@export var patrol_wait_time : int = 3
+
+@export var health_amount : int = 5
+@export var damage_amount : int = 1
 
 var direction : Vector2 = Vector2.LEFT
 var number_of_points : int 
@@ -56,9 +60,18 @@ func enemy_idle(delta:float):
 func enemy_walk(delta:float):
 	if !can_walk:
 		return
+		
 	if abs(position.x - current_point.x) > 0.5:
 		velocity.x = direction.x * speed * delta
+		current_state = State.Walk
 	else:
+		# We reached the point, stop and wait
+		velocity.x = 0
+		current_state = State.Idle
+		can_walk = false
+		timer.start()
+		
+		# Set up next point
 		current_point_position += 1
 		if current_point_position >= number_of_points:
 			current_point_position = 0
@@ -69,9 +82,7 @@ func enemy_walk(delta:float):
 			direction = Vector2.RIGHT
 		else:
 			direction = Vector2.LEFT
-		
-		can_walk = false
-		timer.start()
+	
 	animated_sprite_2d.flip_h = direction.x > 0
 	
 	velocity.x = direction.x * speed * delta
@@ -87,3 +98,6 @@ func enemy_animations():
 func _on_timer_timeout() -> void:
 	can_walk = true
 	#can_walk = !can_walk
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	print("Enemy Hurtbox Entered")
