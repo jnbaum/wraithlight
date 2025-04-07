@@ -59,7 +59,7 @@ func player_run(delta: float):
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 		animated_sprite_2d.flip_h = direction < 0
 
-
+#testing
 
 func player_jump1(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
