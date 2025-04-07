@@ -182,8 +182,6 @@ position = Vector2(3, -23)
 shape = SubResource("CapsuleShape2D_5iwji")
 debug_color = Color(1, 0, 0, 0.419608)
 
-
-
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
