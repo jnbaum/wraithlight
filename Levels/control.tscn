@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://0wvr0e771pmi"]
+[gd_scene load_steps=23 format=3 uid="uid://0wvr0e771pmi"]
 
 [ext_resource type="Script" path="res://Levels/control.gd" id="1_x0dxh"]
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="2_pua3m"]
 [ext_resource type="Texture2D" uid="uid://b6fv86oy6ygpd" path="res://Assets/gametileset2.png" id="4_0yy5x"]
 [ext_resource type="Texture2D" uid="uid://l30x3iuxehrq" path="res://Assets/gametileset1.png" id="5_p83g5"]
-[ext_resource type="Texture2D" uid="uid://cxchd20uxdei4" path="res://Player/hero-run.png" id="6_jlddb"]
+[ext_resource type="Texture2D" uid="uid://dy1n6s1xiv3f4" path="res://Player/Lightning Mage/Run.png" id="6_6vunp"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="7_05tpf"]
 [ext_resource type="AudioStream" uid="uid://c3hn05h7nuvtg" path="res://Assets/Running.wav" id="7_oh60x"]
 
@@ -19,50 +19,64 @@ glow_hdr_luminance_cap = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stomh"]
 size = Vector2(2.95124, 2.66649)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v24pu"]
-atlas = ExtResource("6_jlddb")
-region = Rect2(0, 0, 160, 90)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvg5b"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7uuiy"]
-atlas = ExtResource("6_jlddb")
-region = Rect2(160, 0, 160, 90)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm2si"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e5y1v"]
-atlas = ExtResource("6_jlddb")
-region = Rect2(320, 0, 160, 90)
+[sub_resource type="AtlasTexture" id="AtlasTexture_08xlp"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xwetv"]
-atlas = ExtResource("6_jlddb")
-region = Rect2(480, 0, 160, 90)
+[sub_resource type="AtlasTexture" id="AtlasTexture_swx06"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w44w7"]
-atlas = ExtResource("6_jlddb")
-region = Rect2(640, 0, 160, 90)
+[sub_resource type="AtlasTexture" id="AtlasTexture_33eg6"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7d2s"]
-atlas = ExtResource("6_jlddb")
-region = Rect2(800, 0, 160, 90)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3248"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yy34"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5wlx"]
+atlas = ExtResource("6_6vunp")
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aluet"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v24pu")
+"texture": SubResource("AtlasTexture_lvg5b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7uuiy")
+"texture": SubResource("AtlasTexture_wm2si")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e5y1v")
+"texture": SubResource("AtlasTexture_08xlp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xwetv")
+"texture": SubResource("AtlasTexture_swx06")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w44w7")
+"texture": SubResource("AtlasTexture_33eg6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7d2s")
+"texture": SubResource("AtlasTexture_a3248")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yy34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5wlx")
 }],
 "loop": true,
 "name": &"default",
@@ -241,7 +255,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(-1592, 349)
-scale = Vector2(5.14375, 7.48889)
+scale = Vector2(5.14375, 5.24889)
 sprite_frames = SubResource("SpriteFrames_aluet")
 autoplay = "default"
 frame_progress = 0.82641
@@ -258,7 +272,9 @@ shape = SubResource("CapsuleShape2D_q4843")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
 stream = ExtResource("7_oh60x")
+volume_db = -17.802
 autoplay = true
+bus = &"SoundEffects"
 
 [node name="TagLine" type="Label" parent="."]
 layout_mode = 0
