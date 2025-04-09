@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://0wvr0e771pmi"]
+[gd_scene load_steps=21 format=3 uid="uid://0wvr0e771pmi"]
 
 [ext_resource type="Script" path="res://Levels/control.gd" id="1_x0dxh"]
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="2_pua3m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://l30x3iuxehrq" path="res://Assets/gametileset1.png" id="5_p83g5"]
 [ext_resource type="Texture2D" uid="uid://cxchd20uxdei4" path="res://Player/hero-run.png" id="6_jlddb"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="7_05tpf"]
+[ext_resource type="AudioStream" uid="uid://c3hn05h7nuvtg" path="res://Assets/Running.wav" id="7_oh60x"]
 
 [sub_resource type="Environment" id="Environment_y6nkf"]
 background_mode = 3
@@ -16,7 +17,7 @@ glow_hdr_threshold = 0.9
 glow_hdr_luminance_cap = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stomh"]
-size = Vector2(2.72944, 2.66649)
+size = Vector2(2.95124, 2.66649)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v24pu"]
 atlas = ExtResource("6_jlddb")
@@ -168,13 +169,13 @@ position = Vector2(262, 792)
 scale = Vector2(8.125, 9.17073)
 texture = ExtResource("4_0yy5x")
 
-[node name="Gametileset1" type="Sprite2D" parent="."]
+[node name="ColumnR" type="Sprite2D" parent="."]
 top_level = true
 position = Vector2(855, 500)
 scale = Vector2(10.6875, 9.83624)
 texture = ExtResource("5_p83g5")
 
-[node name="Gametileset2" type="Sprite2D" parent="."]
+[node name="ColumnL" type="Sprite2D" parent="."]
 position = Vector2(-456.5, 169)
 scale = Vector2(6.1875, 6.24479)
 texture = ExtResource("5_p83g5")
@@ -184,7 +185,7 @@ position = Vector2(13, 245)
 scale = Vector2(302.591, -41.6871)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.00826185, -3.88609)
+position = Vector2(-0.210507, -3.88609)
 scale = Vector2(1.82371, -1.13846)
 shape = SubResource("RectangleShape2D_stomh")
 
@@ -239,10 +240,11 @@ text = "WraithLight"
 scale = Vector2(0.5, 0.5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(-1237, 349)
+position = Vector2(-1592, 349)
 scale = Vector2(5.14375, 7.48889)
 sprite_frames = SubResource("SpriteFrames_aluet")
 autoplay = "default"
+frame_progress = 0.82641
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D/AnimatedSprite2D"]
 libraries = {
@@ -251,8 +253,12 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1280, 515)
+position = Vector2(-1627, 515)
 shape = SubResource("CapsuleShape2D_q4843")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("7_oh60x")
+autoplay = true
 
 [node name="TagLine" type="Label" parent="."]
 layout_mode = 0
@@ -266,6 +272,7 @@ text = "Death Isnt Always The End"
 
 [node name="QuitButton" type="Button" parent="."]
 z_index = 1
+layout_mode = 0
 offset_left = -53.0
 offset_top = 318.0
 offset_right = 47.0
