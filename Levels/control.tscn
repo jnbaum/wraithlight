@@ -191,9 +191,9 @@ shape = SubResource("RectangleShape2D_stomh")
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = -68.5
-offset_top = 61.5
+offset_top = 66.5
 offset_right = 71.5
-offset_bottom = 150.5
+offset_bottom = 155.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
 text = "Play"
@@ -201,33 +201,33 @@ flat = true
 
 [node name="SettingsButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -93.5
-offset_top = 167.5
-offset_right = 94.5
-offset_bottom = 256.5
+offset_left = -94.0
+offset_top = 230.5
+offset_right = 94.0
+offset_bottom = 319.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
 text = "Settings"
 flat = true
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="LoadButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -53.0
-offset_top = 271.0
-offset_right = 47.0
-offset_bottom = 360.0
+offset_left = -66.5
+offset_top = 142.5
+offset_right = 66.5
+offset_bottom = 231.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
-text = "Quit"
+text = "Load"
 flat = true
 
 [node name="Logo" type="Label" parent="."]
 modulate = Color(0.9, 0.9, 0.9, 1)
 layout_mode = 0
 offset_left = -293.5
-offset_top = -92.5
+offset_top = -117.0
 offset_right = 295.5
-offset_bottom = 67.5
+offset_bottom = 43.0
 theme_override_colors/font_color = Color(0.960784, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -254,6 +254,28 @@ autoplay = "new_animation"
 position = Vector2(-1280, 515)
 shape = SubResource("CapsuleShape2D_q4843")
 
+[node name="TagLine" type="Label" parent="."]
+layout_mode = 0
+offset_left = -171.5
+offset_top = -5.0
+offset_right = 173.5
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 30
+text = "Death Isnt Always The End"
+
+[node name="QuitButton" type="Button" parent="."]
+z_index = 1
+offset_left = -53.0
+offset_top = 318.0
+offset_right = 47.0
+offset_bottom = 407.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+flat = true
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

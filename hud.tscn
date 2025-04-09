@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://b711y6ajr0ako"]
+
+[ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="1_aglur"]
+[ext_resource type="Script" path="res://hud.gd" id="1_d6du5"]
+[ext_resource type="Texture2D" uid="uid://dwxb23m8ofc4v" path="res://Assets/heart.png" id="2_0rmoh"]
+[ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="2_1t41d"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_d6du5")
+
+[node name="Lives" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Heart1" type="Sprite2D" parent="Lives"]
+position = Vector2(69, 65)
+rotation = 0.212628
+scale = Vector2(0.709678, 0.818893)
+texture = ExtResource("2_0rmoh")
+
+[node name="Heart2" type="Sprite2D" parent="Lives"]
+position = Vector2(186, 65)
+rotation = 0.212628
+scale = Vector2(0.71, 0.819)
+texture = ExtResource("2_0rmoh")
+
+[node name="Heart3" type="Sprite2D" parent="Lives"]
+position = Vector2(303, 65)
+rotation = 0.212628
+scale = Vector2(0.71, 0.819)
+texture = ExtResource("2_0rmoh")
+
+[node name="Heart4" type="Sprite2D" parent="Lives"]
+position = Vector2(420, 65)
+rotation = 0.212628
+scale = Vector2(0.71, 0.819)
+texture = ExtResource("2_0rmoh")
+
+[node name="Heart5" type="Sprite2D" parent="Lives"]
+position = Vector2(537, 65)
+rotation = 0.212628
+scale = Vector2(0.71, 0.819)
+texture = ExtResource("2_0rmoh")
+
+[node name="Pause" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 986.0
+offset_right = 193.0
+offset_bottom = 1096.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 60
+text = "Pause"
+flat = true
+
+[node name="Ammo" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Flame1" type="Sprite2D" parent="Ammo"]
+position = Vector2(1606, 65)
+scale = Vector2(0.839, 0.785)
+texture = ExtResource("1_aglur")
+
+[node name="Flame2" type="Sprite2D" parent="Ammo"]
+position = Vector2(1723, 65)
+scale = Vector2(0.839, 0.785)
+texture = ExtResource("1_aglur")
+
+[node name="Flame3" type="Sprite2D" parent="Ammo"]
+position = Vector2(1840, 65)
+scale = Vector2(0.839005, 0.784722)
+texture = ExtResource("1_aglur")
+
+[connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]

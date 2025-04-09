@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="WraitlightPreview"
-run/main_scene="res://Levels/level.tscn"
+run/main_scene="res://Levels/control.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 HealthManager="*res://scripts/health_manager.gd"
+HUD="*res://hud.gd"
 
 [display]
 

@@ -1,12 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh32t266dnj1"]
+[gd_scene load_steps=5 format=3 uid="uid://bh32t266dnj1"]
 
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="1_4250a"]
 [ext_resource type="Script" path="res://settings.gd" id="1_qhr8d"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="2_xknt6"]
 [ext_resource type="Texture2D" uid="uid://03810icbqeyi" path="res://Assets/Mute.png" id="3_bebjg"]
-[ext_resource type="Texture2D" uid="uid://c4gngypghbtow" path="res://Assets/Lantern.png" id="6_d6cgm"]
-[ext_resource type="Texture2D" uid="uid://cfgsqp01w68vl" path="res://Ghost_Download/000.png" id="6_msqgc"]
-[ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="7_lsh0n"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_qhr8d")
@@ -117,28 +114,6 @@ texture = ExtResource("3_bebjg")
 color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
-
-[node name="000" type="Sprite2D" parent="."]
-position = Vector2(-830, 482)
-scale = Vector2(25.4853, 26.8929)
-texture = ExtResource("6_msqgc")
-
-[node name="Lantern" type="Sprite2D" parent="."]
-position = Vector2(876, -311.625)
-scale = Vector2(0.329722, 0.3054)
-texture = ExtResource("6_d6cgm")
-
-[node name="Life1" type="Sprite2D" parent="."]
-position = Vector2(-662, -461)
-texture = ExtResource("7_lsh0n")
-
-[node name="Life2" type="Sprite2D" parent="."]
-position = Vector2(-892, -461)
-texture = ExtResource("7_lsh0n")
-
-[node name="Life3" type="Sprite2D" parent="."]
-position = Vector2(-780, -461)
-texture = ExtResource("7_lsh0n")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
