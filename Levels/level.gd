@@ -28,7 +28,7 @@ func load_data():
 		pass
 
 func _on_save_fire_body_entered(body: Node2D) -> void:
-	
+	$"Save Fire/FireWoosh".play()
 	print("done")
 	save()
 	
