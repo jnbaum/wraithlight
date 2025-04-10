@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh5vpd2uq2x08"]
+
+[ext_resource type="Texture2D" uid="uid://bhrwxdw70c5g" path="res://Assets/Dungeon background.png" id="1_e14q4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="DungeonBackground" type="Sprite2D" parent="Background"]
+position = Vector2(-722, -414)
+scale = Vector2(1.0251, 1)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground2" type="Sprite2D" parent="Background"]
+position = Vector2(-237, -416)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground3" type="Sprite2D" parent="Background"]
+position = Vector2(241, -415)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground4" type="Sprite2D" parent="Background"]
+position = Vector2(720, -414)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground5" type="Sprite2D" parent="Background"]
+position = Vector2(-726, -156)
+scale = Vector2(1.0251, 1)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground6" type="Sprite2D" parent="Background"]
+position = Vector2(-241, -158)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground7" type="Sprite2D" parent="Background"]
+position = Vector2(237, -157)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground8" type="Sprite2D" parent="Background"]
+position = Vector2(716, -156)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground9" type="Sprite2D" parent="Background"]
+position = Vector2(-718, 117)
+scale = Vector2(1.0251, 1.13178)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground10" type="Sprite2D" parent="Background"]
+position = Vector2(-233, 111)
+scale = Vector2(1, 1.16279)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground11" type="Sprite2D" parent="Background"]
+position = Vector2(245, 98.5)
+scale = Vector2(1, 1.20543)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground12" type="Sprite2D" parent="Background"]
+position = Vector2(724, 109)
+scale = Vector2(1, 1.15504)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground13" type="Sprite2D" parent="Background"]
+position = Vector2(-713, 389.5)
+scale = Vector2(1.0251, 1.16667)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground14" type="Sprite2D" parent="Background"]
+position = Vector2(-228, 394)
+scale = Vector2(1, 1.21705)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground15" type="Sprite2D" parent="Background"]
+position = Vector2(250, 397.5)
+scale = Vector2(1, 1.23643)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground16" type="Sprite2D" parent="Background"]
+position = Vector2(729, 396)
+scale = Vector2(1, 1.21705)
+texture = ExtResource("1_e14q4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -978.0
+offset_top = -553.0
+offset_right = 964.0
+offset_bottom = 558.0
+color = Color(0, 0.152941, 0.164706, 0.623529)
+
+[node name="DungeonBackground18" type="Sprite2D" parent="."]
+position = Vector2(1, 432)
+scale = Vector2(3.44351, 0.162791)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground17" type="Sprite2D" parent="."]
+position = Vector2(1, -432)
+scale = Vector2(3.44351, 0.162791)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground" type="Sprite2D" parent="."]
+position = Vector2(-789, -3.99999)
+scale = Vector2(0.121339, 3.46512)
+texture = ExtResource("1_e14q4")
