@@ -224,6 +224,7 @@ script = ExtResource("1_a1pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(11, -66)
 sprite_frames = SubResource("SpriteFrames_lvyff")
+animation = &"Run"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
