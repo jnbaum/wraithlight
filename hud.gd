@@ -17,9 +17,3 @@ func _on_pause_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
 	get_tree().change_scene_to_file("res://settings.tscn")
-
-
-func _on_button_pressed() -> void:
-	$ClickSound.play()
-	#PUT SAVE GAME INFO HERE
-	pass # Replace with function body.

@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=35 format=3 uid="uid://bewrr126db1ko"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
 [ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
 [ext_resource type="Texture2D" uid="uid://b6irtmirwgryq" path="res://Player/Lightning Mage/Idle.png" id="3_fsxe4"]
 [ext_resource type="Texture2D" uid="uid://chuljlc0ud7bo" path="res://Player/Lightning Mage/Jump.png" id="4_en4dp"]
 [ext_resource type="Texture2D" uid="uid://dy1n6s1xiv3f4" path="res://Player/Lightning Mage/Run.png" id="5_x23tq"]
+[ext_resource type="AudioStream" uid="uid://ca0eyo1iyl7mh" path="res://RunningShort.mp3" id="6_s2n5p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhcyu"]
 atlas = ExtResource("2_lfplk")
@@ -246,5 +247,10 @@ position = Vector2(8, -37)
 scale = Vector2(1, 1.84)
 shape = SubResource("CapsuleShape2D_5iwji")
 debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="RunningSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_s2n5p")
+stream_paused = true
+bus = &"SoundEffects"
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

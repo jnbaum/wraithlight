@@ -1568,7 +1568,7 @@ bus = &"SoundEffects"
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_jxmj6")
-volume_db = -27.171
+volume_db = -8.432
 autoplay = true
 bus = &"Music"
 
