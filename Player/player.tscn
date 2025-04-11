@@ -1,10 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=34 format=3 uid="uid://bewrr126db1ko"]
 
 [ext_resource type="Texture2D" uid="uid://bjhne7awbswew" path="res://Player/hero-idle.png" id="1_428gp"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
 [ext_resource type="Texture2D" uid="uid://cxchd20uxdei4" path="res://Player/hero-run.png" id="2_gr3hd"]
 [ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
 [ext_resource type="Texture2D" uid="uid://b11h1apcw2gg5" path="res://Player/hero-jump.png" id="3_whv05"]
+[ext_resource type="Texture2D" uid="uid://dxb43r56m66nu" path="res://Assets/Steph Assets/Hero Spritesheets/hero-attack.png" id="6_0ookn"]
+[ext_resource type="Texture2D" uid="uid://cp1ebcuncjpb3" path="res://Assets/Steph Assets/Hero Spritesheets/hero-attack-range.png" id="6_utbnx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhcyu"]
 atlas = ExtResource("2_lfplk")
@@ -69,6 +71,34 @@ region = Rect2(640, 0, 160, 90)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7d2s"]
 atlas = ExtResource("2_gr3hd")
 region = Rect2(800, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7562r"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bek0u"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2m60"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(320, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udf5y"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(480, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khsri"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(640, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py6f8"]
+atlas = ExtResource("6_utbnx")
+region = Rect2(0, 0, 157, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnjqa"]
+atlas = ExtResource("6_utbnx")
+region = Rect2(157, 0, 157, 90)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lvyff"]
 animations = [{
@@ -144,6 +174,42 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7562r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bek0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2m60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udf5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khsri")
+}],
+"loop": true,
+"name": &"melee attack",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py6f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnjqa")
+}],
+"loop": true,
+"name": &"ranged attack",
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eky6m"]
@@ -161,10 +227,12 @@ script = ExtResource("1_a1pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"Run"
+animation = &"ranged attack"
 autoplay = "Idle"
+frame_progress = 0.649989
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, -23)
 shape = SubResource("CapsuleShape2D_eky6m")
 
@@ -173,6 +241,7 @@ offset = Vector2(0, -230)
 zoom = Vector2(0.9, 0.9)
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 collision_layer = 2
 collision_mask = 4
