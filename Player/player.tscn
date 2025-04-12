@@ -48,6 +48,26 @@ region = Rect2(320, 0, 160, 90)
 atlas = ExtResource("3_whv05")
 region = Rect2(480, 0, 160, 90)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7562r"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(0, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bek0u"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(160, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2m60"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(320, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udf5y"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(480, 0, 160, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khsri"]
+atlas = ExtResource("6_0ookn")
+region = Rect2(640, 0, 160, 90)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_v24pu"]
 atlas = ExtResource("2_gr3hd")
 region = Rect2(0, 0, 160, 90)
@@ -71,26 +91,6 @@ region = Rect2(640, 0, 160, 90)
 [sub_resource type="AtlasTexture" id="AtlasTexture_m7d2s"]
 atlas = ExtResource("2_gr3hd")
 region = Rect2(800, 0, 160, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7562r"]
-atlas = ExtResource("6_0ookn")
-region = Rect2(0, 0, 160, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bek0u"]
-atlas = ExtResource("6_0ookn")
-region = Rect2(160, 0, 160, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v2m60"]
-atlas = ExtResource("6_0ookn")
-region = Rect2(320, 0, 160, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_udf5y"]
-atlas = ExtResource("6_0ookn")
-region = Rect2(480, 0, 160, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_khsri"]
-atlas = ExtResource("6_0ookn")
-region = Rect2(640, 0, 160, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_py6f8"]
 atlas = ExtResource("6_utbnx")
@@ -149,6 +149,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_7562r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bek0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2m60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udf5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khsri")
+}],
+"loop": true,
+"name": &"Melee",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v24pu")
 }, {
 "duration": 1.0,
@@ -170,36 +190,6 @@ animations = [{
 "name": &"Run",
 "speed": 12.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7562r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bek0u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v2m60")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_udf5y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_khsri")
-}],
-"loop": true,
-"name": &"melee attack",
-"speed": 12.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_py6f8")
@@ -208,8 +198,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_vnjqa")
 }],
 "loop": true,
-"name": &"ranged attack",
-"speed": 6.0
+"name": &"Shoot",
+"speed": 1.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eky6m"]
@@ -227,9 +227,9 @@ script = ExtResource("1_a1pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"ranged attack"
-autoplay = "Idle"
-frame_progress = 0.649989
+animation = &"Shoot"
+frame = 1
+frame_progress = 0.793899
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -254,5 +254,8 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="ProjectileOrigin" type="Marker2D" parent="."]
+position = Vector2(38, -25)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

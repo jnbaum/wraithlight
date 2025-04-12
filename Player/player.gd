@@ -8,14 +8,18 @@ extends CharacterBody2D
 @export var speed = 800.0
 @export var jump_velocity = -1500
 @export var jump_horizontal = 100
+@export var projectile = preload("res://projectile.tscn")
+@onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
 
 
-enum State {Idle,Run,Jump,Falling}
+enum State {Idle,Run,Jump,Falling,Shoot,Melee}
 var current_state : State
 var character_sprite : Sprite2D
 
 func _ready():
 	current_state = State.Idle
+	
+	
 
 
 func _physics_process(delta: float):
@@ -28,12 +32,15 @@ func _physics_process(delta: float):
 	player_jump(delta)
 	
 	move_and_slide()
-	player_animations()
+	player_shoot(delta)
+	player_melee(delta)
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
+	
 	
 	if was_on_floor && !is_on_floor():
 		coyote_timer.start()
 		
+	player_animations()
 
 func player_falling(delta: float): 
 	if !is_on_floor():
@@ -45,6 +52,7 @@ func player_idle(delta: float):
 	if is_on_floor():
 		current_state = State.Idle
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
+		
 		
 		
 func player_run(delta: float):	
@@ -61,20 +69,10 @@ func player_run(delta: float):
 
 #testing
 
-func player_jump1(delta):
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_velocity
-		current_state = State.Jump
-		#print("State: ", State.keys()[current_state]) #State Machine Debug
-		
-	if !is_on_floor() and current_state == State.Jump: #Horizontal Movement
-		var direction = input_movement()
-		velocity.x += direction * jump_horizontal * delta
-
-func player_jump(delta):
+func player_jump(delta: float):
 	var direction = input_movement()
 
-	# Coyote jump: Allow jump if player is on floor OR coyote timer hasn't expired
+	# Coyote and Double Jump
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()):
 		velocity.y = jump_velocity
 		current_state = State.Jump
@@ -83,15 +81,39 @@ func player_jump(delta):
 	# Allow horizontal control during jump
 	if !is_on_floor() and current_state == State.Jump:
 		velocity.x += direction * jump_horizontal * delta
+		
+func player_shoot(delta: float):
+	var direction = input_movement()
 	
-
+	if  Input.is_action_just_pressed("shoot"):
+		current_state = State.Shoot
+		print("pressing shoot")
+	
+	
+	
+	#print("State: ", State.keys()[current_state]) #State Machine Debug
+		
+	
+	
+func player_melee(delta):
+	var direction = input_movement()
+	
+	if Input.is_action_just_pressed("melee"):
+		current_state = State.Melee
+		print("pressing melee")
+		
+		
 func player_animations():
 	if current_state == State.Idle:
 		animated_sprite_2d.play("Idle")
-	elif current_state == State.Run:
+	elif current_state == State.Run and (animated_sprite_2d.animation != "Shoot" || animated_sprite_2d.animation != "Melee"):
 		animated_sprite_2d.play("Run")
 	elif current_state == State.Jump:
 		animated_sprite_2d.play("Jump")
+	elif current_state == State.Shoot:
+		animated_sprite_2d.play("Shoot")
+	elif current_state == State.Melee:
+		animated_sprite_2d.play("Melee")
 
 func input_movement():
 		var direction: float = Input.get_axis("move_left","move_right")

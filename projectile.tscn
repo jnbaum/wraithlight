@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3spwsfxbxdo7"]
+[gd_scene load_steps=9 format=3 uid="uid://duw18guc72ypp"]
 
 [ext_resource type="Texture2D" uid="uid://cpu3gab0g2cm1" path="res://Assets/bolt_spritesheet.png" id="1_0ttwx"]
 [ext_resource type="Script" path="res://projectile.gd" id="1_f5acc"]
@@ -49,4 +49,4 @@ shape = SubResource("CircleShape2D_qou26")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 sprite_frames = SubResource("SpriteFrames_xh0ex")
-frame_progress = 0.269341
+frame_progress = 0.522603
