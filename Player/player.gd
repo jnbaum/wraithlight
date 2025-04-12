@@ -3,10 +3,10 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
 
-@export var gravity = 4400
+@export var gravity = 4200
 
 @export var speed = 800.0
-@export var jump_velocity = -1500
+@export var jump_velocity = -1800
 @export var jump_horizontal = 100
 
 var debug = false

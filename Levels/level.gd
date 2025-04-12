@@ -6,7 +6,9 @@ var posy
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
 	load_data()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -30,3 +32,9 @@ func load_data():
 func _on_save_fire_body_entered(body: Node2D) -> void:
 	print("done")
 	save()
+
+func _on_hide_courtyard_body_entered(body: Node2D) -> void:
+	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
+
+func _on_show_couryard_body_entered(body: Node2D) -> void:
+	$ParallaxBackground/ParallaxLayer2/Courtyard.show()
