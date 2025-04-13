@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://g41yo7304fqi"]
+
+[ext_resource type="Texture2D" uid="uid://ba2u8uy6jonax" path="res://Assets/Steph Assets/death_effect_spritesheet.png" id="1_2d82t"]
+[ext_resource type="Script" path="res://enemies/enemy_death_effect.gd" id="2_xr26c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrbey"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nev8l"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0s3p"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o1rp"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldgj5"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jv0r2"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k67ld"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o17mb"]
+atlas = ExtResource("1_2d82t")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eesnh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrbey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nev8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0s3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o1rp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldgj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jv0r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k67ld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o17mb")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
+[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+position = Vector2(-3, -89)
+sprite_frames = SubResource("SpriteFrames_eesnh")
+autoplay = "default"
+frame_progress = 0.488941
+script = ExtResource("2_xr26c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

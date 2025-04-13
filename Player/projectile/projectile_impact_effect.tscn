@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgqecfpdmw43"]
+
+[ext_resource type="Texture2D" uid="uid://mhha87ih4kss" path="res://Assets/Steph Assets/energy-smack.png" id="1_pqt3g"]
+[ext_resource type="Script" path="res://Player/projectile/projectile_impact_effect.gd" id="2_bm1bq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8bve"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(0, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oofl1"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(128, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8sy7"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(256, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g7n6"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(384, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joyvv"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(512, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hekn"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(640, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmq51"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(768, 0, 128, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jixw6"]
+atlas = ExtResource("1_pqt3g")
+region = Rect2(896, 0, 128, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q8uqs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8bve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oofl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8sy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g7n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joyvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hekn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmq51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jixw6")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"impact",
+"speed": 14.0
+}]
+
+[node name="ProjectileImpactEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_q8uqs")
+animation = &"impact"
+autoplay = "impact"
+script = ExtResource("2_bm1bq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

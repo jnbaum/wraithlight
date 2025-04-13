@@ -8,16 +8,21 @@ extends CharacterBody2D
 @export var speed = 800.0
 @export var jump_velocity = -1500
 @export var jump_horizontal = 100
-@export var projectile = preload("res://projectile.tscn")
+@export var projectile = preload("res://Player//projectile/projectile.tscn")
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
+
 
 
 enum State {Idle,Run,Jump,Falling,Shoot,Melee}
 var current_state : State
 var character_sprite : Sprite2D
+var muzzle_position
+
 
 func _ready():
 	current_state = State.Idle
+	muzzle_position = ProjectileOrigin.position
+	var pc = $"."
 	
 	
 
@@ -66,6 +71,11 @@ func player_run(delta: float):
 		current_state = State.Run	
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 		animated_sprite_2d.flip_h = direction < 0
+		
+		if direction < 0:
+			ProjectileOrigin.position.x = -abs(muzzle_position.x)
+		else:
+			ProjectileOrigin.position.x = abs(muzzle_position.x)
 
 #testing
 
@@ -85,9 +95,25 @@ func player_jump(delta: float):
 func player_shoot(delta: float):
 	var direction = input_movement()
 	
-	if  Input.is_action_just_pressed("shoot"):
+	if  direction == 0 and Input.is_action_just_pressed("shoot"):
+		var projectile_instance = projectile.instantiate() as Node2D
+		projectile_instance.global_position = ProjectileOrigin.global_position
+		#get_parent().add_child(projectile_instance)
+		var world = get_tree().current_scene
+		world.add_child(projectile_instance)
+		
+		projectile_instance.direction = direction
+		
+		if animated_sprite_2d.flip_h == false:
+
+			projectile_instance.direction = direction + 1
+
+		else:
+
+			projectile_instance.direction = direction - 1
+			
 		current_state = State.Shoot
-		print("pressing shoot")
+		print(ProjectileOrigin.position)
 	
 	
 	
@@ -129,3 +155,7 @@ func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
 		print("enemy entered", body.damage_amount)
 		HealthManager.decrease_health(body.damage_amount)
+		
+func player_death():
+	#var player_death_effect_instance = player_
+	pass

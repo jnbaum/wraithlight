@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=34 format=3 uid="uid://doc16420wgo7m"]
 
 [ext_resource type="Texture2D" uid="uid://bjhne7awbswew" path="res://Player/hero-idle.png" id="1_428gp"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
@@ -238,7 +238,6 @@ shape = SubResource("CapsuleShape2D_eky6m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -230)
-zoom = Vector2(0.9, 0.9)
 
 [node name="HurtBox" type="Area2D" parent="."]
 visible = false
@@ -256,6 +255,6 @@ wait_time = 0.3
 one_shot = true
 
 [node name="ProjectileOrigin" type="Marker2D" parent="."]
-position = Vector2(38, -25)
+position = Vector2(30, -24)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
