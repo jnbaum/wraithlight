@@ -34,7 +34,11 @@ func save():
 		config.save("user://gameconfig.cfg")
 
 func _on_save_fire_body_entered(body: Node2D) -> void:
+	$"Save Fire/FireWoosh".play()
+	print("done")
 	save()
+	
+	
 
 func _on_hide_courtyard_body_entered(body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
