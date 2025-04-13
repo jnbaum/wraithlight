@@ -49,7 +49,7 @@ func _physics_process(delta: float):
 	move_and_slide()
 	player_animations()
 	if debug == false:
-		var was_on_floor = is_on_floor()
+		was_on_floor = is_on_floor()
 		player_falling(delta)
 		player_idle(delta)
 		player_run(delta)

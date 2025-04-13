@@ -1,7 +1,7 @@
 extends Node2D
 var save_path = "game_state.save"
 var playerPosition
-var pos
+
 
 var volume = {}
 var config = ConfigFile.new()
@@ -34,7 +34,7 @@ func save():
 		config.save("user://gameconfig.cfg")
 
 func _on_save_fire_body_entered(body: Node2D) -> void:
-	$"Save Fire/FireWoosh".play()
+	#$"Save Fire/FireWoosh".play()
 	print("done")
 	save()
 	
