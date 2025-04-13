@@ -18,9 +18,21 @@ func _ready():
 	current_state = State.Idle
 
 
+
 func _physics_process(delta: float):
 	
+
+	#THIS CODE is for making footstep sounds during left/right movement. It isn't functional yet. Dang it.
+	var is_moving = Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
+	if is_moving:
+		$RunningSound.play()
+		$RunningSound.stream_paused = false
+	else:
+		$RunningSound.stream_paused = true
+				
+
 	var was_on_floor = is_on_floor()
+
 	player_falling(delta)
 	player_idle(delta)
 	player_run(delta)
