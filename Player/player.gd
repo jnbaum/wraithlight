@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var jump_velocity = -1800
 @export var jump_horizontal = 100
 
+var canReveal = false
 var debug = false
 
 enum State {Idle,Run,Jump,Falling}
@@ -126,3 +127,9 @@ func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
 		print("enemy entered", body.damage_amount)
 		HealthManager.decrease_health(body.damage_amount)
+
+func get_reveal():
+	return canReveal
+
+func set_reveal(isAquired):
+	canReveal = isAquired
