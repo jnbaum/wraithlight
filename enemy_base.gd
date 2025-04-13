@@ -22,6 +22,7 @@ var point_positions : Array[Vector2]
 var current_point: Vector2
 var current_point_position : int
 var can_walk : bool 
+var enemy_death_effect = preload("res://enemies/enemy_death_effect.tscn")
 
 
 
@@ -101,3 +102,13 @@ func _on_timer_timeout() -> void:
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	print("Enemy Hurtbox Entered")
+	if area.get_parent().has_method("get_damage_amount"):
+		var node = area.get_parent() as Node
+		health_amount -= node.damage_amount
+		print("enemy health remaining: ", health_amount)
+		
+		if health_amount <= 0:
+			var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
+			enemy_death_effect_instance.global_position = global_position
+			get_parent().add_child(enemy_death_effect_instance)
+			queue_free()

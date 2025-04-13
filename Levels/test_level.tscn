@@ -10,7 +10,6 @@ position = Vector2(1587.67, -378.667)
 
 [node name="PatrolPoints" type="Node2D" parent="EnemyBase3" index="3"]
 
-
 [node name="Point1" type="Marker2D" parent="EnemyBase3/PatrolPoints" index="0"]
 position = Vector2(-352, 81.3333)
 
@@ -18,15 +17,6 @@ position = Vector2(-352, 81.3333)
 position = Vector2(153.333, 72)
 
 [node name="Save Fire" parent="." index="3"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
 script = null
 
 [node name="Player" parent="." index="4"]
@@ -37,4 +27,3 @@ texture = null
 
 [node name="Ogre1" parent="." index="8"]
 patrol_wait_time = 3
-
