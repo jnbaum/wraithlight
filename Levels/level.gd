@@ -16,8 +16,9 @@ func _ready() -> void:
 		$Player.position = config.get_value("game_properties", "position")
 		if config.get_value("game_properties", "revealAbility") == true:
 			$Collectables/RevealPowerup.hide()
-	
-	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
+		
+		if config.get_value("game_properties", "inCourtyard") == false:
+			$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
