@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://by83gus4nvqcs"]
 
 [ext_resource type="Texture2D" uid="uid://p4n8dbjo6rbp" path="res://enemies/ogre-idle-unarmed.png" id="1_6rcqq"]
-[ext_resource type="Script" path="res://enemy_base.gd" id="1_f22lj"]
+[ext_resource type="Script" uid="uid://bnda08ppgbajc" path="res://enemy_base.gd" id="1_f22lj"]
 [ext_resource type="Texture2D" uid="uid://bwhmmw8fho20t" path="res://enemies/ogre-walk-unarmed.png" id="2_iqfcr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7eer5"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://g41yo7304fqi"]
 
 [ext_resource type="Texture2D" uid="uid://ba2u8uy6jonax" path="res://Assets/Steph Assets/death_effect_spritesheet.png" id="1_2d82t"]
-[ext_resource type="Script" path="res://enemies/enemy_death_effect.gd" id="2_xr26c"]
+[ext_resource type="Script" uid="uid://dc1hrjysuapc1" path="res://enemies/enemy_death_effect.gd" id="2_xr26c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrbey"]
 atlas = ExtResource("1_2d82t")

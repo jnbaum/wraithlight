@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://duw18guc72ypp"]
 
-[ext_resource type="Script" path="res://Player/projectile/projectile.gd" id="1_f5acc"]
+[ext_resource type="Script" uid="uid://devuux1vbtwbj" path="res://Player/projectile/projectile.gd" id="1_f5acc"]
 [ext_resource type="Texture2D" uid="uid://cpu3gab0g2cm1" path="res://Assets/bolt_spritesheet.png" id="1_k186k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hc7th"]

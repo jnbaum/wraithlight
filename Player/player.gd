@@ -31,7 +31,7 @@ func _physics_process(delta: float):
 		var was_on_floor = is_on_floor()
 		player_falling(delta)
 		player_idle(delta)
-		player_run(delta).
+		player_run(delta)
 		player_jump(delta)
 		player_shoot(delta)
 		player_melee(delta)
@@ -77,11 +77,11 @@ func player_run(delta: float):
 		current_state = State.Run	
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 		animated_sprite_2d.flip_h = direction < 0
-		
+"		
 		if direction < 0:
 			ProjectileOrigin.position.x = -abs(muzzle_position.x)
 		else:
-			ProjectileOrigin.position.x = abs(muzzle_position.x)
+			ProjectileOrigin.position.x = abs(muzzle_position.x)"
 
 #testing
 
