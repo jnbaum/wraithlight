@@ -3,12 +3,14 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
 
-@export var gravity = 4400
+@export var gravity = 4200
 
 @export var speed = 800.0
-@export var jump_velocity = -1500
+@export var jump_velocity = -1800
 @export var jump_horizontal = 100
 
+var canReveal = false
+var debug = false
 
 enum State {Idle,Run,Jump,Falling}
 var current_state : State
@@ -16,24 +18,33 @@ var character_sprite : Sprite2D
 
 func _ready():
 	current_state = State.Idle
-
+	$DebugLabel.hide()
 
 func _physics_process(delta: float):
 	
-	var was_on_floor = is_on_floor()
-	player_falling(delta)
-	player_idle(delta)
-	player_run(delta)
-	
-	player_jump(delta)
-	
-	move_and_slide()
-	player_animations()
+	if debug == false:
+		var was_on_floor = is_on_floor()
+		player_falling(delta)
+		player_idle(delta)
+		player_run(delta)
+		player_jump(delta)
+		move_and_slide()
+		player_animations()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
-	if was_on_floor && !is_on_floor():
-		coyote_timer.start()
-		
+		if was_on_floor && !is_on_floor():
+			coyote_timer.start()
+	
+	else:
+		if Input.is_action_just_pressed("move_down"):
+			position.y = position.y + 200
+		if Input.is_action_just_pressed("move_up"):
+			position.y = position.y - 200
+		if Input.is_action_just_pressed("move_right"):
+			position.x = position.x + 200
+		if Input.is_action_just_pressed("move_left"):
+			position.x = position.x - 200
+		pass
 
 func player_falling(delta: float): 
 	if !is_on_floor():
@@ -97,6 +108,15 @@ func input_movement():
 		var direction: float = Input.get_axis("move_left","move_right")
 		return direction
 
+func _unhandled_input(event):
+	if event.is_action_pressed("debug"):
+		if debug == false:
+			debug = true
+			$DebugLabel.show()
+		else:
+			debug = false
+			$DebugLabel.hide()
+
 func update_position():
 	return position
 
@@ -107,3 +127,9 @@ func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
 		print("enemy entered", body.damage_amount)
 		HealthManager.decrease_health(body.damage_amount)
+
+func get_reveal():
+	return canReveal
+
+func set_reveal(isAquired):
+	canReveal = isAquired
