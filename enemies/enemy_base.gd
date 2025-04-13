@@ -60,9 +60,18 @@ func enemy_idle(delta:float):
 func enemy_walk(delta:float):
 	if !can_walk:
 		return
+		
 	if abs(position.x - current_point.x) > 0.5:
 		velocity.x = direction.x * speed * delta
+		current_state = State.Walk
 	else:
+		# We reached the point, stop and wait
+		velocity.x = 0
+		current_state = State.Idle
+		can_walk = false
+		timer.start()
+		
+		# Set up next point
 		current_point_position += 1
 		if current_point_position >= number_of_points:
 			current_point_position = 0
@@ -73,9 +82,7 @@ func enemy_walk(delta:float):
 			direction = Vector2.RIGHT
 		else:
 			direction = Vector2.LEFT
-		
-		can_walk = false
-		timer.start()
+	
 	animated_sprite_2d.flip_h = direction.x > 0
 	
 	velocity.x = direction.x * speed * delta

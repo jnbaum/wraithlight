@@ -99,7 +99,6 @@ height = 66.6667
 scale = Vector2(0.75, 0.75)
 collision_layer = 4
 collision_mask = 3
-
 script = ExtResource("1_f22lj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

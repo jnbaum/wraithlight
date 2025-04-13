@@ -253,4 +253,9 @@ stream = ExtResource("6_s2n5p")
 stream_paused = true
 bus = &"SoundEffects"
 
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
