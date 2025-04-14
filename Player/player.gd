@@ -63,16 +63,16 @@ func _physics_process(delta: float):
 	if was_on_floor && !is_on_floor():
 			coyote_timer.start()
 	
-	else:
-		if Input.is_action_just_pressed("move_down"):
-			position.y = position.y + 200
-		if Input.is_action_just_pressed("move_up"):
-			position.y = position.y - 200
-		if Input.is_action_just_pressed("move_right"):
-			position.x = position.x + 200
-		if Input.is_action_just_pressed("move_left"):
-			position.x = position.x - 200
-		pass
+	#else:
+	#	if Input.is_action_just_pressed("move_down"):
+	#		position.y = position.y + 200
+	#	if Input.is_action_just_pressed("move_up"):
+	#		position.y = position.y - 200
+	#	if Input.is_action_just_pressed("move_right"):
+	#		position.x = position.x + 200
+	#	if Input.is_action_just_pressed("move_left"):
+	#		position.x = position.x - 200
+	#	pass
 
 func player_falling(delta: float): 
 	if !is_on_floor():
@@ -125,9 +125,9 @@ func player_shoot(delta: float):
 	if  direction == 0 and Input.is_action_just_pressed("shoot"):
 		var projectile_instance = projectile.instantiate() as Node2D
 		projectile_instance.global_position = ProjectileOrigin.global_position
-		#get_parent().add_child(projectile_instance)
-		var world = get_tree().current_scene
-		world.add_child(projectile_instance)
+		get_parent().add_child(projectile_instance)
+		#var world = get_tree().current_scene
+		#world.add_child(projectile_instance)
 		
 		projectile_instance.direction = direction
 		

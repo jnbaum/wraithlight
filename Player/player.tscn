@@ -1,21 +1,12 @@
-[gd_scene load_steps=54 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=51 format=3 uid="uid://doc16420wgo7m"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
-[ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
 [ext_resource type="Texture2D" uid="uid://b6irtmirwgryq" path="res://Player/Lightning Mage/Idle.png" id="3_fsxe4"]
 [ext_resource type="Texture2D" uid="uid://chuljlc0ud7bo" path="res://Player/Lightning Mage/Jump.png" id="4_en4dp"]
 [ext_resource type="Texture2D" uid="uid://dy1n6s1xiv3f4" path="res://Player/Lightning Mage/Run.png" id="5_x23tq"]
 [ext_resource type="AudioStream" uid="uid://ca0eyo1iyl7mh" path="res://RunningShort.mp3" id="6_s2n5p"]
 [ext_resource type="Texture2D" uid="uid://bieixwiojndfk" path="res://Player/Lightning Mage/Attack_1.png" id="6_utbnx"]
 [ext_resource type="Texture2D" uid="uid://bq6xp4xq62dxg" path="res://Player/Lightning Mage/Light_ball.png" id="7_od3ui"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhcyu"]
-atlas = ExtResource("2_lfplk")
-region = Rect2(0, 0, 160, 90)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o7bk6"]
-atlas = ExtResource("2_lfplk")
-region = Rect2(160, 0, 160, 90)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w028e"]
 atlas = ExtResource("3_fsxe4")
@@ -179,13 +170,7 @@ region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lvyff"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lhcyu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o7bk6")
-}],
+"frames": [],
 "loop": true,
 "name": &"Falling",
 "speed": 5.0
@@ -214,7 +199,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -347,10 +332,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eky6m"]
-radius = 10.0
 height = 36.9048
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5iwji"]
+radius = 12.0
 height = 30.4348
 
 [node name="Player" type="CharacterBody2D"]
@@ -360,8 +345,8 @@ script = ExtResource("1_a1pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(11, -66)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"Idle"
-frame_progress = 0.846487
+animation = &"Shoot"
+frame_progress = 0.2875
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -32)
@@ -384,7 +369,6 @@ debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="RunningSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_s2n5p")
-bus = &"SoundEffects"
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -398,6 +382,6 @@ offset_bottom = -49.0
 text = "Debug"
 
 [node name="ProjectileOrigin" type="Marker2D" parent="."]
-position = Vector2(30, -24)
+position = Vector2(25, -52)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
