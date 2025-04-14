@@ -28,6 +28,30 @@ func _ready():
 
 func _physics_process(delta: float):
 	
+	if debug == false:
+		var was_on_floor = is_on_floor()
+		player_falling(delta)
+		player_idle(delta)
+		player_run(delta)
+		player_jump(delta)
+		move_and_slide()
+		player_animations()
+	#print("State: ", State.keys()[current_state]) #State Machine Debug
+	
+		if was_on_floor && !is_on_floor():
+			coyote_timer.start()
+	
+	else:
+		if Input.is_action_just_pressed("move_down"):
+			position.y = position.y + 200
+		if Input.is_action_just_pressed("move_up"):
+			position.y = position.y - 200
+		if Input.is_action_just_pressed("move_right"):
+			position.x = position.x + 200
+		if Input.is_action_just_pressed("move_left"):
+			position.x = position.x - 200
+		pass
+	
 
 	#THIS CODE is for making footstep sounds during left/right movement. It isn't functional yet. Dang it.
 	var is_moving = Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
@@ -36,43 +60,6 @@ func _physics_process(delta: float):
 		$RunningSound.stream_paused = false
 	else:
 		$RunningSound.stream_paused = true
-				
-
-	var was_on_floor = is_on_floor()
-
-	player_falling(delta)
-	player_idle(delta)
-	player_run(delta)
-	
-	player_jump(delta)
-	
-	move_and_slide()
-	player_animations()
-	if debug == false:
-		was_on_floor = is_on_floor()
-		player_falling(delta)
-		player_idle(delta)
-		player_run(delta)
-		player_jump(delta)
-		player_shoot(delta)
-		player_melee(delta)
-		move_and_slide()
-		player_animations()
-	#print("State: ", State.keys()[current_state]) #State Machine Debug
-	
-	if was_on_floor && !is_on_floor():
-			coyote_timer.start()
-	
-	#else:
-	#	if Input.is_action_just_pressed("move_down"):
-	#		position.y = position.y + 200
-	#	if Input.is_action_just_pressed("move_up"):
-	#		position.y = position.y - 200
-	#	if Input.is_action_just_pressed("move_right"):
-	#		position.x = position.x + 200
-	#	if Input.is_action_just_pressed("move_left"):
-	#		position.x = position.x - 200
-	#	pass
 
 func player_falling(delta: float): 
 	if !is_on_floor():
@@ -125,9 +112,9 @@ func player_shoot(delta: float):
 	if  direction == 0 and Input.is_action_just_pressed("shoot"):
 		var projectile_instance = projectile.instantiate() as Node2D
 		projectile_instance.global_position = ProjectileOrigin.global_position
-		get_parent().add_child(projectile_instance)
-		#var world = get_tree().current_scene
-		#world.add_child(projectile_instance)
+		#get_parent().add_child(projectile_instance)
+		var world = get_tree().current_scene
+		world.add_child(projectile_instance)
 		
 		projectile_instance.direction = direction
 		
