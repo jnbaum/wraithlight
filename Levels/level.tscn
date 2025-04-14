@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=4 uid="uid://bkxqy2hpmf4ru"]
 
-[ext_resource type="Script" uid="uid://brtwrushveakd" path="res://Levels/level.gd" id="1_t5qsp"]
+[ext_resource type="Script" path="res://Levels/level.gd" id="1_t5qsp"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="2_3hamp"]
 [ext_resource type="Texture2D" uid="uid://bg0tj3mc3oqrk" path="res://Tileset/Solaria Demo Tiles.png" id="2_ije3q"]
-[ext_resource type="PackedScene" path="res://hud.tscn" id="2_pxn5k"]
+[ext_resource type="PackedScene" uid="uid://b711y6ajr0ako" path="res://hud.tscn" id="2_pxn5k"]
 [ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="3_nh3l5"]
 [ext_resource type="Texture2D" uid="uid://cobvcgbc0shrn" path="res://Tileset/Background Tiles.png" id="4_qchee"]
 [ext_resource type="Texture2D" uid="uid://dknd0rhguhycl" path="res://Tileset/Shadow and Dust Tiles.png" id="5_5cut3"]
