@@ -7,6 +7,7 @@ func _ready():
 
 
 
+
 func _on_button_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout

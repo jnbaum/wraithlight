@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://0wvr0e771pmi"]
+[gd_scene load_steps=29 format=3 uid="uid://0wvr0e771pmi"]
 
 [ext_resource type="Script" uid="uid://d04tj4iikwfo2" path="res://Levels/control.gd" id="1_x0dxh"]
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="2_pua3m"]
@@ -20,6 +20,12 @@ glow_hdr_luminance_cap = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_stomh"]
 size = Vector2(2.95124, 2.66649)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjrd0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2l5x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e6g6p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvg5b"]
 atlas = ExtResource("6_6vunp")
@@ -126,6 +132,8 @@ _data = {
 radius = 123.0
 height = 354.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d6rjg"]
+
 [node name="OpenScene" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -207,12 +215,13 @@ shape = SubResource("RectangleShape2D_stomh")
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -68.5
-offset_top = 79.5
-offset_right = 71.5
-offset_bottom = 168.5
+offset_left = -80.5
+offset_top = 101.5
+offset_right = 59.5
+offset_bottom = 190.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sjrd0")
 text = "Play"
 flat = true
 
@@ -225,17 +234,19 @@ offset_right = 94.0
 offset_bottom = 319.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q2l5x")
 text = "Settings"
 flat = true
 
 [node name="LoadButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = -66.5
-offset_top = 173.0
-offset_right = 66.5
-offset_bottom = 262.0
+offset_left = -79.0
+offset_top = 190.0
+offset_right = 54.0
+offset_bottom = 279.0
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_e6g6p")
 text = "Load"
 flat = true
 
@@ -243,9 +254,9 @@ flat = true
 modulate = Color(0.9, 0.9, 0.9, 1)
 layout_mode = 0
 offset_left = -293.5
-offset_top = -117.0
+offset_top = -98.0
 offset_right = 295.5
-offset_bottom = 43.0
+offset_bottom = 62.0
 theme_override_colors/font_color = Color(0.960784, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -265,7 +276,7 @@ frame_progress = 0.82641
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D/AnimatedSprite2D"]
 libraries = {
-"": SubResource("AnimationLibrary_ujc27")
+&"": SubResource("AnimationLibrary_ujc27")
 }
 autoplay = "new_animation"
 
@@ -282,9 +293,9 @@ bus = &"SoundEffects"
 [node name="TagLine" type="Label" parent="."]
 layout_mode = 0
 offset_left = -171.5
-offset_top = -5.0
+offset_top = 21.0
 offset_right = 173.5
-offset_bottom = 35.0
+offset_bottom = 61.0
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 30
 text = "Death Isnt Always The End"
@@ -292,12 +303,13 @@ text = "Death Isnt Always The End"
 [node name="QuitButton" type="Button" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = -49.0
+offset_left = -63.5
 offset_top = 271.5
-offset_right = 51.0
+offset_right = 36.5
 offset_bottom = 360.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d6rjg")
 text = "Quit"
 flat = true
 
