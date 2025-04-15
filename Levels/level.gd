@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 	playerPosition = $Player.update_position()
 
 func save():
+	
 	if playerPosition == null:
 		pass
 	else:
@@ -34,7 +35,7 @@ func save():
 		config.save("user://gameconfig.cfg")
 
 func _on_save_fire_body_entered(body: Node2D) -> void:
-	#$"Save Fire/FireWoosh".play()
+	$FireWoosh.play() #Why isn't this working???
 	print("done")
 	save()
 	

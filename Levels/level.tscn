@@ -1537,6 +1537,11 @@ size = Vector2(194.417, 528.886)
 scale = Vector2(3, 3)
 script = ExtResource("1_t5qsp")
 
+[node name="FireWoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qjxms")
+volume_db = -9.37
+bus = &"SoundEffects"
+
 [node name="HUD" parent="." instance=ExtResource("2_pxn5k")]
 
 [node name="Background Layer" type="TileMapLayer" parent="."]
@@ -1581,10 +1586,6 @@ tile_set = SubResource("TileSet_c16yy")
 [node name="Decoration Layer 1to1" type="TileMapLayer" parent="."]
 scale = Vector2(1.7, 1.7)
 tile_set = SubResource("TileSet_c16yy")
-
-[node name="Save Fire#FireWoosh" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_qjxms")
-bus = &"SoundEffects"
 
 [node name="Player" parent="." instance=ExtResource("2_3hamp")]
 

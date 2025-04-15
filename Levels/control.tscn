@@ -321,7 +321,7 @@ offset_bottom = 190.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sjrd0")
-text = "Play"
+text = "Start"
 flat = true
 
 [node name="Story" type="Node2D" parent="."]
@@ -375,6 +375,79 @@ theme_override_font_sizes/font_size = 35
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4gohf")
 text = "Play"
 flat = true
+
+[node name="Jump" type="Label" parent="Explainer"]
+offset_left = -287.0
+offset_top = -72.0
+offset_right = -208.0
+offset_bottom = -25.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Jump"
+
+[node name="Space" type="Label" parent="Explainer/Jump"]
+layout_mode = 0
+offset_left = 489.0
+offset_top = -2.0
+offset_right = 575.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Space"
+
+[node name="Move" type="Label" parent="Explainer"]
+offset_left = -287.0
+offset_top = 13.5
+offset_right = -206.0
+offset_bottom = 60.5
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Move"
+
+[node name="Arrows" type="Label" parent="Explainer/Move"]
+layout_mode = 0
+offset_left = 382.0
+offset_right = 574.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Arrow Keys"
+
+[node name="Save" type="Label" parent="Explainer"]
+offset_left = -287.0
+offset_top = 199.5
+offset_right = -215.0
+offset_bottom = 246.5
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Save"
+
+[node name="Fire" type="Label" parent="Explainer/Save"]
+layout_mode = 0
+offset_left = 338.0
+offset_right = 574.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Rest at the fires"
+
+[node name="Projectiles" type="Label" parent="Explainer"]
+offset_left = -287.0
+offset_top = 105.5
+offset_right = -117.0
+offset_bottom = 152.5
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "Projectiles"
+
+[node name="XCShift" type="Label" parent="Explainer/Projectiles"]
+layout_mode = 0
+offset_left = 396.5
+offset_right = 568.5
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("7_05tpf")
+theme_override_font_sizes/font_size = 35
+text = "X C or Shift"
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="FirstOpen/QuitButton" to="." method="_on_quit_button_pressed"]
