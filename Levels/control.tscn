@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://0wvr0e771pmi"]
 
-[ext_resource type="Script" uid="uid://d04tj4iikwfo2" path="res://Levels/control.gd" id="1_x0dxh"]
+[ext_resource type="Script" path="res://Levels/control.gd" id="1_x0dxh"]
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="2_pua3m"]
 [ext_resource type="Texture2D" uid="uid://b6fv86oy6ygpd" path="res://Assets/gametileset2.png" id="4_0yy5x"]
 [ext_resource type="Texture2D" uid="uid://l30x3iuxehrq" path="res://Assets/gametileset1.png" id="5_p83g5"]
@@ -120,8 +120,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ujc27"]
 _data = {
-&"RESET": SubResource("Animation_ouefj"),
-&"new_animation": SubResource("Animation_h3p32")
+"RESET": SubResource("Animation_ouefj"),
+"new_animation": SubResource("Animation_h3p32")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q4843"]
