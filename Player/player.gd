@@ -3,14 +3,16 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
 
-@export var gravity = 4400
+@export var gravity = 4200
 
 @export var speed = 800.0
-@export var jump_velocity = -1500
+@export var jump_velocity = -1800
 @export var jump_horizontal = 100
 @export var projectile = preload("res://Player//projectile/projectile.tscn")
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
 
+var canReveal = false
+var debug = false
 
 
 enum State {Idle,Run,Jump,Falling,Shoot,Melee}
@@ -21,31 +23,43 @@ var muzzle_position
 
 func _ready():
 	current_state = State.Idle
-	muzzle_position = ProjectileOrigin.position
-	var pc = $"."
-	
-	
+	$DebugLabel.hide()
 
 
 func _physics_process(delta: float):
 	
-	var was_on_floor = is_on_floor()
-	player_falling(delta)
-	player_idle(delta)
-	player_run(delta)
-	
-	player_jump(delta)
-	
-	move_and_slide()
-	player_shoot(delta)
-	player_melee(delta)
+	if debug == false:
+		var was_on_floor = is_on_floor()
+		player_falling(delta)
+		player_idle(delta)
+		player_run(delta)
+		player_jump(delta)
+		move_and_slide()
+		player_animations()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
+		if was_on_floor && !is_on_floor():
+			coyote_timer.start()
 	
-	if was_on_floor && !is_on_floor():
-		coyote_timer.start()
-		
-	player_animations()
+	else:
+		if Input.is_action_just_pressed("move_down"):
+			position.y = position.y + 200
+		if Input.is_action_just_pressed("move_up"):
+			position.y = position.y - 200
+		if Input.is_action_just_pressed("move_right"):
+			position.x = position.x + 200
+		if Input.is_action_just_pressed("move_left"):
+			position.x = position.x - 200
+		pass
+	
+
+	#THIS CODE is for making footstep sounds during left/right movement. It isn't functional yet. Dang it.
+	var is_moving = Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
+	if is_moving:
+		$RunningSound.play()
+		$RunningSound.stream_paused = false
+	else:
+		$RunningSound.stream_paused = true
 
 func player_falling(delta: float): 
 	if !is_on_floor():
@@ -71,11 +85,11 @@ func player_run(delta: float):
 		current_state = State.Run	
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 		animated_sprite_2d.flip_h = direction < 0
-		
+"		
 		if direction < 0:
 			ProjectileOrigin.position.x = -abs(muzzle_position.x)
 		else:
-			ProjectileOrigin.position.x = abs(muzzle_position.x)
+			ProjectileOrigin.position.x = abs(muzzle_position.x)"
 
 #testing
 
@@ -145,6 +159,15 @@ func input_movement():
 		var direction: float = Input.get_axis("move_left","move_right")
 		return direction
 
+func _unhandled_input(event):
+	if event.is_action_pressed("debug"):
+		if debug == false:
+			debug = true
+			$DebugLabel.show()
+		else:
+			debug = false
+			$DebugLabel.hide()
+
 func update_position():
 	return position
 
@@ -155,6 +178,12 @@ func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
 		print("enemy entered", body.damage_amount)
 		HealthManager.decrease_health(body.damage_amount)
+
+func get_reveal():
+	return canReveal
+
+func set_reveal(isAquired):
+	canReveal = isAquired
 		
 func player_death():
 	#var player_death_effect_instance = player_

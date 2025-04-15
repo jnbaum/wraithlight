@@ -1,0 +1,137 @@
+[gd_scene load_steps=6 format=3 uid="uid://bh5vpd2uq2x08"]
+
+[ext_resource type="Script" uid="uid://c1b6y6yf5kjwp" path="res://first_cut.gd" id="1_3hbp8"]
+[ext_resource type="Texture2D" uid="uid://bhrwxdw70c5g" path="res://Assets/Dungeon background.png" id="1_e14q4"]
+[ext_resource type="Texture2D" uid="uid://cfov30wmbjto2" path="res://enemies/Border.png" id="2_7m5ti"]
+[ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="3_w7f6x"]
+[ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="5_3lsxp"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3hbp8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="DungeonBackground" type="Sprite2D" parent="Background"]
+position = Vector2(-722, -414)
+scale = Vector2(1.0251, 1)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground2" type="Sprite2D" parent="Background"]
+position = Vector2(-237, -416)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground3" type="Sprite2D" parent="Background"]
+position = Vector2(241, -415)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground4" type="Sprite2D" parent="Background"]
+position = Vector2(720, -414)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground5" type="Sprite2D" parent="Background"]
+position = Vector2(-726, -156)
+scale = Vector2(1.0251, 1)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground6" type="Sprite2D" parent="Background"]
+position = Vector2(-241, -158)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground7" type="Sprite2D" parent="Background"]
+position = Vector2(237, -157)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground8" type="Sprite2D" parent="Background"]
+position = Vector2(716, -156)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground9" type="Sprite2D" parent="Background"]
+position = Vector2(-718, 117)
+scale = Vector2(1.0251, 1.13178)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground10" type="Sprite2D" parent="Background"]
+position = Vector2(-233, 111)
+scale = Vector2(1, 1.16279)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground11" type="Sprite2D" parent="Background"]
+position = Vector2(245, 98.5)
+scale = Vector2(1, 1.20543)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground12" type="Sprite2D" parent="Background"]
+position = Vector2(724, 109)
+scale = Vector2(1, 1.15504)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground13" type="Sprite2D" parent="Background"]
+position = Vector2(-713, 389.5)
+scale = Vector2(1.0251, 1.16667)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground14" type="Sprite2D" parent="Background"]
+position = Vector2(-228, 394)
+scale = Vector2(1, 1.21705)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground15" type="Sprite2D" parent="Background"]
+position = Vector2(250, 397.5)
+scale = Vector2(1, 1.23643)
+texture = ExtResource("1_e14q4")
+
+[node name="DungeonBackground16" type="Sprite2D" parent="Background"]
+position = Vector2(729, 396)
+scale = Vector2(1, 1.21705)
+texture = ExtResource("1_e14q4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -974.0
+offset_top = -542.0
+offset_right = 968.0
+offset_bottom = 569.0
+color = Color(0, 0.152941, 0.164706, 0.623529)
+
+[node name="Border" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0.129412, 1)
+position = Vector2(-113, 21.0001)
+scale = Vector2(21.098, 11.8557)
+texture = ExtResource("2_7m5ti")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -689.0
+offset_top = -300.0
+offset_right = 690.0
+offset_bottom = 369.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_w7f6x")
+theme_override_font_sizes/font_size = 60
+text = "Elya was a warden of Black Hollow Monastery
+until the halls fell silent 
+Now the dead are restless
+ Use your lantern to uncover what is hidden
+guide lost souls 
+restore the light
+
+Death isnt always the end"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = -95.0
+offset_top = 427.0
+offset_right = 95.0
+offset_bottom = 502.0
+theme_override_fonts/font = ExtResource("3_w7f6x")
+theme_override_font_sizes/font_size = 50
+text = "Continue"
+flat = true
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3lsxp")
+bus = &"SoundEffects"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

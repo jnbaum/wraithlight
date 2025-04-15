@@ -1,23 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://duw18guc72ypp"]
+[gd_scene load_steps=14 format=3 uid="uid://duw18guc72ypp"]
 
 [ext_resource type="Script" path="res://Player/projectile/projectile.gd" id="1_f5acc"]
-[ext_resource type="Texture2D" uid="uid://cpu3gab0g2cm1" path="res://Assets/bolt_spritesheet.png" id="1_k186k"]
+[ext_resource type="Texture2D" uid="uid://gs74lyemxys2" path="res://Player/Lightning Mage/Charge.png" id="1_t8lxb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hc7th"]
-atlas = ExtResource("1_k186k")
-region = Rect2(0, 0, 48, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gpoc"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ey2j2"]
-atlas = ExtResource("1_k186k")
-region = Rect2(48, 0, 48, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmlx6"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e11kf"]
-atlas = ExtResource("1_k186k")
-region = Rect2(96, 0, 48, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmsde"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0tmb"]
-atlas = ExtResource("1_k186k")
-region = Rect2(144, 0, 48, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ldc0"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqklf"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_666lv"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hp3le"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgfpo"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5kfh"]
+atlas = ExtResource("1_t8lxb")
+region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1oolf"]
 animations = [{
@@ -28,20 +48,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hc7th")
+"texture": SubResource("AtlasTexture_4gpoc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ey2j2")
+"texture": SubResource("AtlasTexture_lmlx6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e11kf")
+"texture": SubResource("AtlasTexture_wmsde")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y0tmb")
+"texture": SubResource("AtlasTexture_6ldc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqklf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_666lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hp3le")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgfpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5kfh")
 }],
 "loop": true,
 "name": &"shot",
-"speed": 5.0
+"speed": 13.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kr26e"]
@@ -50,6 +85,8 @@ radius = 12.0
 [node name="Projectile" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1oolf")
 animation = &"shot"
+autoplay = "shot"
+frame_progress = 0.991886
 script = ExtResource("1_f5acc")
 
 [node name="Timer" type="Timer" parent="."]
