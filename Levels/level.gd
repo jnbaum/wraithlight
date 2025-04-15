@@ -13,6 +13,7 @@ func _ready() -> void:
 		pass
 		
 	else:
+		print(config.get_value("game_properties", "inCourtyard"))
 		$Player.position = config.get_value("game_properties", "position")
 		if config.get_value("game_properties", "revealAbility") == true:
 			$Collectables/RevealPowerup.hide()
@@ -50,6 +51,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("clear_save"):
 		config.set_value("game_properties", "position", Vector2.ZERO)
 		config.set_value("game_properties", "revealAbility", false)
+		config.set_value("game_properties", "inCourtyard", false)
 		config.save("user://gameconfig.cfg")
 
 func _on_reveal_powerup_body_entered(body: Node2D) -> void:
