@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=4 uid="uid://bkxqy2hpmf4ru"]
 
-[ext_resource type="Script" path="res://Levels/level.gd" id="1_t5qsp"]
+[ext_resource type="Script" uid="uid://brtwrushveakd" path="res://Levels/level.gd" id="1_t5qsp"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="2_3hamp"]
 [ext_resource type="Texture2D" uid="uid://bg0tj3mc3oqrk" path="res://Tileset/Solaria Demo Tiles.png" id="2_ije3q"]
 [ext_resource type="PackedScene" uid="uid://b711y6ajr0ako" path="res://hud.tscn" id="2_pxn5k"]
@@ -1536,6 +1536,11 @@ size = Vector2(194.417, 528.886)
 [node name="Level" type="Node2D"]
 scale = Vector2(3, 3)
 script = ExtResource("1_t5qsp")
+
+[node name="FireWoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qjxms")
+volume_db = -9.37
+bus = &"SoundEffects"
 
 [node name="HUD" parent="." instance=ExtResource("2_pxn5k")]
 
