@@ -23,6 +23,7 @@ var muzzle_position
 
 func _ready():
 	current_state = State.Idle
+	#animated_sprite_2d.play("Idle")
 	$DebugLabel.hide()
 
 
@@ -34,6 +35,7 @@ func _physics_process(delta: float):
 		player_idle(delta)
 		player_run(delta)
 		player_jump(delta)
+		player_shoot(delta)
 		move_and_slide()
 		player_animations()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
@@ -70,6 +72,7 @@ func player_falling(delta: float):
 func player_idle(delta: float):
 	if is_on_floor():
 		current_state = State.Idle
+		
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 		
 		
@@ -109,7 +112,7 @@ func player_jump(delta: float):
 func player_shoot(delta: float):
 	var direction = input_movement()
 	
-	if  direction == 0 and Input.is_action_just_pressed("shoot"):
+	if  Input.is_action_just_pressed("shoot") and current_state != State.Shoot:
 		var projectile_instance = projectile.instantiate() as Node2D
 		projectile_instance.global_position = ProjectileOrigin.global_position
 		#get_parent().add_child(projectile_instance)

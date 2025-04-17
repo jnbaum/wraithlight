@@ -16,14 +16,5 @@ position = Vector2(-352, 81.3333)
 [node name="Point2" type="Marker2D" parent="EnemyBase3/PatrolPoints" index="1"]
 position = Vector2(153.333, 72)
 
-[node name="Save Fire#FireWoosh" parent="." index="8"]
-bus = &"Master"
-
 [node name="Player" parent="." index="9"]
 position = Vector2(515, -121)
-
-[node name="ClickSound" parent="." index="17"]
-bus = &"Master"
-
-[node name="GameMusic" parent="." index="18"]
-bus = &"Master"

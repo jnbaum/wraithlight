@@ -9,7 +9,7 @@ var current_state : State
 @export var gravity = 1000
 @export var speed = 3000.0
 @export var jump_velocity = -400.0
-#@export var patrol_points : Node
+@export var patrol_points_selected : Node
 
 @export var patrol_wait_time : int = 3
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=4 uid="uid://bkxqy2hpmf4ru"]
 
-[ext_resource type="Script" path="res://Levels/level.gd" id="1_t5qsp"]
+[ext_resource type="Script" uid="uid://brtwrushveakd" path="res://Levels/level.gd" id="1_t5qsp"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="2_3hamp"]
 [ext_resource type="Texture2D" uid="uid://bg0tj3mc3oqrk" path="res://Tileset/Solaria Demo Tiles.png" id="2_ije3q"]
 [ext_resource type="PackedScene" uid="uid://b711y6ajr0ako" path="res://hud.tscn" id="2_pxn5k"]
@@ -1534,7 +1534,6 @@ size = Vector2(181.063, 521.429)
 size = Vector2(194.417, 528.886)
 
 [node name="Level" type="Node2D"]
-scale = Vector2(3, 3)
 script = ExtResource("1_t5qsp")
 
 [node name="HUD" parent="." instance=ExtResource("2_pxn5k")]
@@ -1646,18 +1645,19 @@ shape = SubResource("RectangleShape2D_n848o")
 position = Vector2(10892.3, -2277.54)
 shape = SubResource("RectangleShape2D_n848o")
 
-[node name="Ogre1" parent="." instance=ExtResource("9_iyhsp")]
-position = Vector2(944, 468.333)
+[node name="Ogre1" parent="." node_paths=PackedStringArray("patrol_points_selected") instance=ExtResource("9_iyhsp")]
+position = Vector2(2131, -220)
 speed = 4000.0
+patrol_points_selected = NodePath("PatrolPoints")
 patrol_wait_time = 1
 
 [node name="PatrolPoints" type="Node2D" parent="Ogre1"]
 
 [node name="Point1" type="Marker2D" parent="Ogre1/PatrolPoints"]
-position = Vector2(-131.556, 124)
+position = Vector2(-130, 46)
 
 [node name="Point2" type="Marker2D" parent="Ogre1/PatrolPoints"]
-position = Vector2(162.222, 116.444)
+position = Vector2(166, 48)
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.333333, 0.333333)

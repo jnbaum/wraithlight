@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ttnloysdnwg"
-path="res://.godot/imported/mutant-toad-idle.png-f6802b4b79828755cccbec91cb2a0f5b.ctex"
+uid="uid://3w31ffr7v5qx"
+path="res://.godot/imported/mutant-toad-jump.png-7eb9ed2e15353bc394f2b8b07a11791d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Steph Assets/Pestilence/mutant-toad-idle.png"
-dest_files=["res://.godot/imported/mutant-toad-idle.png-f6802b4b79828755cccbec91cb2a0f5b.ctex"]
+source_file="res://enemies/Pestilence/mutant-toad-jump.png"
+dest_files=["res://.godot/imported/mutant-toad-jump.png-7eb9ed2e15353bc394f2b8b07a11791d.ctex"]
 
 [params]
 
