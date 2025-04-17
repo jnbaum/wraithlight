@@ -56,7 +56,7 @@ func _on_load_button_pressed() -> void:
 
 func _on_play_2_pressed() -> void:
 	$ClickSound.play()
-	await get_tree().create_timer(1.25).timeout
+	await get_tree().create_timer(0.45).timeout
 	$FirstOpen.visible = false
 	$Story.visible = false
 	get_tree().change_scene_to_file("res://Levels/level.tscn")
