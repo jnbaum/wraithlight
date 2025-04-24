@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfh88vf6i10v0"]
+
+[ext_resource type="AudioStream" uid="uid://b363x27gvrjkj" path="res://GameMusic.wav" id="1_1xrym"]
+[ext_resource type="AudioStream" uid="uid://da1xylwf1t47g" path="res://OpenMusic.wav" id="2_movv0"]
+
+[node name="MusicPlayer" type="Node2D"]
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_1xrym")
+bus = &"Music"
+
+[node name="OpenMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_movv0")
+bus = &"Music"

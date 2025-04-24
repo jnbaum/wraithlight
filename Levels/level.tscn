@@ -1536,6 +1536,11 @@ size = Vector2(194.417, 528.886)
 [node name="Level" type="Node2D"]
 script = ExtResource("1_t5qsp")
 
+[node name="FireWoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qjxms")
+volume_db = -9.37
+bus = &"SoundEffects"
+
 [node name="HUD" parent="." instance=ExtResource("2_pxn5k")]
 
 [node name="Background Layer" type="TileMapLayer" parent="."]
