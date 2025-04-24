@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cyxhc81awrk3d" path="res://Player/NewMainCharacter/Run/Run1.png" id="6_lfmf2"]
 [ext_resource type="Texture2D" uid="uid://b3fhc4gdywir1" path="res://Player/NewMainCharacter/Idle/Idle4.png" id="6_qemgg"]
 [ext_resource type="AudioStream" uid="uid://ca0eyo1iyl7mh" path="res://RunningShort.mp3" id="6_s2n5p"]
-[ext_resource type="Texture2D" uid="uid://bieixwiojndfk" path="res://Player/Lightning Mage/Attack_1.png" id="6_utbnx"]
+[ext_resource type="Texture2D" uid="uid://bieixwiojndfk" path="res://Player/NewMainCharacter/Attack1/Attack_1.png" id="6_utbnx"]
 [ext_resource type="Texture2D" uid="uid://s5vqi1fe3nms" path="res://Player/NewMainCharacter/Idle/Idle5.png" id="7_8viyr"]
 [ext_resource type="Texture2D" uid="uid://bq6xp4xq62dxg" path="res://Player/Lightning Mage/Light_ball.png" id="7_od3ui"]
 [ext_resource type="Texture2D" uid="uid://i8603tv4nyjk" path="res://Player/NewMainCharacter/Run/Run2.png" id="7_pisgm"]
@@ -292,7 +292,7 @@ script = ExtResource("1_a1pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, -35)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"Jump"
+animation = &"Run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -33.5)
