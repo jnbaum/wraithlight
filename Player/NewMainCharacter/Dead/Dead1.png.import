@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhrwxdw70c5g"
-path="res://.godot/imported/Dungeon background.png-f80486ef6972ba36e87df02844e91076.ctex"
+uid="uid://j62gtgish0n4"
+path="res://.godot/imported/Dead1.png-30b8bdf5c4627b9ac2f07c35ff8cae6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Dungeon background.png"
-dest_files=["res://.godot/imported/Dungeon background.png-f80486ef6972ba36e87df02844e91076.ctex"]
+source_file="res://Player/NewMainCharacter/Dead/Dead1.png"
+dest_files=["res://.godot/imported/Dead1.png-30b8bdf5c4627b9ac2f07c35ff8cae6f.ctex"]
 
 [params]
 

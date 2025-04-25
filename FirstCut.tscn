@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bh5vpd2uq2x08"]
 
 [ext_resource type="Script" uid="uid://c1b6y6yf5kjwp" path="res://first_cut.gd" id="1_3hbp8"]
-[ext_resource type="Texture2D" uid="uid://bhrwxdw70c5g" path="res://Assets/Dungeon background.png" id="1_e14q4"]
+[ext_resource type="Texture2D" uid="uid://bhrwxdw70c5g" path="res://Assets/Steph Assets/Dungeon background.png" id="1_e14q4"]
 [ext_resource type="Texture2D" uid="uid://cfov30wmbjto2" path="res://enemies/Border.png" id="2_7m5ti"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="3_w7f6x"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="5_3lsxp"]
