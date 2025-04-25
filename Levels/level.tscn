@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bkxqy2hpmf4ru"]
+[gd_scene load_steps=29 format=4 uid="uid://bkxqy2hpmf4ru"]
 
 [ext_resource type="Script" uid="uid://brtwrushveakd" path="res://Levels/level.gd" id="1_t5qsp"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="2_3hamp"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://by83gus4nvqcs" path="res://enemies/enemy_base.tscn" id="9_iyhsp"]
 [ext_resource type="AudioStream" uid="uid://b363x27gvrjkj" path="res://GameMusic.wav" id="10_jxmj6"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="11_py5xa"]
+[ext_resource type="AudioStream" uid="uid://byn81hpuaenqa" path="res://GameLose.mp3" id="15_xsqsu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llr47"]
 texture = ExtResource("4_qchee")
@@ -1672,6 +1673,11 @@ stream = ExtResource("11_py5xa")
 stream = ExtResource("10_jxmj6")
 volume_db = -8.432
 autoplay = true
+
+[node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_xsqsu")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Collectables/RevealPowerup" to="." method="_on_reveal_powerup_body_entered"]
 [connection signal="body_entered" from="Save Stations/Courtyard" to="." method="_on_save_fire_body_entered"]

@@ -58,3 +58,13 @@ func _unhandled_input(event):
 func _on_reveal_powerup_body_entered(body: Node2D) -> void:
 	$Collectables/RevealPowerup.hide()
 	$Player.set_reveal(true)
+
+
+func _on_player_death(body: Node2D) -> void:
+	#clear or pause enemies here
+	$GameOverSound.play()
+	$Player.get_node("AnimationPlayer").play("Dead")
+	await get_tree().create_timer(1.25).timeout
+	get_tree().change_scene_to_file("res://Levels/GameEnd.tscn")  
+	pass
+	
