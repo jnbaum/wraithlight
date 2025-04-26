@@ -138,4 +138,4 @@ func _on_hit_timer_timeout() -> void:
 	club_smack()
 
 func club_smack():
-	print("smacky")
+	print("smack")
