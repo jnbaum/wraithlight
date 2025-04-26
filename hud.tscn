@@ -1,15 +1,99 @@
-[gd_scene load_steps=7 format=3 uid="uid://b711y6ajr0ako"]
+[gd_scene load_steps=10 format=3 uid="uid://b711y6ajr0ako"]
 
 [ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="1_aglur"]
 [ext_resource type="Script" uid="uid://codiw7i2oqqlc" path="res://hud.gd" id="1_d6du5"]
 [ext_resource type="Texture2D" uid="uid://dwxb23m8ofc4v" path="res://Assets/heart.png" id="2_0rmoh"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="2_1t41d"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="5_w55m0"]
+[ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="6_1xsix"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rftc2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_61f8s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2258"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_d6du5")
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background2" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(953, 557.75)
+scale = Vector2(1.66305, 1.93914)
+texture = ExtResource("6_1xsix")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+offset_left = 103.0
+offset_top = 151.0
+offset_right = 1798.0
+offset_bottom = 970.0
+color = Color(0, 0.152941, 0.164706, 0.623529)
+
+[node name="Logo" type="Label" parent="PauseMenu"]
+offset_left = 584.0
+offset_top = 244.0
+offset_right = 1320.0
+offset_bottom = 527.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 150
+text = "WraithLight"
+
+[node name="Back" type="Button" parent="PauseMenu"]
+offset_left = 877.0
+offset_top = 774.0
+offset_right = 1055.0
+offset_bottom = 889.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rftc2")
+text = "Back"
+flat = true
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+offset_left = 902.0
+offset_top = 877.0
+offset_right = 1032.0
+offset_bottom = 992.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_61f8s")
+text = "Quit"
+flat = true
+
+[node name="Music" type="Label" parent="PauseMenu"]
+offset_left = 585.0
+offset_top = 463.0
+offset_right = 775.0
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+text = "Music"
+
+[node name="MSlider" type="HSlider" parent="PauseMenu/Music"]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 4.0
+offset_right = 749.0
+offset_bottom = 43.0
+
+[node name="Sound" type="Label" parent="PauseMenu"]
+offset_left = 594.0
+offset_top = 574.0
+offset_right = 804.0
+offset_bottom = 681.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+text = "Sound"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/Sound"]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 5.0
+offset_right = 742.0
+offset_bottom = 21.0
 
 [node name="Lives" type="Label" parent="."]
 offset_right = 40.0
@@ -79,4 +163,6 @@ texture = ExtResource("1_aglur")
 stream = ExtResource("5_w55m0")
 bus = &"SoundEffects"
 
+[connection signal="pressed" from="PauseMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="PauseMenu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Pause" to="." method="_on_pause_pressed"]
