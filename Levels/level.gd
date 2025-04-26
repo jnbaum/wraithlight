@@ -1,7 +1,7 @@
 extends Node2D
 var save_path = "game_state.save"
 var playerPosition
-
+var player : CharacterBody2D
 
 var volume = {}
 var config = ConfigFile.new()

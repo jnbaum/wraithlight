@@ -11,9 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://bqpx50d1bqhaj" path="res://FireWoosh.mp3" id="5_qjxms"]
 [ext_resource type="PackedScene" uid="uid://drgo347vw1rsy" path="res://save station.tscn" id="6_hxcm7"]
 [ext_resource type="Texture2D" uid="uid://b48kx20l06apy" path="res://textures/Courtyard.png" id="8_mfooh"]
-[ext_resource type="PackedScene" uid="uid://by83gus4nvqcs" path="res://enemies/enemy_base.tscn" id="9_iyhsp"]
 [ext_resource type="AudioStream" uid="uid://b363x27gvrjkj" path="res://GameMusic.wav" id="10_jxmj6"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="11_py5xa"]
+[ext_resource type="PackedScene" uid="uid://df2ea0vg5h3uu" path="res://enemies/new_ogre.tscn" id="14_3hgmi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llr47"]
 texture = ExtResource("4_qchee")
@@ -1650,20 +1650,6 @@ shape = SubResource("RectangleShape2D_n848o")
 position = Vector2(10892.3, -2277.54)
 shape = SubResource("RectangleShape2D_n848o")
 
-[node name="Ogre1" parent="." node_paths=PackedStringArray("patrol_points_selected") instance=ExtResource("9_iyhsp")]
-position = Vector2(2131, -220)
-speed = 4000.0
-patrol_points_selected = NodePath("PatrolPoints")
-patrol_wait_time = 1
-
-[node name="PatrolPoints" type="Node2D" parent="Ogre1"]
-
-[node name="Point1" type="Marker2D" parent="Ogre1/PatrolPoints"]
-position = Vector2(-130, 46)
-
-[node name="Point2" type="Marker2D" parent="Ogre1/PatrolPoints"]
-position = Vector2(166, 48)
-
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.333333, 0.333333)
 stream = ExtResource("11_py5xa")
@@ -1672,6 +1658,8 @@ stream = ExtResource("11_py5xa")
 stream = ExtResource("10_jxmj6")
 volume_db = -8.432
 autoplay = true
+
+[node name="NewOgre" parent="." instance=ExtResource("14_3hgmi")]
 
 [connection signal="body_entered" from="Collectables/RevealPowerup" to="." method="_on_reveal_powerup_body_entered"]
 [connection signal="body_entered" from="Save Stations/Courtyard" to="." method="_on_save_fire_body_entered"]

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://bkxqy2hpmf4ru"]
+[gd_scene load_steps=6 format=4 uid="uid://bkxqy2hpmf4ru"]
 
 [ext_resource type="Texture2D" uid="uid://bt2kbmqqiy36x" path="res://Tileset/gametileset1.png" id="1_jjpy6"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="2_3hamp"]
-[ext_resource type="PackedScene" uid="uid://by83gus4nvqcs" path="res://enemies/enemy_base.tscn" id="3_8qyrt"]
-[ext_resource type="PackedScene" uid="uid://chw6jr6kmanjs" path="res://enemies/Pestilence/pestilence.tscn" id="4_ruyyf"]
+[ext_resource type="PackedScene" uid="uid://df2ea0vg5h3uu" path="res://enemies/new_ogre.tscn" id="5_m1e4t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21qg7"]
 texture = ExtResource("1_jjpy6")
@@ -126,17 +125,5 @@ tile_set = SubResource("TileSet_h6s30")
 [node name="Player" parent="." instance=ExtResource("2_3hamp")]
 position = Vector2(62, -24)
 
-[node name="EnemyBase" parent="." instance=ExtResource("3_8qyrt")]
-position = Vector2(250, -26)
-
-[node name="PatrolPoints" type="Node2D" parent="EnemyBase"]
-position = Vector2(-22.6667, -128)
-
-[node name="Point1" type="Marker2D" parent="EnemyBase/PatrolPoints"]
-position = Vector2(-131.556, 124)
-
-[node name="Point2" type="Marker2D" parent="EnemyBase/PatrolPoints"]
-position = Vector2(162.222, 116.444)
-
-[node name="Pestilence" parent="." instance=ExtResource("4_ruyyf")]
-position = Vector2(641, -18)
+[node name="NewOgre" parent="." instance=ExtResource("5_m1e4t")]
+position = Vector2(974, -19)

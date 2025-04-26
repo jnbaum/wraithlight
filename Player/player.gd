@@ -23,6 +23,7 @@ var muzzle_position
 
 func _ready():
 	current_state = State.Idle
+	Global.playerBody = self
 	#animated_sprite_2d.play("Idle")
 	$DebugLabel.hide()
 
@@ -38,6 +39,7 @@ func _physics_process(delta: float):
 		player_shoot(delta)
 		move_and_slide()
 		player_animations()
+		projectile_origin_position()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
@@ -191,3 +193,13 @@ func set_reveal(isAquired):
 func player_death():
 	#var player_death_effect_instance = player_
 	pass
+
+
+
+func projectile_origin_position():
+	if animated_sprite_2d.flip_h:
+		ProjectileOrigin.position.x = -abs(ProjectileOrigin.position.x)
+	else:
+		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x)
+
+	
