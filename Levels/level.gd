@@ -22,7 +22,7 @@ func _ready() -> void:
 			$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	playerPosition = $Player.update_position()
 
 func save():
@@ -35,17 +35,17 @@ func save():
 		config.set_value("game_properties", "inCourtyard", $ParallaxBackground/ParallaxLayer2/Courtyard.is_visible_in_tree())
 		config.save("user://gameconfig.cfg")
 
-func _on_save_fire_body_entered(body: Node2D) -> void:
+func _on_save_fire_body_entered(_body: Node2D) -> void:
 	$FireWoosh.play() #Why isn't this working???
 	print("done")
 	save()
 	
 	
 
-func _on_hide_courtyard_body_entered(body: Node2D) -> void:
+func _on_hide_courtyard_body_entered(_body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
 
-func _on_show_couryard_body_entered(body: Node2D) -> void:
+func _on_show_couryard_body_entered(_body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.show()
 
 func _unhandled_input(event):
@@ -55,16 +55,25 @@ func _unhandled_input(event):
 		config.set_value("game_properties", "inCourtyard", false)
 		config.save("user://gameconfig.cfg")
 
-func _on_reveal_powerup_body_entered(body: Node2D) -> void:
+func _on_reveal_powerup_body_entered(_body: Node2D) -> void:
 	$Collectables/RevealPowerup.hide()
 	$Player.set_reveal(true)
 
 
-func _on_player_death(body: Node2D) -> void:
+func _on_player_death(_body: Node2D) -> void: #this needs to be play tested! It may need tweaking.
 	#clear or pause enemies here
 	$GameOverSound.play()
-	$Player.get_node("AnimationPlayer").play("Dead")
+	$Player/AnimatedSprite2D.play("Dead")
 	await get_tree().create_timer(1.25).timeout
-	get_tree().change_scene_to_file("res://Levels/GameEnd.tscn")  
+	get_tree().change_scene_to_file("res://GameEnd.tscn")  
 	pass
 	
+
+
+func _on_debug_pressed() -> void:
+	print("debug pressed")
+	$GameOverSound.play() #THIS LINE NOT WORKING
+	$Player/AnimatedSprite2D.play("Dead") #THIS LINE NOT WORKING?????
+	await get_tree().create_timer(1.25).timeout
+	get_tree().change_scene_to_file("res://GameEnd.tscn")  
+	pass # Replace with function body.

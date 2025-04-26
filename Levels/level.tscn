@@ -1676,11 +1676,20 @@ autoplay = true
 
 [node name="GameOverSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_xsqsu")
+bus = &"SoundEffects"
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="DEBUG" type="Button" parent="."]
+offset_left = 7448.67
+offset_top = -2090.67
+offset_right = 7581.67
+offset_bottom = -2059.67
+text = "DEBUG BUTTON"
 
 [connection signal="body_entered" from="Collectables/RevealPowerup" to="." method="_on_reveal_powerup_body_entered"]
 [connection signal="body_entered" from="Save Stations/Courtyard" to="." method="_on_save_fire_body_entered"]
 [connection signal="body_entered" from="Save Stations/Entryway" to="." method="_on_save_fire_body_entered"]
 [connection signal="body_entered" from="HideCourtyard" to="." method="_on_hide_courtyard_body_entered"]
 [connection signal="body_entered" from="ShowCouryard" to="." method="_on_show_couryard_body_entered"]
+[connection signal="pressed" from="DEBUG" to="." method="_on_debug_pressed"]

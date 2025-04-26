@@ -67,14 +67,14 @@ func player_falling(delta: float):
 		current_state = State.Falling
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 
-func player_idle(delta: float):
+func player_idle(_delta: float):
 	if is_on_floor():
 		current_state = State.Idle
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 		
 		
 		
-func player_run(delta: float):	
+func player_run(_delta: float):	
 	var direction = input_movement()
 	if direction:
 		velocity.x = direction * speed
@@ -106,7 +106,7 @@ func player_jump(delta: float):
 	if !is_on_floor() and current_state == State.Jump:
 		velocity.x += direction * jump_horizontal * delta
 		
-func player_shoot(delta: float):
+func player_shoot(_delta: float):
 	var direction = input_movement()
 	
 	if  direction == 0 and Input.is_action_just_pressed("shoot"):
@@ -135,7 +135,7 @@ func player_shoot(delta: float):
 		
 	
 	
-func player_melee(delta):
+func player_melee(_delta):
 	var direction = input_movement()
 	
 	if Input.is_action_just_pressed("melee"):

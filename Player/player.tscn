@@ -1,10 +1,15 @@
-[gd_scene load_steps=51 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=56 format=3 uid="uid://bewrr126db1ko"]
 
 [ext_resource type="Script" uid="uid://djrcewambq7md" path="res://Player/player.gd" id="1_a1pft"]
+[ext_resource type="Texture2D" uid="uid://j62gtgish0n4" path="res://Player/NewMainCharacter/Dead/Dead1.png" id="2_8ynux"]
 [ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
+[ext_resource type="Texture2D" uid="uid://bo06m1osoengo" path="res://Player/NewMainCharacter/Dead/Dead2.png" id="3_d30e8"]
 [ext_resource type="Texture2D" uid="uid://bcseoodgypq3r" path="res://Player/NewMainCharacter/Idle/Idle1.png" id="3_hshwv"]
+[ext_resource type="Texture2D" uid="uid://biqttd8so8ie3" path="res://Player/NewMainCharacter/Dead/Dead3.png" id="4_6pogt"]
 [ext_resource type="Texture2D" uid="uid://b4uu8g5qpe4w8" path="res://Player/NewMainCharacter/Idle/Idle2.png" id="4_gpjlu"]
 [ext_resource type="Texture2D" uid="uid://5etwx1yvb0t1" path="res://Player/NewMainCharacter/Idle/Idle3.png" id="5_8mwp6"]
+[ext_resource type="Texture2D" uid="uid://cyu7s7ijs2e6" path="res://Player/NewMainCharacter/Dead/Dead4.png" id="5_ie76m"]
+[ext_resource type="Texture2D" uid="uid://b1t50tsdp6fie" path="res://Player/NewMainCharacter/Dead/Dead5.png" id="6_dy65m"]
 [ext_resource type="Texture2D" uid="uid://cyxhc81awrk3d" path="res://Player/NewMainCharacter/Run/Run1.png" id="6_lfmf2"]
 [ext_resource type="Texture2D" uid="uid://b3fhc4gdywir1" path="res://Player/NewMainCharacter/Idle/Idle4.png" id="6_qemgg"]
 [ext_resource type="AudioStream" uid="uid://ca0eyo1iyl7mh" path="res://RunningShort.mp3" id="6_s2n5p"]
@@ -86,6 +91,26 @@ region = Rect2(1152, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lvyff"]
 animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_8ynux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d30e8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6pogt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ie76m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dy65m")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lhcyu")
@@ -249,11 +274,6 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efx54"]
@@ -271,7 +291,9 @@ script = ExtResource("1_a1pft")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, -35)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"Shoot"
+animation = &"Dead"
+frame = 3
+frame_progress = 0.55489
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -33.5)
