@@ -125,7 +125,7 @@ func _on_club_area_area_entered(area: Area2D) -> void:
 	
 	print("clubbing time")
 	$AnimatedSprite2D.play("attack")
-	club_smack()
+	club_smack(player)
 	hit_timer.start()
 
 
@@ -135,7 +135,8 @@ func _on_club_area_area_exited(area: Area2D) -> void:
 
 
 func _on_hit_timer_timeout() -> void:
-	club_smack()
+	club_smack(player)
 
-func club_smack():
+func club_smack(body: Node2D):
 	print("smack")
+	HealthManager.decrease_health(damage_amount)

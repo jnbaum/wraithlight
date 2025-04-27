@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var jump_horizontal = 100
 @export var projectile = preload("res://Player//projectile/projectile.tscn")
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
+var health_amount = 10
 
 var canReveal = false
 var debug = false
@@ -40,6 +41,7 @@ func _physics_process(delta: float):
 		move_and_slide()
 		player_animations()
 		projectile_origin_position()
+		player_death()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
@@ -191,8 +193,9 @@ func set_reveal(isAquired):
 	canReveal = isAquired
 		
 func player_death():
-	#var player_death_effect_instance = player_
-	pass
+	if health_amount <= 0:
+		print("dead")
+	
 
 
 
