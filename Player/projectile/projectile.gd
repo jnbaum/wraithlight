@@ -15,12 +15,13 @@ func _on_timer_timeout() -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	print("projectile area entered ")
+	#print("projectile area entered ")
 	#projectile_impact()
+	pass
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	print("projectile body entered ")
+	#print("projectile body entered ")
 	projectile_impact()
 
 func get_damage_amount() -> int:

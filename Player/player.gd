@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal hit
+signal life_lost
+signal life_gained
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
 
@@ -11,6 +15,9 @@ extends CharacterBody2D
 @export var projectile = preload("res://Player//projectile/projectile.tscn")
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
 
+var lives = 5
+var can_shoot = true
+
 var canReveal = false
 var debug = false
 
@@ -21,11 +28,14 @@ var character_sprite : Sprite2D
 var muzzle_position
 
 
+
+
 func _ready():
 	current_state = State.Idle
 	Global.playerBody = self
 	#animated_sprite_2d.play("Idle")
 	$DebugLabel.hide()
+	#player_death(health)
 
 
 func _physics_process(delta: float):
@@ -40,6 +50,7 @@ func _physics_process(delta: float):
 		move_and_slide()
 		player_animations()
 		projectile_origin_position()
+		
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
@@ -190,11 +201,10 @@ func get_reveal():
 func set_reveal(isAquired):
 	canReveal = isAquired
 		
-func player_death():
+func player_death(player_health):
 	#var player_death_effect_instance = player_
-	pass
-
-
+	if lives <= 0:
+		print ("i died")
 
 func projectile_origin_position():
 	if animated_sprite_2d.flip_h:
@@ -202,4 +212,7 @@ func projectile_origin_position():
 	else:
 		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x)
 
-	
+
+func lose_life():
+		lives - lives -1
+		life_lost.emit(lives)

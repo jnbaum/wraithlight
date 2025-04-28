@@ -218,5 +218,6 @@ debug_color = Color(0.969981, 0.147852, 0.235917, 0.42)
 [connection signal="area_entered" from="AggroRange" to="." method="_on_aggro_range_area_entered"]
 [connection signal="area_entered" from="ClubArea" to="ClubArea" method="_on_area_entered"]
 [connection signal="area_exited" from="ClubArea" to="ClubArea" method="_on_club_area_area_exited"]
+[connection signal="body_entered" from="ClubArea" to="ClubArea" method="get_player"]
 [connection signal="body_exited" from="ClubArea" to="ClubArea" method="_on_body_exited"]
 [connection signal="timeout" from="ClubArea/HitTimer" to="ClubArea" method="_on_hit_timer_timeout"]
