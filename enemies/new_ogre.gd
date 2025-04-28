@@ -53,16 +53,14 @@ func move(delta):
 		
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
+	if dir.x == -1:
+		anim_sprite.flip_h = true
+	elif dir.x == 1:
+		anim_sprite.flip_h = false
 
 	if !dead and !taking_damage and !is_attacking:
 		anim_sprite.play("walk")
 		
-		if dir.x == -1:
-			anim_sprite.flip_h = true
-			club_area.position.x = -abs(club_area.position.x) # Flip club to left
-		elif dir.x == 1:
-			anim_sprite.flip_h = false
-			club_area.position.x = abs(club_area.position.x) # Flip club to right
 			
 	elif !dead and taking_damage and !is_attacking:
 		anim_sprite.play("hurt")
@@ -76,6 +74,7 @@ func handle_animation():
 		
 	elif !dead and !taking_damage and is_attacking:
 		anim_sprite.play("attack")
+
 	
 func handle_death():
 	var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
@@ -117,7 +116,7 @@ func _on_club_area_area_entered(area: Area2D) -> void:
 	
 	print("clubbing time")
 	$AnimatedSprite2D.play("attack")
-	club_smack(player)
+	#club_smack(player)
 	hit_timer.start()
 
 
@@ -135,8 +134,5 @@ func _on_club_area_area_exited(area: Area2D) -> void:
 
 
 func _on_hit_timer_timeout() -> void:
-	club_smack(player)
-
-func club_smack(body: Node2D):
-	print("smack")
-	HealthManager.decrease_health(damage_amount)
+	#club_smack(player)
+	pass

@@ -16,7 +16,7 @@ signal life_gained
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
 var health_amount = 10
 
-var lives = 5
+@export var lives = 5
 var can_shoot = true
 
 var canReveal = false
@@ -51,7 +51,7 @@ func _physics_process(delta: float):
 		move_and_slide()
 		player_animations()
 		projectile_origin_position()
-		player_death()
+		#player_death()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
