@@ -95,6 +95,17 @@ offset_top = 5.0
 offset_right = 742.0
 offset_bottom = 21.0
 
+[node name="Pause" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 986.0
+offset_right = 193.0
+offset_bottom = 1096.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a2258")
+text = "Pause"
+flat = true
+
 [node name="Lives" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -128,17 +139,6 @@ position = Vector2(537, 65)
 rotation = 0.212628
 scale = Vector2(0.71, 0.819)
 texture = ExtResource("2_0rmoh")
-
-[node name="Pause" type="Button" parent="."]
-offset_left = 30.0
-offset_top = 986.0
-offset_right = 193.0
-offset_bottom = 1096.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_a2258")
-text = "Pause"
-flat = true
 
 [node name="Ammo" type="Label" parent="."]
 offset_right = 40.0

@@ -3,17 +3,13 @@ extends CanvasLayer
 @onready var pause_menu = get_node("HUD/PauseMenu")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
-	#Debug here to try to see why I can't call Pause Menu??
-	pause_menu = $HUD/PauseMenu
+	var pause_menu = get_node_or_null("PauseMenu")
 	if pause_menu:
-		pause_menu.visible = false
+		pause_menu.hide()
 	else:
-		print("PauseMenu is not found")
-	
+		print("PauseMenu not found!")
 	#This entire block isnt working!! I need to figure out why I cannot access PauseMenu first, then this may be operational.
 	
-	#pause_menu.visible = false
 	#$PauseMenu/Music/MSlider.value = linear_to_db(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 	#$PauseMenu/Sound/HSlider.value = linear_to_db(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SoundEffects")))
 	#$PauseMenu/Music/MSlider.connect("value_changed", Callable(self, "_on_MusicSlider_value_changed"))
@@ -37,12 +33,12 @@ func _on_pause_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
 	get_tree().paused = true
-	pause_menu.visible = true
+	$PauseMenu.show()
 
 func _on_back_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
-	pause_menu.visible = false #NOT WORKING??
+	$PauseMenu.hide() #NOT WORKING??
 	pass # Replace with function body.
 
 func _on_quit_pressed() -> void:
