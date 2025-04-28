@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal hit
+signal life_lost
+signal life_gained
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
 
@@ -12,6 +16,9 @@ extends CharacterBody2D
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
 var health_amount = 10
 
+var lives = 5
+var can_shoot = true
+
 var canReveal = false
 var debug = false
 
@@ -22,11 +29,14 @@ var character_sprite : Sprite2D
 var muzzle_position
 
 
+
+
 func _ready():
 	current_state = State.Idle
 	Global.playerBody = self
 	#animated_sprite_2d.play("Idle")
 	$DebugLabel.hide()
+	#player_death(health)
 
 
 func _physics_process(delta: float):
@@ -192,12 +202,10 @@ func get_reveal():
 func set_reveal(isAquired):
 	canReveal = isAquired
 		
-func player_death():
-	if health_amount <= 0:
-		print("dead")
-	
-
-
+func player_death(player_health):
+	#var player_death_effect_instance = player_
+	if lives <= 0:
+		print ("i died")
 
 func projectile_origin_position():
 	if animated_sprite_2d.flip_h:
@@ -205,4 +213,7 @@ func projectile_origin_position():
 	else:
 		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x)
 
-	
+
+func lose_life():
+		lives - lives -1
+		life_lost.emit(lives)

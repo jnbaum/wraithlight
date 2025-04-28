@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bewrr126db1ko"]
+[gd_scene load_steps=53 format=3 uid="uid://bewrr126db1ko"]
 
 [ext_resource type="Script" uid="uid://djrcewambq7md" path="res://Player/player.gd" id="1_a1pft"]
 [ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://l5bghyvi0rsx" path="res://Player/NewMainCharacter/Jump/Jump6.png" id="15_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://byw10lhnvhpfo" path="res://Player/NewMainCharacter/Jump/Jump7.png" id="16_c6x0f"]
 [ext_resource type="Texture2D" uid="uid://cgyvd7m77ynj" path="res://Player/NewMainCharacter/Jump/Jump8.png" id="17_jp1hh"]
+[ext_resource type="PackedScene" uid="uid://e0ja1r32c8tc" path="res://Player/new_user_interface.tscn" id="30_755ss"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhcyu"]
 atlas = ExtResource("2_lfplk")
@@ -285,11 +286,12 @@ size = Vector2(22, 32.7381)
 radius = 17.3913
 height = 35.8696
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_a1pft")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(6, -35)
 sprite_frames = SubResource("SpriteFrames_lvyff")
 animation = &"Run"
@@ -332,6 +334,12 @@ text = "Debug"
 
 [node name="ProjectileOrigin" type="Marker2D" parent="."]
 position = Vector2(32, -53)
+
+[node name="UserInterface" parent="." instance=ExtResource("30_755ss")]
+offset_left = -960.0
+offset_top = -770.0
+offset_right = -960.0
+offset_bottom = -770.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

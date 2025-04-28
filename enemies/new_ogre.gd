@@ -112,14 +112,6 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
 
-
-
-
-func _on_aggro_range_area_entered(area: Area2D) -> void:
-	is_enemy_chase = true
-	print("chasing you now")
-
-
 func _on_club_area_area_entered(area: Area2D) -> void:
 	is_attacking = true
 	
@@ -128,6 +120,14 @@ func _on_club_area_area_entered(area: Area2D) -> void:
 	club_smack(player)
 	hit_timer.start()
 
+
+func _on_aggro_range_area_entered(area: Area2D) -> void:
+	is_enemy_chase = true
+	#print("chasing you now")
+
+
+
+#going to remake these in club area script 
 
 func _on_club_area_area_exited(area: Area2D) -> void:
 	is_attacking = false
