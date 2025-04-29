@@ -42,6 +42,7 @@ theme_override_font_sizes/font_size = 150
 text = "WraithLight"
 
 [node name="Back" type="Button" parent="PauseMenu"]
+process_mode = 3
 offset_left = 877.0
 offset_top = 774.0
 offset_right = 1055.0
@@ -53,6 +54,7 @@ text = "Back"
 flat = true
 
 [node name="Quit" type="Button" parent="PauseMenu"]
+process_mode = 3
 offset_left = 902.0
 offset_top = 877.0
 offset_right = 1032.0
