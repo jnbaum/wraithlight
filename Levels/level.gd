@@ -13,10 +13,10 @@ func _ready() -> void:
 		pass
 		
 	else:
-		print(config.get_value("game_properties", "inCourtyard"))
 		$Player.position = config.get_value("game_properties", "position")
 		if config.get_value("game_properties", "revealAbility") == true:
 			$Collectables/RevealPowerup.hide()
+			$PreReveal.hide()
 		
 		if config.get_value("game_properties", "inCourtyard") == false:
 			$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
@@ -37,10 +37,7 @@ func save():
 
 func _on_save_fire_body_entered(_body: Node2D) -> void:
 	$FireWoosh.play() #Why isn't this working???
-	print("done")
 	save()
-	
-	
 
 func _on_hide_courtyard_body_entered(_body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
@@ -58,6 +55,7 @@ func _unhandled_input(event):
 func _on_reveal_powerup_body_entered(_body: Node2D) -> void:
 	$Collectables/RevealPowerup.hide()
 	$Player.set_reveal(true)
+	$PreReveal.queue_free()
 
 
 func _on_player_death(_body: Node2D) -> void: #this needs to be play tested! It may need tweaking.
