@@ -7,6 +7,8 @@ var volume = {}
 var config = ConfigFile.new()
 var err = config.load("user://gameconfig.cfg")
 
+var skyIsMovedUp = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if err != OK:
@@ -45,6 +47,7 @@ func _on_hide_courtyard_body_entered(_body: Node2D) -> void:
 func _on_show_couryard_body_entered(_body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.show()
 
+
 func _unhandled_input(event):
 	if event.is_action_pressed("clear_save"):
 		config.set_value("game_properties", "position", Vector2.ZERO)
@@ -75,3 +78,15 @@ func _on_debug_pressed() -> void:
 	await get_tree().create_timer(1.25).timeout
 	get_tree().change_scene_to_file("res://GameEnd.tscn")  
 	pass # Replace with function body.
+
+
+func _on_move_sky_up_body_entered(body: Node2D) -> void:
+	if skyIsMovedUp == false:
+		$ParallaxBackground/ParallaxLayer/Sky.move_local_y(-50)
+		skyIsMovedUp = true
+
+
+func _on_move_sky_down_body_entered(body: Node2D) -> void:
+	if skyIsMovedUp == true:
+		$ParallaxBackground/ParallaxLayer/Sky.move_local_y(50)
+		skyIsMovedUp = false

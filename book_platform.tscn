@@ -23,13 +23,11 @@ texture = ExtResource("1_ilnpm")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(-41.6559, -1.15709)
 rotation = -0.240855
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_j8mlk")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(34.002, -1.56539)
 rotation = 0.23911
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_g6a2v")
 
 [node name="Wait" type="Timer" parent="."]
