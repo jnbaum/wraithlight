@@ -40,7 +40,7 @@ func move(delta):
 		if !is_enemy_chase:
 			velocity += dir * speed * delta
 		elif is_enemy_chase and !taking_damage:
-			var dir_to_player = position.direction_to(player.position) * speed
+			var dir_to_player = position.direction_to(Global.Player.position) * speed
 			velocity.x = dir_to_player.x
 			dir.x = abs(velocity.x) / velocity.x
 			
@@ -93,10 +93,6 @@ func _on_direction_timer_timeout() -> void:
 func choose(array):
 	array.shuffle()
 	return array.front()
-	
-
-	
- 
 
 
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
@@ -111,28 +107,5 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
 
-func _on_club_area_area_entered(area: Area2D) -> void:
-	is_attacking = true
-	
-	print("clubbing time")
-	$AnimatedSprite2D.play("attack")
-	#club_smack(player)
-	hit_timer.start()
-
-
 func _on_aggro_range_area_entered(area: Area2D) -> void:
 	is_enemy_chase = true
-	#print("chasing you now")
-
-
-
-#going to remake these in club area script 
-
-func _on_club_area_area_exited(area: Area2D) -> void:
-	is_attacking = false
-	hit_timer.stop()
-
-
-func _on_hit_timer_timeout() -> void:
-	#club_smack(player)
-	pass

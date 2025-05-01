@@ -30,6 +30,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Lives" type="HBoxContainer" parent="Control"]
+layout_mode = 0
 offset_right = 609.0
 offset_bottom = 134.0
 script = ExtResource("2_64317")
@@ -41,14 +42,12 @@ scale = Vector2(0.709678, 0.818893)
 texture = ExtResource("2_ysrwh")
 
 [node name="Heart2" type="Sprite2D" parent="Control/Lives"]
-visible = false
 position = Vector2(186, 65)
 rotation = 0.212628
 scale = Vector2(0.71, 0.819)
 texture = ExtResource("2_ysrwh")
 
 [node name="Heart3" type="Sprite2D" parent="Control/Lives"]
-visible = false
 position = Vector2(303, 65)
 rotation = 0.212628
 scale = Vector2(0.71, 0.819)

@@ -14,14 +14,15 @@ signal life_gained
 @export var jump_horizontal = 100
 @export var projectile = preload("res://Player//projectile/projectile.tscn")
 @onready var ProjectileOrigin : Marker2D = $ProjectileOrigin
-var health_amount = 10
 
-@export var lives = 5
+var lives = 5
+
+
 var can_shoot = true
 
 var canReveal = false
 var debug = false
-
+var is_alive = false
 
 enum State {Idle,Run,Jump,Falling,Shoot,Melee}
 var current_state : State
@@ -32,16 +33,19 @@ var muzzle_position
 
 
 func _ready():
+	Global.Player = self
 	current_state = State.Idle
-	Global.playerBody = self
 	#animated_sprite_2d.play("Idle")
 	$DebugLabel.hide()
-	#player_death(health)
+	life_lost.connect($UserInterface/Control/Lives._on_player_life_lost)
+	
+
 
 
 func _physics_process(delta: float):
 	
 	if debug == false:
+		 
 		var was_on_floor = is_on_floor()
 		player_falling(delta)
 		player_idle(delta)
@@ -51,7 +55,7 @@ func _physics_process(delta: float):
 		move_and_slide()
 		player_animations()
 		projectile_origin_position()
-		#player_death()
+		player_death()
 	#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
@@ -202,7 +206,7 @@ func get_reveal():
 func set_reveal(isAquired):
 	canReveal = isAquired
 		
-func player_death(player_health):
+func player_death():
 	#var player_death_effect_instance = player_
 	if lives <= 0:
 		print ("i died")
@@ -214,6 +218,7 @@ func projectile_origin_position():
 		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x)
 
 
-func lose_life():
-		lives - lives -1
+func lose_life(damage_amount):
+		lives = lives-damage_amount
 		life_lost.emit(lives)
+		

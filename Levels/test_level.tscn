@@ -5,6 +5,9 @@
 
 [node name="TestLevel" instance=ExtResource("1_jlj0j")]
 
+[node name="HUD" parent="." index="1"]
+visible = true
+
 [node name="EnemyBase3" parent="." index="2" instance=ExtResource("2_t5aiu")]
 position = Vector2(1587.67, -378.667)
 
@@ -19,5 +22,26 @@ position = Vector2(153.333, 72)
 [node name="Background Layer" parent="." index="3"]
 position = Vector2(181.333, 89.6667)
 
+[node name="Save Fire#FireWoosh" parent="." index="9"]
+visible = true
+
 [node name="Player" parent="." index="10"]
 position = Vector2(515, -121)
+
+[node name="Playable Layer" parent="." index="11"]
+visible = true
+
+[node name="Foreground Layer" parent="." index="12"]
+visible = true
+
+[node name="Shadow Layer" parent="." index="13"]
+visible = true
+
+[node name="ParallaxBackground" parent="." index="14"]
+visible = true
+
+[node name="HideCourtyard" parent="." index="15"]
+visible = true
+
+[node name="ShowCouryard" parent="." index="16"]
+visible = true

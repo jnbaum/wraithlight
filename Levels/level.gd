@@ -20,6 +20,8 @@ func _ready() -> void:
 		
 		if config.get_value("game_properties", "inCourtyard") == false:
 			$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
+			
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
