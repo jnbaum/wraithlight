@@ -26,8 +26,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_club_area_area_exited(area: Area2D) -> void:
 	ogre.is_attacking = false
-	$HitTimer.stop
-	#print("player left")
+	$HitTimer.stop()
+	print("player left")
 	
 func deal_damage():
 		Global.Player.lose_life(damage_amount)

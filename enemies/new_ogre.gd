@@ -83,6 +83,9 @@ func handle_death():
 	queue_free()
 	
 
+func _on_aggro_range_area_entered(area: Area2D) -> void:
+	is_enemy_chase = true
+	
 func _on_direction_timer_timeout() -> void:
 	$DirectionTimer.wait_time = choose([1.5,2.0,2.5])
 	
@@ -106,6 +109,3 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 			enemy_death_effect_instance.global_position = global_position
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
-
-func _on_aggro_range_area_entered(area: Area2D) -> void:
-	is_enemy_chase = true
