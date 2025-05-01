@@ -136,7 +136,7 @@ func player_shoot(_delta: float):
 	
 	
 func player_melee(_delta):
-	var direction = input_movement()
+	var direction = input_movement() #This line isn't being used?
 	
 	if Input.is_action_just_pressed("melee"):
 		current_state = State.Melee

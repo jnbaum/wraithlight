@@ -17,6 +17,7 @@
 script = ExtResource("1_d6du5")
 
 [node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 
@@ -66,6 +67,7 @@ text = "Quit"
 flat = true
 
 [node name="Music" type="Label" parent="PauseMenu"]
+process_mode = 3
 offset_left = 585.0
 offset_top = 463.0
 offset_right = 775.0
@@ -75,13 +77,19 @@ theme_override_font_sizes/font_size = 80
 text = "Music"
 
 [node name="MSlider" type="HSlider" parent="PauseMenu/Music"]
+process_mode = 3
+modulate = Color(0.0588235, 1, 1, 1)
 layout_mode = 0
 offset_left = 308.0
 offset_top = 4.0
 offset_right = 749.0
 offset_bottom = 43.0
+max_value = 30.0
+value = 15.0
+tick_count = 5
 
 [node name="Sound" type="Label" parent="PauseMenu"]
+process_mode = 3
 offset_left = 594.0
 offset_top = 574.0
 offset_right = 804.0
@@ -91,11 +99,16 @@ theme_override_font_sizes/font_size = 80
 text = "Sound"
 
 [node name="HSlider" type="HSlider" parent="PauseMenu/Sound"]
+process_mode = 3
+modulate = Color(0.027451, 1, 1, 1)
 layout_mode = 0
 offset_left = 302.0
 offset_top = 5.0
 offset_right = 742.0
 offset_bottom = 21.0
+max_value = 30.0
+value = 10.0
+tick_count = 5
 
 [node name="Pause" type="Button" parent="."]
 offset_left = 30.0

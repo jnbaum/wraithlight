@@ -1670,6 +1670,7 @@ scale = Vector2(0.333333, 0.333333)
 stream = ExtResource("11_py5xa")
 
 [node name="GameMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("10_jxmj6")
 volume_db = -8.432
 autoplay = true
