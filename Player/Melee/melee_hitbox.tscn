@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw381toeynjdg"]
+
+[ext_resource type="Texture2D" uid="uid://npi66kkgbj8g" path="res://Assets/Lantern3.png" id="2_g2btf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2btf"]
+size = Vector2(29, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtdv4"]
+atlas = ExtResource("2_g2btf")
+region = Rect2(0, 0, 783, 1638)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_atcsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtdv4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MeleeHitbox" type="Area2D"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(28.5, -45)
+shape = SubResource("RectangleShape2D_g2btf")
+disabled = true
+debug_color = Color(0.69896, 0.492836, 0, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_atcsw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

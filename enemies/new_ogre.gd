@@ -5,9 +5,8 @@ class_name OgreEnemy
 const speed = 100
 var is_enemy_chase : bool = false
 
-var health_amount = 8
-var health_max = 80
-var health_min = 0
+@export var health_amount = 2
+
 
 var dead: bool = false
 var taking_damage: bool = false
@@ -16,13 +15,17 @@ var is_attacking: bool = false
 
 var dir : Vector2
 const gravity = 900
-var knockback_force = -20
+var knockback_force = 900
 var is_roaming: bool = true
 var player : CharacterBody2D
 
+
 var enemy_death_effect = preload("res://enemies/enemy_death_effect.tscn")
+
 @onready var club_area = $ClubArea
 @onready var hit_timer = $ClubArea/HitTimer
+@onready var health_label = $HealthLabel
+
 
 
 func _process(delta):
@@ -32,8 +35,10 @@ func _process(delta):
 		
 		player = Global.playerBody
 	move(delta)
+	death()
 	handle_animation()
 	move_and_slide()
+	health_label.text = str(health_amount)
 	
 func move(delta):
 	if !dead:
@@ -44,9 +49,7 @@ func move(delta):
 			velocity.x = dir_to_player.x
 			dir.x = abs(velocity.x) / velocity.x
 			
-		elif taking_damage:
-			var knockback_dir = position.direction_to(player.position) * knockback_force
-			velocity.x = knockback_dir.x
+	
 		is_roaming = true
 	elif dead:
 		velocity.x = 0
@@ -82,7 +85,10 @@ func handle_death():
 	get_parent().add_child(enemy_death_effect_instance)
 	queue_free()
 	
-
+func apply_knockback(direction: Vector2):
+	#var knockback_force = 400.0
+	velocity = direction * knockback_force
+	
 func _on_aggro_range_area_entered(area: Area2D) -> void:
 	is_enemy_chase = true
 	
@@ -100,12 +106,17 @@ func choose(array):
 
 func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 	if area.get_parent().has_method("get_damage_amount"):
+		
 		var node = area.get_parent() as Node
+		print(node)
 		health_amount -= node.damage_amount
 		print("enemy health remaining: ", health_amount)
 		
+func  death():
 		if health_amount <= 0:
 			var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
 			enemy_death_effect_instance.global_position = global_position
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
+			Global.Player.gain_life()
+			Global.Player.gain_ammo()

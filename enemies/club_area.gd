@@ -12,7 +12,7 @@ func get_damage_amount() -> int:
 
 
 func _on_hit_timer_timeout() -> void:
-	print("clubbing")
+	#print("clubbing")
 	deal_damage()
 
 func _on_area_entered(area: Area2D) -> void:
@@ -27,12 +27,8 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_club_area_area_exited(area: Area2D) -> void:
 	ogre.is_attacking = false
 	$HitTimer.stop()
-	print("player left")
+	#print("player left")
 	
 func deal_damage():
 		Global.Player.lose_life(damage_amount)
 		print(Global.Player.lives)
-
-func get_player_health(body: Node2D) -> int:
-	return body.health
-	

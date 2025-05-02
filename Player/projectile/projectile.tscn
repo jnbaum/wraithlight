@@ -86,7 +86,7 @@ radius = 12.0
 sprite_frames = SubResource("SpriteFrames_1oolf")
 animation = &"shot"
 autoplay = "shot"
-frame_progress = 0.991886
+frame_progress = 0.0719611
 script = ExtResource("1_f5acc")
 
 [node name="Timer" type="Timer" parent="."]
@@ -98,7 +98,7 @@ collision_layer = 8
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(9, 1)
+position = Vector2(-1, -1)
 shape = SubResource("CircleShape2D_kr26e")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
