@@ -48,9 +48,7 @@ func _on_back_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(.45).timeout
 	get_tree().paused = false
-	$PauseMenu.hide() #NOT WORKING??
-	pass # Replace with function body.
+	$PauseMenu.hide()
 
 func _on_quit_pressed() -> void: 
 	get_tree().quit()
-	pass # Replace with function body.

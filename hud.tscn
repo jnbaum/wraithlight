@@ -16,111 +16,6 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_d6du5")
 
-[node name="PauseMenu" type="Control" parent="."]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 0
-
-[node name="Background2" type="Sprite2D" parent="PauseMenu"]
-position = Vector2(953, 557.75)
-scale = Vector2(1.66305, 1.93914)
-texture = ExtResource("6_1xsix")
-
-[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
-offset_left = 103.0
-offset_top = 151.0
-offset_right = 1798.0
-offset_bottom = 970.0
-color = Color(0, 0.152941, 0.164706, 0.623529)
-
-[node name="Logo" type="Label" parent="PauseMenu"]
-offset_left = 584.0
-offset_top = 244.0
-offset_right = 1320.0
-offset_bottom = 527.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 150
-text = "WraithLight"
-
-[node name="Back" type="Button" parent="PauseMenu"]
-process_mode = 3
-offset_left = 877.0
-offset_top = 774.0
-offset_right = 1055.0
-offset_bottom = 889.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rftc2")
-text = "Back"
-flat = true
-
-[node name="Quit" type="Button" parent="PauseMenu"]
-process_mode = 3
-offset_left = 902.0
-offset_top = 877.0
-offset_right = 1032.0
-offset_bottom = 992.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/focus = SubResource("StyleBoxEmpty_61f8s")
-text = "Quit"
-flat = true
-
-[node name="Music" type="Label" parent="PauseMenu"]
-process_mode = 3
-offset_left = 585.0
-offset_top = 463.0
-offset_right = 775.0
-offset_bottom = 570.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 80
-text = "Music"
-
-[node name="MSlider" type="HSlider" parent="PauseMenu/Music"]
-process_mode = 3
-modulate = Color(0.0588235, 1, 1, 1)
-layout_mode = 0
-offset_left = 308.0
-offset_top = 4.0
-offset_right = 749.0
-offset_bottom = 43.0
-max_value = 30.0
-value = 15.0
-tick_count = 5
-
-[node name="Sound" type="Label" parent="PauseMenu"]
-process_mode = 3
-offset_left = 594.0
-offset_top = 574.0
-offset_right = 804.0
-offset_bottom = 681.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 80
-text = "Sound"
-
-[node name="HSlider" type="HSlider" parent="PauseMenu/Sound"]
-process_mode = 3
-modulate = Color(0.027451, 1, 1, 1)
-layout_mode = 0
-offset_left = 302.0
-offset_top = 5.0
-offset_right = 742.0
-offset_bottom = 21.0
-max_value = 30.0
-value = 10.0
-tick_count = 5
-
-[node name="Pause" type="Button" parent="."]
-offset_left = 30.0
-offset_top = 986.0
-offset_right = 193.0
-offset_bottom = 1096.0
-theme_override_fonts/font = ExtResource("2_1t41d")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxEmpty_a2258")
-text = "Pause"
-flat = true
-
 [node name="Lives" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
@@ -173,6 +68,117 @@ texture = ExtResource("1_aglur")
 position = Vector2(1840, 65)
 scale = Vector2(0.839005, 0.784722)
 texture = ExtResource("1_aglur")
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Background2" type="Sprite2D" parent="PauseMenu"]
+position = Vector2(985.074, 537.875)
+scale = Vector2(2.25203, 2.62589)
+texture = ExtResource("6_1xsix")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 151.0
+offset_right = 1798.0
+offset_bottom = 970.0
+color = Color(0, 0.152941, 0.164706, 0.623529)
+
+[node name="Logo" type="Label" parent="PauseMenu"]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 244.0
+offset_right = 1320.0
+offset_bottom = 527.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 150
+text = "WraithLight"
+
+[node name="Back" type="Button" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 877.0
+offset_top = 774.0
+offset_right = 1055.0
+offset_bottom = 889.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rftc2")
+text = "Back"
+flat = true
+
+[node name="Quit" type="Button" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 902.0
+offset_top = 877.0
+offset_right = 1032.0
+offset_bottom = 992.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = SubResource("StyleBoxEmpty_61f8s")
+text = "Quit"
+flat = true
+
+[node name="Music" type="Label" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 585.0
+offset_top = 463.0
+offset_right = 775.0
+offset_bottom = 570.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+text = "Music"
+
+[node name="MSlider" type="HSlider" parent="PauseMenu/Music"]
+process_mode = 3
+modulate = Color(0.0588235, 1, 1, 1)
+layout_mode = 0
+offset_left = 308.0
+offset_top = 4.0
+offset_right = 749.0
+offset_bottom = 43.0
+max_value = 30.0
+value = 15.0
+tick_count = 5
+
+[node name="Sound" type="Label" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 594.0
+offset_top = 574.0
+offset_right = 804.0
+offset_bottom = 681.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 80
+text = "Sound"
+
+[node name="HSlider" type="HSlider" parent="PauseMenu/Sound"]
+process_mode = 3
+modulate = Color(0.027451, 1, 1, 1)
+layout_mode = 0
+offset_left = 302.0
+offset_top = 5.0
+offset_right = 742.0
+offset_bottom = 21.0
+max_value = 30.0
+value = 10.0
+tick_count = 5
+
+[node name="Pause" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 986.0
+offset_right = 193.0
+offset_bottom = 1096.0
+theme_override_fonts/font = ExtResource("2_1t41d")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a2258")
+text = "Pause"
+flat = true
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_w55m0")
