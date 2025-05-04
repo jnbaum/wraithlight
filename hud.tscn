@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b711y6ajr0ako"]
 
 [ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="1_aglur"]
-[ext_resource type="Script" uid="uid://codiw7i2oqqlc" path="res://hud.gd" id="1_d6du5"]
+[ext_resource type="Script" path="res://hud.gd" id="1_d6du5"]
 [ext_resource type="Texture2D" uid="uid://dwxb23m8ofc4v" path="res://Assets/heart.png" id="2_0rmoh"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="2_1t41d"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="5_w55m0"]

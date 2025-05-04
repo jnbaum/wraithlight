@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=3 uid="uid://bewrr126db1ko"]
 
-[ext_resource type="Script" uid="uid://djrcewambq7md" path="res://Player/player.gd" id="1_a1pft"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
 [ext_resource type="Texture2D" uid="uid://j62gtgish0n4" path="res://Player/NewMainCharacter/Dead/Dead1.png" id="2_8ynux"]
 [ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
 [ext_resource type="Texture2D" uid="uid://bo06m1osoengo" path="res://Player/NewMainCharacter/Dead/Dead2.png" id="3_d30e8"]
