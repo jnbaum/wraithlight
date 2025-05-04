@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://duw18guc72ypp"]
 
-[ext_resource type="Script" uid="uid://devuux1vbtwbj" path="res://Player/projectile/projectile.gd" id="1_f5acc"]
+[ext_resource type="Script" path="res://Player/projectile/projectile.gd" id="1_f5acc"]
 [ext_resource type="Texture2D" uid="uid://gs74lyemxys2" path="res://Player/NewMainCharacter/Charge.png" id="1_t8lxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gpoc"]
@@ -86,7 +86,6 @@ radius = 12.0
 sprite_frames = SubResource("SpriteFrames_1oolf")
 animation = &"shot"
 autoplay = "shot"
-frame_progress = 0.0719611
 script = ExtResource("1_f5acc")
 
 [node name="Timer" type="Timer" parent="."]

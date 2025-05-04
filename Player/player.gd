@@ -45,8 +45,6 @@ func _ready():
 	#shot_gained.connect($HUD/Ammo._on_shot_gained)
 
 func _physics_process(delta: float):
-	print(position.x)
-	print($ProjectileOrigin.position.x +global_position.x/3)
 	if debug == false:
 		var was_on_floor = is_on_floor()
 		player_falling(delta)
@@ -107,7 +105,7 @@ func player_jump(delta: float):
 	var direction = input_movement()
 
 	# Coyote and Double Jump
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()):
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()) and current_state != State.Shoot and current_state != State.Melee:
 		velocity.y = jump_velocity
 		current_state = State.Jump
 
@@ -120,7 +118,6 @@ func player_shoot(_delta: float):
 	print(ammo_count)
 	
 	if Input.is_action_just_pressed("shoot") and current_state != State.Shoot and ammo_count > 0:
-		ammo_count = ammo_count- 1
 		shot_fired.emit(ammo_count)
 		
 		previous_state = current_state
@@ -203,10 +200,9 @@ func player_death():
 
 func projectile_origin_position():
 	if animated_sprite_2d.flip_h:
-		ProjectileOrigin.position.x = -abs(ProjectileOrigin.position.x) + 60
+		ProjectileOrigin.position.x = -abs(ProjectileOrigin.position.x)
 	else:
-		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x) - 8
-		ProjectileOrigin.position.y = abs(ProjectileOrigin.position.y) - 33
+		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x)
 
 func melee_hitbox_flip():
 	if animated_sprite_2d.flip_h:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=27 format=3 uid="uid://df2ea0vg5h3uu"]
 
-[ext_resource type="Script" uid="uid://psep8bik5dtg" path="res://enemies/new_ogre.gd" id="1_rhjej"]
+[ext_resource type="Script" path="res://enemies/new_ogre.gd" id="1_rhjej"]
 [ext_resource type="Texture2D" uid="uid://3a687kinvsnw" path="res://Assets/Steph Assets/ogre-all.png" id="2_oakbg"]
-[ext_resource type="Script" uid="uid://ycwuextjgxk6" path="res://enemies/club_area.gd" id="3_oakbg"]
+[ext_resource type="Script" path="res://enemies/club_area.gd" id="3_oakbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqpy8"]
 atlas = ExtResource("2_oakbg")

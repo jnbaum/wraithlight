@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dknd0rhguhycl" path="res://Tileset/Shadow and Dust Tiles.png" id="5_5cut3"]
 [ext_resource type="Texture2D" uid="uid://isseldlceuw" path="res://Tileset/sky.png" id="5_ngybt"]
 [ext_resource type="AudioStream" uid="uid://bqpx50d1bqhaj" path="res://FireWoosh.mp3" id="5_qjxms"]
+[ext_resource type="PackedScene" uid="uid://df2ea0vg5h3uu" path="res://enemies/new_ogre.tscn" id="6_8hqjj"]
 [ext_resource type="PackedScene" uid="uid://drgo347vw1rsy" path="res://save station.tscn" id="6_hxcm7"]
 [ext_resource type="Texture2D" uid="uid://b48kx20l06apy" path="res://textures/Courtyard.png" id="8_mfooh"]
-[ext_resource type="PackedScene" uid="uid://by83gus4nvqcs" path="res://enemies/enemy_base.tscn" id="9_iyhsp"]
 [ext_resource type="AudioStream" uid="uid://b363x27gvrjkj" path="res://GameMusic.wav" id="10_jxmj6"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="11_py5xa"]
 [ext_resource type="AudioStream" uid="uid://byn81hpuaenqa" path="res://GameLose.mp3" id="15_xsqsu"]
@@ -1702,6 +1702,15 @@ texture = ExtResource("3_nh3l5")
 [node name="Save Fire#FireWoosh" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qjxms")
 
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(100, -6.66667)
+
+[node name="NewOgre2" parent="Enemies" instance=ExtResource("6_8hqjj")]
+position = Vector2(1749, -172.333)
+
+[node name="NewOgre" parent="Enemies" instance=ExtResource("6_8hqjj")]
+position = Vector2(1464.67, -176.667)
+
 [node name="Player" parent="." instance=ExtResource("2_3hamp")]
 position = Vector2(3222.67, -6289)
 
@@ -1825,19 +1834,6 @@ shape = SubResource("RectangleShape2D_n848o")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ShowCouryard"]
 position = Vector2(3394.67, -3517.33)
 shape = SubResource("RectangleShape2D_n848o")
-
-[node name="Ogre1" parent="." instance=ExtResource("9_iyhsp")]
-position = Vector2(944, 468.333)
-speed = 4000.0
-patrol_wait_time = 1
-
-[node name="PatrolPoints" type="Node2D" parent="Ogre1"]
-
-[node name="Point1" type="Marker2D" parent="Ogre1/PatrolPoints"]
-position = Vector2(-131.556, 124)
-
-[node name="Point2" type="Marker2D" parent="Ogre1/PatrolPoints"]
-position = Vector2(162.222, 116.444)
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
 scale = Vector2(0.333333, 0.333333)

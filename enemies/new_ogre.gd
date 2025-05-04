@@ -81,7 +81,7 @@ func handle_animation():
 	
 func handle_death():
 	var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
-	enemy_death_effect_instance.global_position = global_position
+	enemy_death_effect_instance.global_position = global_position/3
 	get_parent().add_child(enemy_death_effect_instance)
 	queue_free()
 	
@@ -115,7 +115,7 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 func  death():
 		if health_amount <= 0:
 			var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
-			enemy_death_effect_instance.global_position = global_position
+			enemy_death_effect_instance.global_position = global_position/3
 			get_parent().add_child(enemy_death_effect_instance)
 			queue_free()
 			Global.Player.gain_life()

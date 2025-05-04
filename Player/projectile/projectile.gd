@@ -22,6 +22,6 @@ func get_damage_amount() -> int:
 	
 func projectile_impact():
 	var projectile_impact_effect_instance = projectile_impact_effect.instantiate() as Node2D
-	projectile_impact_effect_instance.global_position = global_position
+	projectile_impact_effect_instance.global_position = global_position/3
 	get_parent().add_child(projectile_impact_effect_instance)
 	queue_free()
