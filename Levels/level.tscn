@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bqpx50d1bqhaj" path="res://FireWoosh.mp3" id="5_qjxms"]
 [ext_resource type="PackedScene" uid="uid://drgo347vw1rsy" path="res://save station.tscn" id="6_hxcm7"]
 [ext_resource type="Texture2D" uid="uid://b48kx20l06apy" path="res://textures/Courtyard.png" id="8_mfooh"]
+[ext_resource type="PackedScene" uid="uid://by83gus4nvqcs" path="res://enemies/enemy_base.tscn" id="9_iyhsp"]
 [ext_resource type="AudioStream" uid="uid://b363x27gvrjkj" path="res://GameMusic.wav" id="10_jxmj6"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="11_py5xa"]
 [ext_resource type="AudioStream" uid="uid://byn81hpuaenqa" path="res://GameLose.mp3" id="15_xsqsu"]
@@ -1645,6 +1646,7 @@ size = Vector2(1818.33, 284.333)
 size = Vector2(547, 183.75)
 
 [node name="Level" type="Node2D"]
+scale = Vector2(3, 3)
 script = ExtResource("1_t5qsp")
 
 [node name="FireWoosh" type="AudioStreamPlayer" parent="."]
@@ -1653,7 +1655,6 @@ volume_db = -9.37
 bus = &"SoundEffects"
 
 [node name="HUD" parent="." instance=ExtResource("2_pxn5k")]
-visible = false
 
 [node name="BlackHUD" type="Sprite2D" parent="HUD"]
 visible = false
@@ -1744,9 +1745,6 @@ scale = Vector2(9, 9)
 [node name="TowersEntrance" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(11402, -14883)
 scale = Vector2(9, 9)
-[node name="Save Fire#FireWoosh" type="AudioStreamPlayer2D" parent="."]
-visible = false
-stream = ExtResource("5_qjxms")
 
 [node name="TowersFinal" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(10729, -20842)
@@ -1755,7 +1753,6 @@ scale = Vector2(9, 9)
 [node name="BookPlatforms" type="Node" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.05, 0.02)
@@ -1796,7 +1793,6 @@ scale = Vector2(5.1, 5.1)
 tile_set = SubResource("TileSet_c16yy")
 
 [node name="HideCourtyard" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -1813,7 +1809,6 @@ position = Vector2(3100.67, -3547)
 shape = SubResource("RectangleShape2D_y6k2p")
 
 [node name="ShowCouryard" type="Area2D" parent="."]
-visible = false
 position = Vector2(92.6667, -37.6667)
 collision_layer = 2
 collision_mask = 2
