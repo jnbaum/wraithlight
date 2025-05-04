@@ -22,6 +22,7 @@ signal shot_gained
 
 
 var lives = 5
+var max_lives = 5
 var ammo_count = 5
 var can_shoot = true
 var canReveal = false
@@ -51,13 +52,13 @@ func _physics_process(delta: float):
 		player_idle(delta)
 		player_run(delta)
 		player_jump(delta)
-		move_and_slide()
+		player_shoot(delta)
+		player_melee(delta)
 		player_animations()
 		projectile_origin_position()
 		player_death()
-		player_shoot(delta)
-		player_melee(delta)
 		melee_hitbox_flip()
+		move_and_slide()
 		#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
@@ -215,8 +216,11 @@ func lose_life(damage_amount):
 	life_lost.emit(lives)
 	
 func gain_life():
-	lives = lives +1
-	life_gained.emit(lives)
+	if lives != max_lives:
+		lives = lives +1
+		life_gained.emit(lives)
+	else: 
+		pass
 func gain_ammo():
 	ammo_count = ammo_count +1
 	shot_gained.emit(ammo_count)
