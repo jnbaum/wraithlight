@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cup30vnpg22yc"]
+
+[ext_resource type="Texture2D" uid="uid://dwxb23m8ofc4v" path="res://Assets/heart.png" id="1_plvy1"]
+[ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="2_sdto0"]
+
+[node name="NewUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lives" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Life" type="Sprite2D" parent="Lives"]
+texture = ExtResource("1_plvy1")
+
+[node name="Life2" type="Sprite2D" parent="Lives"]
+texture = ExtResource("1_plvy1")
+
+[node name="Life3" type="Sprite2D" parent="Lives"]
+texture = ExtResource("1_plvy1")
+
+[node name="Life4" type="Sprite2D" parent="Lives"]
+texture = ExtResource("1_plvy1")
+
+[node name="Life5" type="Sprite2D" parent="Lives"]
+texture = ExtResource("1_plvy1")
+
+[node name="Ammo" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 0
+offset_left = 84.0
+offset_top = 62.0
+offset_right = 84.0
+offset_bottom = 62.0
+
+[node name="Projectile" type="Sprite2D" parent="Ammo"]
+position = Vector2(57, 73)
+texture = ExtResource("2_sdto0")
+
+[node name="Projectile2" type="Sprite2D" parent="Ammo"]
+position = Vector2(166, 74)
+texture = ExtResource("2_sdto0")
+
+[node name="Projectile3" type="Sprite2D" parent="Ammo"]
+position = Vector2(273, 73)
+texture = ExtResource("2_sdto0")

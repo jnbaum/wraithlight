@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://muke2j0xfcaq"]
+
+[ext_resource type="Texture2D" uid="uid://bjfg8vs8yrw0h" path="res://Player/Melee/melee_spritesheet.png" id="1_yf38c"]
+[ext_resource type="Script" uid="uid://bh4ge205hpdur" path="res://Player/Melee/melee_impact_effect.gd" id="2_q5wes"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5wes"]
+atlas = ExtResource("1_yf38c")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lp44"]
+atlas = ExtResource("1_yf38c")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x312"]
+atlas = ExtResource("1_yf38c")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xapb5"]
+atlas = ExtResource("1_yf38c")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdgrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5wes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lp44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x312")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xapb5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MeleeImpactEffect" type="AnimatedSprite2D"]
+position = Vector2(13.705, 25.17)
+sprite_frames = SubResource("SpriteFrames_hdgrp")
+autoplay = "default"
+frame_progress = 0.766328
+script = ExtResource("2_q5wes")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

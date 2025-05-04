@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3ttnloysdnwg"
-path="res://.godot/imported/mutant-toad-idle.png-f6802b4b79828755cccbec91cb2a0f5b.ctex"
+uid="uid://clhv8gynogvrt"
+path="res://.godot/imported/ogre-attack.png-8696af2be7132da3c2703433a9a4b25f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Steph Assets/Pestilence/mutant-toad-idle.png"
-dest_files=["res://.godot/imported/mutant-toad-idle.png-f6802b4b79828755cccbec91cb2a0f5b.ctex"]
+source_file="res://Assets/Steph Assets/ogre-attack.png"
+dest_files=["res://.godot/imported/ogre-attack.png-8696af2be7132da3c2703433a9a4b25f.ctex"]
 
 [params]
 

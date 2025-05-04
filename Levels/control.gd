@@ -13,6 +13,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 	
+
 func _on_settings_button_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout

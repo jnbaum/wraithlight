@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://chw6jr6kmanjs"]
+
+[ext_resource type="Script" uid="uid://nnileqgejddx" path="res://enemies/Pestilence/pestilence.gd" id="1_da7j3"]
+[ext_resource type="Texture2D" uid="uid://d3ttnloysdnwg" path="res://enemies/Pestilence/mutant-toad-idle.png" id="2_lfttf"]
+[ext_resource type="Texture2D" uid="uid://bdga8hrmnrjda" path="res://enemies/Pestilence/mutant-toad-attack.png" id="2_qbkx7"]
+[ext_resource type="Texture2D" uid="uid://3w31ffr7v5qx" path="res://enemies/Pestilence/mutant-toad-jump.png" id="4_tw8jo"]
+[ext_resource type="Script" uid="uid://dq08xtnwhuq7w" path="res://enemies/Pestilence/gravity.gd" id="5_tw8jo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eoio"]
+atlas = ExtResource("2_qbkx7")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4prl5"]
+atlas = ExtResource("2_qbkx7")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2reu"]
+atlas = ExtResource("2_qbkx7")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxckq"]
+atlas = ExtResource("2_lfttf")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6wrx"]
+atlas = ExtResource("2_lfttf")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t81tj"]
+atlas = ExtResource("2_lfttf")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk8m4"]
+atlas = ExtResource("2_lfttf")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70uv3"]
+atlas = ExtResource("4_tw8jo")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlmrm"]
+atlas = ExtResource("4_tw8jo")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k04lk"]
+atlas = ExtResource("4_tw8jo")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb2tc"]
+atlas = ExtResource("4_tw8jo")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_foufv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eoio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4prl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2reu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxckq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6wrx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t81tj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk8m4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70uv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlmrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k04lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb2tc")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ysqhi"]
+radius = 96.0
+height = 192.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2qo3"]
+radius = 84.0238
+
+[node name="Pestilence" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_da7j3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -161)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_foufv")
+animation = &"jump"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -85)
+shape = SubResource("CapsuleShape2D_ysqhi")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(3.33786e-06, 0)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(2, -85)
+shape = SubResource("CircleShape2D_v2qo3")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Gravity" type="Node" parent="."]
+script = ExtResource("5_tw8jo")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

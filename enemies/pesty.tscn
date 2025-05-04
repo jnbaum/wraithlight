@@ -1,0 +1,172 @@
+[gd_scene load_steps=22 format=3 uid="uid://cxhw0p7fi3o1h"]
+
+[ext_resource type="PackedScene" uid="uid://df2ea0vg5h3uu" path="res://enemies/new_ogre.tscn" id="1_r48b7"]
+[ext_resource type="Texture2D" uid="uid://bdga8hrmnrjda" path="res://enemies/Pestilence/mutant-toad-attack.png" id="2_7cesn"]
+[ext_resource type="Script" uid="uid://cgts3eu8l2p0c" path="res://enemies/pesty.gd" id="2_itoea"]
+[ext_resource type="Texture2D" uid="uid://d3ttnloysdnwg" path="res://enemies/Pestilence/mutant-toad-idle.png" id="3_33i1d"]
+[ext_resource type="Texture2D" uid="uid://3w31ffr7v5qx" path="res://enemies/Pestilence/mutant-toad-jump.png" id="4_itoea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itoea"]
+atlas = ExtResource("2_7cesn")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5qlm"]
+atlas = ExtResource("2_7cesn")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_537ct"]
+atlas = ExtResource("2_7cesn")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3kxq"]
+atlas = ExtResource("3_33i1d")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rftj7"]
+atlas = ExtResource("3_33i1d")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqviv"]
+atlas = ExtResource("3_33i1d")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le325"]
+atlas = ExtResource("3_33i1d")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_873cg"]
+atlas = ExtResource("4_itoea")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o87k"]
+atlas = ExtResource("4_itoea")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvr56"]
+atlas = ExtResource("4_itoea")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk21x"]
+atlas = ExtResource("4_itoea")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3kxq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itoea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5qlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_537ct")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itoea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5qlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_537ct")
+}],
+"loop": true,
+"name": &"attack2",
+"speed": 3.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3kxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rftj7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqviv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le325")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_873cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o87k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvr56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hk21x")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33i1d"]
+radius = 54.0
+height = 110.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_itoea"]
+radius = 67.0
+height = 134.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5qlm"]
+size = Vector2(945, 346)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_537ct"]
+size = Vector2(232.5, 36)
+
+[node name="Pesty" instance=ExtResource("1_r48b7")]
+script = ExtResource("2_itoea")
+health_amount = 10
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -95)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_o3kxq")
+frame_progress = 0.321283
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-1, -54)
+shape = SubResource("CapsuleShape2D_33i1d")
+
+[node name="CollisionShape2D" parent="EnemyHitbox" index="0"]
+visible = false
+position = Vector2(-1, -71)
+shape = SubResource("CapsuleShape2D_itoea")
+
+[node name="AggroRange" parent="." index="4"]
+visible = false
+
+[node name="CollisionShape2D" parent="AggroRange" index="0"]
+position = Vector2(0, -174)
+shape = SubResource("RectangleShape2D_g5qlm")
+
+[node name="ClubArea" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape2D" parent="ClubArea" index="0"]
+position = Vector2(9.75, -52)
+shape = SubResource("RectangleShape2D_537ct")
+
+[node name="HealthLabel" parent="." index="6"]
+offset_top = -133.5
+offset_bottom = -110.5

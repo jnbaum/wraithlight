@@ -1,7 +1,7 @@
 extends Node2D
 var save_path = "game_state.save"
 var playerPosition
-
+var player : CharacterBody2D
 
 var volume = {}
 var config = ConfigFile.new()
@@ -22,6 +22,8 @@ func _ready() -> void:
 		
 		if config.get_value("game_properties", "inCourtyard") == false:
 			$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
+			
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

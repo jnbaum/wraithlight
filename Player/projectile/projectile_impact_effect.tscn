@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bgqecfpdmw43"]
 
 [ext_resource type="Texture2D" uid="uid://mhha87ih4kss" path="res://Assets/Steph Assets/energy-smack.png" id="1_pqt3g"]
-[ext_resource type="Script" path="res://Player/projectile/projectile_impact_effect.gd" id="2_bm1bq"]
+[ext_resource type="Script" uid="uid://8ixyi6eillsa" path="res://Player/projectile/projectile_impact_effect.gd" id="2_bm1bq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8bve"]
 atlas = ExtResource("1_pqt3g")
