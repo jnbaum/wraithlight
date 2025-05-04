@@ -38,13 +38,15 @@ func _ready():
 	Global.Player = self
 	current_state = State.Idle
 	$DebugLabel.hide()
-	life_lost.connect($UserInterface/Control/Lives._on_player_life_lost)
-	life_gained.connect($UserInterface/Control/Lives._on_player_life_gained)
+	#life_lost.connect($HUD/Lives._on_player_life_lost)
+	#life_gained.connect($HUD/Lives._on_player_life_gained)
 	
-	shot_fired.connect($UserInterface/Control/Ammo._on_shot_fired)
-	shot_gained.connect($UserInterface/Control/Ammo._on_shot_gained)
+	#shot_fired.connect($HUD/Ammo._on_shot_fired)
+	#shot_gained.connect($HUD/Ammo._on_shot_gained)
 
 func _physics_process(delta: float):
+	print(position.x)
+	print($ProjectileOrigin.position.x +global_position.x/3)
 	if debug == false:
 		var was_on_floor = is_on_floor()
 		player_falling(delta)
@@ -105,7 +107,7 @@ func player_jump(delta: float):
 	var direction = input_movement()
 
 	# Coyote and Double Jump
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()) and current_state != State.Shoot and current_state != State.Melee:
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()):
 		velocity.y = jump_velocity
 		current_state = State.Jump
 
@@ -115,7 +117,7 @@ func player_jump(delta: float):
 		
 func player_shoot(_delta: float):
 	var direction = input_movement()
-	#print(ammo_count)
+	print(ammo_count)
 	
 	if Input.is_action_just_pressed("shoot") and current_state != State.Shoot and ammo_count > 0:
 		ammo_count = ammo_count- 1
@@ -124,7 +126,7 @@ func player_shoot(_delta: float):
 		previous_state = current_state
 		
 		var projectile_instance = projectile.instantiate() as Node2D
-		projectile_instance.global_position = ProjectileOrigin.global_position
+		projectile_instance.global_position = ProjectileOrigin.global_position/3
 		
 		var world = get_tree().current_scene
 		world.add_child(projectile_instance)
@@ -201,9 +203,10 @@ func player_death():
 
 func projectile_origin_position():
 	if animated_sprite_2d.flip_h:
-		ProjectileOrigin.position.x = -abs(ProjectileOrigin.position.x)
+		ProjectileOrigin.position.x = -abs(ProjectileOrigin.position.x) + 60
 	else:
-		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x)
+		ProjectileOrigin.position.x = abs(ProjectileOrigin.position.x) - 8
+		ProjectileOrigin.position.y = abs(ProjectileOrigin.position.y) - 33
 
 func melee_hitbox_flip():
 	if animated_sprite_2d.flip_h:
@@ -214,7 +217,6 @@ func melee_hitbox_flip():
 func lose_life(damage_amount):
 	lives = lives - damage_amount
 	life_lost.emit(lives)
-	#print(lives)
 	
 func gain_life():
 	lives = lives +1
