@@ -10,13 +10,9 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-
+func _process(_delta: float) -> void:
 	pass
 	
-
-
-
 func _on_settings_button_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
@@ -24,17 +20,12 @@ func _on_settings_button_pressed() -> void:
 	pass # Replace with function body.
 	
 
-
-
 func _on_play_button_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
 	$FirstOpen.visible = false
 	$Story.visible = true
 	#get_tree().change_scene_to_file("res://FirstCut.tscn")
-
-
-
 
 
 func _on_quit_button_pressed() -> void:
@@ -50,9 +41,6 @@ func _on_load_button_pressed() -> void:
 	#PUT STUFF HERE
 	pass # Replace with function body.
 	
-	
-	
-
 
 func _on_play_2_pressed() -> void:
 	$ClickSound.play()
