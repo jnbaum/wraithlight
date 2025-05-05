@@ -18,7 +18,7 @@ func _ready() -> void:
 		$Player.position = config.get_value("game_properties", "position")
 		if config.get_value("game_properties", "revealAbility") == true:
 			$Collectables/RevealPowerup.hide()
-			$PreReveal.hide()
+			$PreReveal.queue_free()
 		
 		if config.get_value("game_properties", "inCourtyard") == false:
 			$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
