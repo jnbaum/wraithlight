@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bkxqy2hpmf4ru"]
+[gd_scene load_steps=36 format=4 uid="uid://bkxqy2hpmf4ru"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_t5qsp"]
 [ext_resource type="PackedScene" uid="uid://bewrr126db1ko" path="res://Player/player.tscn" id="2_3hamp"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bqpx50d1bqhaj" path="res://FireWoosh.mp3" id="5_qjxms"]
 [ext_resource type="PackedScene" uid="uid://df2ea0vg5h3uu" path="res://enemies/new_ogre.tscn" id="6_8hqjj"]
 [ext_resource type="PackedScene" uid="uid://drgo347vw1rsy" path="res://save station.tscn" id="6_hxcm7"]
+[ext_resource type="PackedScene" uid="uid://cxhw0p7fi3o1h" path="res://enemies/pesty.tscn" id="7_np6a3"]
 [ext_resource type="Texture2D" uid="uid://b48kx20l06apy" path="res://textures/Courtyard.png" id="8_mfooh"]
 [ext_resource type="AudioStream" uid="uid://b363x27gvrjkj" path="res://GameMusic.wav" id="10_jxmj6"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="11_py5xa"]
@@ -1087,6 +1088,8 @@ texture = ExtResource("5_5cut3")
 [sub_resource type="TileSet" id="TileSet_kxuwp"]
 sources/0 = SubResource("TileSetAtlasSource_t3wr0")
 
+[sub_resource type="GDScript" id="GDScript_tmhhg"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_llr47"]
 texture = ExtResource("4_qchee")
 0:0/0 = 0
@@ -1658,14 +1661,12 @@ bus = &"SoundEffects"
 visible = false
 
 [node name="BlackHUD" type="Sprite2D" parent="HUD"]
-visible = false
 modulate = Color(0, 0, 0, 0.976471)
 position = Vector2(969, 562)
 scale = Vector2(4.61085, 4.72689)
 texture = ExtResource("4_ltiox")
 
 [node name="SaveMessage" type="Label" parent="HUD"]
-visible = false
 offset_left = 880.0
 offset_top = 330.0
 offset_right = 1358.0
@@ -1675,7 +1676,6 @@ size_flags_horizontal = 4
 text = "Game Saved!"
 
 [node name="LibraryMessage" type="Label" parent="HUD"]
-visible = false
 offset_left = 350.0
 offset_top = 240.0
 offset_right = 828.0
@@ -1708,6 +1708,9 @@ position = Vector2(100, -6.66667)
 [node name="NewOgre2" parent="Enemies" instance=ExtResource("6_8hqjj")]
 position = Vector2(1749, -172.333)
 
+[node name="Pesty" parent="Enemies" instance=ExtResource("7_np6a3")]
+position = Vector2(2458, -172.333)
+
 [node name="NewOgre" parent="Enemies" instance=ExtResource("6_8hqjj")]
 position = Vector2(1464.67, -176.667)
 
@@ -1739,26 +1742,32 @@ tile_set = SubResource("TileSet_kxuwp")
 [node name="Courtyard" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(23433, -5732)
 scale = Vector2(9, 9)
+script = SubResource("GDScript_tmhhg")
 
 [node name="Entryway" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(10527, -822)
 scale = Vector2(9, 9)
+script = SubResource("GDScript_tmhhg")
 
 [node name="LibraryEntrance" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(9069, -10411)
 scale = Vector2(9, 9)
+script = SubResource("GDScript_tmhhg")
 
 [node name="LibraryLeft" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(-11448, -8237)
 scale = Vector2(9, 9)
+script = SubResource("GDScript_tmhhg")
 
 [node name="TowersEntrance" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(11402, -14883)
 scale = Vector2(9, 9)
+script = SubResource("GDScript_tmhhg")
 
 [node name="TowersFinal" parent="Save Stations" instance=ExtResource("6_hxcm7")]
 position = Vector2(10729, -20842)
 scale = Vector2(9, 9)
+script = SubResource("GDScript_tmhhg")
 
 [node name="BookPlatforms" type="Node" parent="."]
 
@@ -1894,6 +1903,8 @@ position = Vector2(4146, -5211.67)
 shape = SubResource("RectangleShape2D_pctao")
 
 [connection signal="body_entered" from="Collectables/RevealPowerup" to="." method="_on_reveal_powerup_body_entered"]
+[connection signal="QuitGame" from="Player" to="." method="_on_quit"]
+[connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="body_entered" from="Save Stations/Courtyard" to="." method="_on_save_fire_body_entered"]
 [connection signal="body_entered" from="Save Stations/Entryway" to="." method="_on_save_fire_body_entered"]
 [connection signal="body_entered" from="Save Stations/LibraryEntrance" to="." method="_on_save_fire_body_entered"]

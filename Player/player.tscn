@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://bewrr126db1ko"]
 
-[ext_resource type="Script" uid="uid://djrcewambq7md" path="res://Player/player.gd" id="1_a1pft"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_a1pft"]
 [ext_resource type="Texture2D" uid="uid://1a2sl4b0feu0" path="res://Player/hero-falling.png" id="2_lfplk"]
 [ext_resource type="PackedScene" uid="uid://b711y6ajr0ako" path="res://hud.tscn" id="2_nkmou"]
 [ext_resource type="Texture2D" uid="uid://bcseoodgypq3r" path="res://Player/NewMainCharacter/Idle/Idle1.png" id="3_hshwv"]
@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bmf4uh224nuxu" path="res://Player/NewMainCharacter/LightBall/Light_ball5.png" id="32_8ynux"]
 [ext_resource type="Texture2D" uid="uid://dpksskfkutxau" path="res://Player/NewMainCharacter/LightBall/Light_ball6.png" id="33_d30e8"]
 [ext_resource type="Texture2D" uid="uid://becfml2hhcydb" path="res://Player/NewMainCharacter/LightBall/Light_ball7.png" id="34_6pogt"]
-[ext_resource type="Script" uid="uid://b406l36f7oob5" path="res://Player/melee_hitbox.gd" id="37_qs4pp"]
+[ext_resource type="Script" path="res://Player/melee_hitbox.gd" id="37_qs4pp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhcyu"]
 atlas = ExtResource("2_lfplk")
@@ -242,11 +242,6 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efx54"]
@@ -272,8 +267,7 @@ position = Vector2(32, -53)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(6, -35)
 sprite_frames = SubResource("SpriteFrames_lvyff")
-animation = &"Melee"
-frame_progress = 0.780739
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, -33.5)
@@ -311,6 +305,7 @@ text = "Debug"
 wait_time = 0.5
 
 [node name="MeleeTimer" type="Timer" parent="."]
+wait_time = 0.3
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -324,6 +319,7 @@ position = Vector2(38, -39)
 shape = SubResource("RectangleShape2D_jp1hh")
 disabled = true
 
+[connection signal="quit" from="HUD" to="." method="_on_hud_quit"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

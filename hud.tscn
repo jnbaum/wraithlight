@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b711y6ajr0ako"]
+[gd_scene load_steps=12 format=3 uid="uid://b711y6ajr0ako"]
 
 [ext_resource type="Texture2D" uid="uid://cjw2h58cu52sj" path="res://Assets/Flame(1).png" id="1_aglur"]
 [ext_resource type="Script" path="res://hud.gd" id="1_d6du5"]
 [ext_resource type="Texture2D" uid="uid://dwxb23m8ofc4v" path="res://Assets/heart.png" id="2_0rmoh"]
 [ext_resource type="FontFile" uid="uid://dsl5awgy80aev" path="res://NightsideDemoRegular.ttf" id="2_1t41d"]
+[ext_resource type="Script" path="res://Player/health_ui.gd" id="2_62y75"]
+[ext_resource type="Script" path="res://Player/ammo_ui.gd" id="4_mcn5n"]
 [ext_resource type="AudioStream" uid="uid://dvlacad8r88lc" path="res://ClickSound.wav" id="5_w55m0"]
 [ext_resource type="Texture2D" uid="uid://bqxnqdfsimxhw" path="res://Assets/Background2.png" id="6_1xsix"]
 
@@ -16,9 +18,12 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_d6du5")
 
-[node name="Lives" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Lives" type="HBoxContainer" parent="."]
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 621.0
+offset_bottom = 140.0
+script = ExtResource("2_62y75")
 
 [node name="Heart1" type="Sprite2D" parent="Lives"]
 position = Vector2(69, 65)
@@ -50,22 +55,35 @@ rotation = 0.212628
 scale = Vector2(0.71, 0.819)
 texture = ExtResource("2_0rmoh")
 
-[node name="Ammo" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Ammo" type="HBoxContainer" parent="."]
+offset_left = 1378.0
+offset_top = 6.0
+offset_right = 1923.0
+offset_bottom = 140.0
+script = ExtResource("4_mcn5n")
 
 [node name="Flame1" type="Sprite2D" parent="Ammo"]
-position = Vector2(1606, 65)
+position = Vector2(82, 57)
 scale = Vector2(0.839, 0.785)
 texture = ExtResource("1_aglur")
 
 [node name="Flame2" type="Sprite2D" parent="Ammo"]
-position = Vector2(1723, 65)
+position = Vector2(177, 57)
 scale = Vector2(0.839, 0.785)
 texture = ExtResource("1_aglur")
 
 [node name="Flame3" type="Sprite2D" parent="Ammo"]
-position = Vector2(1840, 65)
+position = Vector2(272, 57)
+scale = Vector2(0.839005, 0.784722)
+texture = ExtResource("1_aglur")
+
+[node name="Flame4" type="Sprite2D" parent="Ammo"]
+position = Vector2(367, 57)
+scale = Vector2(0.839005, 0.784722)
+texture = ExtResource("1_aglur")
+
+[node name="Flame5" type="Sprite2D" parent="Ammo"]
+position = Vector2(462, 57)
 scale = Vector2(0.839005, 0.784722)
 texture = ExtResource("1_aglur")
 
@@ -101,9 +119,9 @@ text = "WraithLight"
 process_mode = 3
 layout_mode = 0
 offset_left = 877.0
-offset_top = 774.0
+offset_top = 742.0
 offset_right = 1055.0
-offset_bottom = 889.0
+offset_bottom = 857.0
 theme_override_fonts/font = ExtResource("2_1t41d")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rftc2")
@@ -113,14 +131,15 @@ flat = true
 [node name="Quit" type="Button" parent="PauseMenu"]
 process_mode = 3
 layout_mode = 0
-offset_left = 902.0
-offset_top = 877.0
-offset_right = 1032.0
-offset_bottom = 992.0
+offset_left = 756.0
+offset_top = 881.0
+offset_right = 1183.0
+offset_bottom = 996.0
 theme_override_fonts/font = ExtResource("2_1t41d")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/focus = SubResource("StyleBoxEmpty_61f8s")
-text = "Quit"
+text = "Quit to menu
+"
 flat = true
 
 [node name="Music" type="Label" parent="PauseMenu"]

@@ -1,25 +1,17 @@
 extends Node2D
-
+const level = preload("res://Levels/level.tscn")
+const title = preload("res://Levels/control.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$GameLose.play()
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-		pass
-
 
 func _on_quit_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
-	get_tree().quit()
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Levels/control.tscn")
 
 
-func _on_restart_pressed() -> void: #I can't check this functionality until the player can die!!
+func _on_restart_pressed() -> void:
 	$ClickSound.play()
 	await get_tree().create_timer(1.25).timeout
-	get_tree().change_scene_to_file("res://Levels/control.tscn")  
-	print("control called") 
-	pass
+	get_tree().change_scene_to_packed(level)

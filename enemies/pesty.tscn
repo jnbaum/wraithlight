@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://df2ea0vg5h3uu" path="res://enemies/new_ogre.tscn" id="1_r48b7"]
 [ext_resource type="Texture2D" uid="uid://bdga8hrmnrjda" path="res://enemies/Pestilence/mutant-toad-attack.png" id="2_7cesn"]
-[ext_resource type="Script" uid="uid://cgts3eu8l2p0c" path="res://enemies/pesty.gd" id="2_itoea"]
+[ext_resource type="Script" path="res://enemies/pesty.gd" id="2_itoea"]
 [ext_resource type="Texture2D" uid="uid://d3ttnloysdnwg" path="res://enemies/Pestilence/mutant-toad-idle.png" id="3_33i1d"]
 [ext_resource type="Texture2D" uid="uid://3w31ffr7v5qx" path="res://enemies/Pestilence/mutant-toad-jump.png" id="4_itoea"]
 

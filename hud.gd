@@ -3,7 +3,8 @@ extends CanvasLayer
 @onready var pause_menu #= get_node("HUD/PauseMenu")
 @onready var hslider #= get_node("HUD/PauseMenu/Sound/Hslider")
 @onready var mslider #= get_node("HUD/PauseMenu/Sound/Mslider")
-# Called when the node enters the scene tree for the first time.
+signal quit
+
 func _ready() -> void:
 	pause_menu = get_node_or_null("PauseMenu")
 	hslider = get_node_or_null("PauseMenu/Sound/HSlider")
@@ -35,7 +36,6 @@ func _on_HSlider_value_changed(value):
 	print("HSlider value changed")
 	
 func _process(_delta: float) -> void: #EMPTY 
-	
 		pass
 	
 func _on_pause_pressed() -> void: 
@@ -50,5 +50,6 @@ func _on_back_pressed() -> void:
 	get_tree().paused = false
 	$PauseMenu.hide()
 
-func _on_quit_pressed() -> void: 
-	get_tree().quit()
+func _on_quit_pressed() -> void:
+	print("QUIT")
+	quit.emit()

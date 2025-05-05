@@ -5,6 +5,8 @@ signal life_lost
 signal life_gained
 signal shot_fired
 signal shot_gained
+signal death
+signal QuitGame
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coyote_timer = $CoyoteTimer
@@ -22,16 +24,18 @@ signal shot_gained
 
 
 var lives = 5
-var max_lives = 5
 var ammo_count = 5
 var can_shoot = true
 var canReveal = false
 var debug = false
 var is_alive = false
-var previous_state 
+var previous_state
+var previous_fighting_state
 
-enum State {Idle, Run, Jump, Falling, Shoot, Melee}
+enum State {Idle, Run, Jump, Falling}
+enum FightingState {None, Shoot, Melee}
 var current_state : State
+var current_fighting_state : FightingState
 var character_sprite : Sprite2D
 var muzzle_position
 
@@ -39,11 +43,11 @@ func _ready():
 	Global.Player = self
 	current_state = State.Idle
 	$DebugLabel.hide()
-	#life_lost.connect($HUD/Lives._on_player_life_lost)
-	#life_gained.connect($HUD/Lives._on_player_life_gained)
+	life_lost.connect($HUD/Lives._on_player_life_lost)
+	life_gained.connect($HUD/Lives._on_player_life_gained)
 	
-	#shot_fired.connect($HUD/Ammo._on_shot_fired)
-	#shot_gained.connect($HUD/Ammo._on_shot_gained)
+	shot_fired.connect($HUD/Ammo._on_shot_fired)
+	shot_gained.connect($HUD/Ammo._on_shot_gained)
 
 func _physics_process(delta: float):
 	if debug == false:
@@ -59,7 +63,6 @@ func _physics_process(delta: float):
 		player_death()
 		melee_hitbox_flip()
 		move_and_slide()
-		#print("State: ", State.keys()[current_state]) #State Machine Debug
 	
 		if was_on_floor && !is_on_floor():
 			coyote_timer.start()
@@ -83,12 +86,12 @@ func _physics_process(delta: float):
 		$RunningSound.stream_paused = true
 
 func player_falling(delta: float): 
-	if !is_on_floor() and current_state != State.Shoot and current_state != State.Melee:
+	if !is_on_floor():
 		velocity.y += gravity * delta
 		current_state = State.Falling
 
 func player_idle(delta: float):
-	if is_on_floor() and current_state != State.Shoot and current_state != State.Melee:
+	if is_on_floor():
 		current_state = State.Idle
 
 func player_run(delta: float):	
@@ -98,7 +101,7 @@ func player_run(delta: float):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 	
-	if direction != 0 and is_on_floor() and current_state != State.Shoot and current_state != State.Melee:
+	if direction != 0 and is_on_floor():
 		current_state = State.Run
 		animated_sprite_2d.flip_h = direction < 0
 
@@ -106,7 +109,7 @@ func player_jump(delta: float):
 	var direction = input_movement()
 
 	# Coyote and Double Jump
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()) and current_state != State.Shoot and current_state != State.Melee:
+	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()):
 		velocity.y = jump_velocity
 		current_state = State.Jump
 
@@ -116,12 +119,12 @@ func player_jump(delta: float):
 		
 func player_shoot(_delta: float):
 	var direction = input_movement()
-	print(ammo_count)
 	
-	if Input.is_action_just_pressed("shoot") and current_state != State.Shoot and ammo_count > 0:
+	if Input.is_action_just_pressed("shoot") and ammo_count > 0:
+		ammo_count -= 1
 		shot_fired.emit(ammo_count)
 		
-		previous_state = current_state
+		previous_fighting_state = current_fighting_state
 		
 		var projectile_instance = projectile.instantiate() as Node2D
 		projectile_instance.global_position = ProjectileOrigin.global_position/3
@@ -136,34 +139,30 @@ func player_shoot(_delta: float):
 		else:
 			projectile_instance.direction = direction - 1
 			
-		current_state = State.Shoot
+		current_fighting_state = FightingState.Shoot
 		shoot_timer.start() # Start the timer to track shoot animation duration
 	
 func player_melee(_delta):
-	var direction = input_movement() #This line isn't being used?
-	
-	if Input.is_action_just_pressed("melee") and current_state != State.Melee:
+	if Input.is_action_just_pressed("melee") and current_state != FightingState.Melee:
 
-		previous_state = current_state
-		current_state = State.Melee
-		#print("pressing melee")
+		previous_fighting_state = current_fighting_state
+		current_fighting_state = FightingState.Melee
 		melee_timer.start()
 		$MeleeHitbox/MeleeShape.disabled = false
 		
 func player_animations():
-	if current_state == State.Idle:
+	if current_fighting_state == FightingState.Melee:
+		animated_sprite_2d.play("Melee")
+	elif current_fighting_state == FightingState.Shoot:
+		animated_sprite_2d.play("Shoot")
+	elif current_state == State.Idle:
 		animated_sprite_2d.play("Idle")
 	elif current_state == State.Run:
 		animated_sprite_2d.play("Run")
 	elif current_state == State.Jump:
 		animated_sprite_2d.play("Jump")
 	elif current_state == State.Falling:
-
 		animated_sprite_2d.play("Jump")
-	elif current_state == State.Shoot:
-		animated_sprite_2d.play("Shoot")
-	elif current_state == State.Melee:
-		animated_sprite_2d.play("Melee")
 
 func input_movement():
 	var direction: float = Input.get_axis("move_left","move_right")
@@ -186,7 +185,6 @@ func load_position(posx):
 
 func _on_hurt_box_body_entered(body: Node2D):
 	if body.is_in_group("Enemy"):
-		print("enemy entered", body.damage_amount)
 		HealthManager.decrease_health(body.damage_amount)
 
 func get_reveal():
@@ -212,43 +210,28 @@ func melee_hitbox_flip():
 		melee_hitbox.scale.x = 1
 
 func lose_life(damage_amount):
+	print("hit")
 	lives = lives - damage_amount
 	life_lost.emit(lives)
+	if lives == 0:
+		death.emit()
 	
 func gain_life():
-	if lives != max_lives:
-		lives = lives +1
+	if lives != 5:
+		lives += 1
 		life_gained.emit(lives)
-	else: 
-		pass
+
 func gain_ammo():
-	ammo_count = ammo_count +1
+	ammo_count += 1
 	shot_gained.emit(ammo_count)
 	
 func _on_shoot_timer_timeout():
-
-	if is_on_floor():
-		var direction = input_movement()
-		if direction != 0:
-			current_state = State.Run
-		else:
-			current_state = State.Idle
-	else:
-		if velocity.y < 0:
-			current_state = State.Jump
-		else:
-			current_state = State.Falling
+	current_fighting_state = FightingState.None
 	
 func _on_melee_timer_timeout():
 	$MeleeHitbox/MeleeShape.disabled = true
-	if is_on_floor():
-		var direction = input_movement()
-		if direction != 0:
-			current_state = State.Run
-		else:
-			current_state = State.Idle
-	else:
-		if velocity.y < 0:
-			current_state = State.Jump
-		else:
-			current_state = State.Falling
+	current_fighting_state = FightingState.None
+
+
+func _on_hud_quit() -> void:
+	QuitGame.emit()

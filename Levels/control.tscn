@@ -302,25 +302,25 @@ text = "Quit"
 flat = true
 
 [node name="LoadButton" type="Button" parent="FirstOpen"]
-offset_left = -79.0
-offset_top = 190.0
-offset_right = 54.0
-offset_bottom = 279.0
+offset_left = -138.5
+offset_top = 188.5
+offset_right = 144.5
+offset_bottom = 277.5
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxEmpty_e6g6p")
-text = "Load"
+text = "Load Game"
 flat = true
 
 [node name="PlayButton" type="Button" parent="FirstOpen"]
-offset_left = -87.5
-offset_top = 101.5
-offset_right = 52.5
-offset_bottom = 190.5
+offset_left = -137.0
+offset_top = 103.0
+offset_right = 146.0
+offset_bottom = 192.0
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxEmpty_sjrd0")
-text = "Start"
+text = "New Game"
 flat = true
 
 [node name="Story" type="Node2D" parent="."]
@@ -447,6 +447,10 @@ offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("7_05tpf")
 theme_override_font_sizes/font_size = 35
 text = "X C or Shift"
+
+[node name="GameLose" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_hy7so")
+autoplay = true
 
 [connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="FirstOpen/QuitButton" to="." method="_on_quit_button_pressed"]

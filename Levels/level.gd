@@ -47,7 +47,11 @@ func save():
 
 func _on_save_fire_body_entered(_body: Node2D) -> void:
 	$FireWoosh.play() 
+	$HUD/SaveMessage.show()
 	save()
+	await get_tree().create_timer(1.5).timeout
+	$HUD/SaveMessage.hide()
+	
 
 func _on_hide_courtyard_body_entered(_body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
@@ -75,23 +79,11 @@ func _on_reveal_powerup_body_entered(_body: Node2D) -> void:
 	$HUD/LibraryMessage.hide()
 
 
-func _on_player_death(_body: Node2D) -> void: #this needs to be play tested! It may need tweaking.
-	#clear or pause enemies here
-	$GameOverSound.play() #Plays the player death sound (CURRENTLY NOT WORKING)
-	$Player/AnimatedSprite2D.play("Dead") #THIS IS NOT WORKING
-	await get_tree().create_timer(1.25).timeout #Small delay so that the sound has time to play
-	get_tree().change_scene_to_file("res://GameEnd.tscn")  #Changes to the game over scene
-	pass
-	
-
-
-func _on_debug_pressed() -> void: #This entire function is here to play test the character death. Delete after enemies are inserted and the player can actually die.
-	print("debug pressed")
-	$GameOverSound.play() #THIS LINE NOT WORKING
-	$Player/AnimatedSprite2D.play("Dead") #THIS LINE NOT WORKING?????
-	await get_tree().create_timer(1.25).timeout
-	get_tree().change_scene_to_file("res://GameEnd.tscn")  
-	pass # Replace with function body.
+func _on_player_death() -> void:
+	$GameOverSound.play()
+	$Player/AnimatedSprite2D.play("Dead")
+	# await get_tree().create_timer(1.25).timeout 
+	get_tree().change_scene_to_file("res://GameEnd.tscn") 
 
 
 func _on_move_sky_up_body_entered(body: Node2D) -> void:
@@ -114,3 +106,7 @@ func _on_fall_area_2_body_entered(body: Node2D) -> void:
 
 func _on_fall_area_3_body_entered(body: Node2D) -> void:
 	$Player.position = Vector2(3222, -6289)
+
+func _on_quit() -> void:
+	print("arrived")
+	get_tree().change_scene_to_file("res://Levels/control.tscn")
