@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 class_name OgreEnemy
 
-const speed = 100
+var speed = 100
+const chase_speed = 250
 var is_enemy_chase : bool = false
 
 @export var health_amount = 2
@@ -91,6 +92,8 @@ func apply_knockback(direction: Vector2):
 	
 func _on_aggro_range_area_entered(area: Area2D) -> void:
 	is_enemy_chase = true
+	speed = 150
+	
 	
 func _on_direction_timer_timeout() -> void:
 	$DirectionTimer.wait_time = choose([1.5,2.0,2.5])
