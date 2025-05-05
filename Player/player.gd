@@ -107,7 +107,6 @@ func player_run(delta: float):
 
 func player_jump(delta: float):
 	var direction = input_movement()
-
 	# Coyote and Double Jump
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()):
 		velocity.y = jump_velocity
@@ -210,7 +209,6 @@ func melee_hitbox_flip():
 		melee_hitbox.scale.x = 1
 
 func lose_life(damage_amount):
-	print("hit")
 	lives = lives - damage_amount
 	life_lost.emit(lives)
 	if lives == 0:

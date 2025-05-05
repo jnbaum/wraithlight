@@ -113,10 +113,11 @@ func _on_enemy_hitbox_area_entered(area: Area2D) -> void:
 		print("enemy health remaining: ", health_amount)
 		
 func  death():
-		if health_amount <= 0:
-			var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
-			enemy_death_effect_instance.global_position = global_position/3
-			get_parent().add_child(enemy_death_effect_instance)
-			queue_free()
-			Global.Player.gain_life()
-			Global.Player.gain_ammo()
+	if health_amount <= 0:
+		var enemy_death_effect_instance = enemy_death_effect.instantiate() as Node2D
+		enemy_death_effect_instance.global_position = global_position/3
+		enemy_death_effect_instance.global_position.x -= 100
+		get_parent().add_child(enemy_death_effect_instance)
+		queue_free()
+		Global.Player.gain_life()
+		Global.Player.gain_ammo()

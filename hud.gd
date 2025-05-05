@@ -51,5 +51,7 @@ func _on_back_pressed() -> void:
 	$PauseMenu.hide()
 
 func _on_quit_pressed() -> void:
-	print("QUIT")
+	$ClickSound.play()
+	await get_tree().create_timer(.45).timeout
+	get_tree().paused = false
 	quit.emit()

@@ -39,19 +39,15 @@ func save():
 		config.set_value("game_properties", "inCourtyard", $ParallaxBackground/ParallaxLayer2/Courtyard.is_visible_in_tree())
 		config.save("user://gameconfig.cfg")
 	
-	$HUD/SaveMessage.show()
+	$Player/SaveMessage.show()
 	
 	await get_tree().create_timer(4).timeout
 	
-	$HUD/SaveMessage.hide()
+	$Player/SaveMessage.hide()
 
 func _on_save_fire_body_entered(_body: Node2D) -> void:
 	$FireWoosh.play() 
-	$HUD/SaveMessage.show()
 	save()
-	await get_tree().create_timer(1.5).timeout
-	$HUD/SaveMessage.hide()
-	
 
 func _on_hide_courtyard_body_entered(_body: Node2D) -> void:
 	$ParallaxBackground/ParallaxLayer2/Courtyard.hide()
@@ -72,11 +68,11 @@ func _on_reveal_powerup_body_entered(_body: Node2D) -> void:
 	$Player.set_reveal(true)
 	$PreReveal.queue_free()
 	await get_tree().create_timer(1.5).timeout
-	$HUD/LibraryMessage.show()
+	$Player/LibraryMessage.show()
 	
 	await get_tree().create_timer(8).timeout
 	
-	$HUD/LibraryMessage.hide()
+	$Player/LibraryMessage.hide()
 
 
 func _on_player_death() -> void:
@@ -108,5 +104,4 @@ func _on_fall_area_3_body_entered(body: Node2D) -> void:
 	$Player.position = Vector2(3222, -6289)
 
 func _on_quit() -> void:
-	print("arrived")
 	get_tree().change_scene_to_file("res://Levels/control.tscn")

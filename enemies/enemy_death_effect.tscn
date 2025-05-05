@@ -71,6 +71,7 @@ animations = [{
 }]
 
 [node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+position = Vector2(0, -19)
 sprite_frames = SubResource("SpriteFrames_eesnh")
 autoplay = "default"
 frame_progress = 0.488941
